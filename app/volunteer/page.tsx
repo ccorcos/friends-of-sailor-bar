@@ -3,7 +3,7 @@ import { VolunteerForm } from "@/components/forms";
 
 export default function VolunteerPage() {
   return <>
-    <section className="page-hero"><div className="shell"><p className="kicker"><HandHeart size={15} /> Get involved</p><h1>Volunteer with us</h1><p>Tell us what kind of work interests you. No special experience is needed—just care for Sailor Bar and a willingness to pitch in.</p></div></section>
-    <section className="form-page"><div className="shell form-page-grid"><div><h2>Small acts add up.</h2><p>Join a workday, welcome visitors, help with native planting, share a professional skill, or lend a hand behind the scenes.</p></div><VolunteerForm /></div></section>
+    <section className="page-hero"><div className="shell"><p className="kicker"><HandHeart size={15} /> Volunteer</p><h1>Volunteer interest form</h1><p>Tell us what work interests you and how you would like to help Friends of Sailor Bar.</p></div></section>
+    <section className="form-page"><div className="shell form-page-grid"><div><h2>Ways to help</h2><p>Volunteer needs may include workdays, native planting, visitor and event support, professional services, and administrative work.</p></div><VolunteerForm /></div></section>
   </>;
 }

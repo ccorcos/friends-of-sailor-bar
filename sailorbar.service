@@ -1,0 +1,16 @@
+[Unit]
+Description=Friends of Sailor Bar website
+After=network.target
+
+[Service]
+Type=simple
+User=exedev
+WorkingDirectory=/home/exedev/friends-of-sailor-bar
+Environment=NODE_ENV=production
+Environment=PATH=/home/exedev/node/bin:/home/exedev/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/home/exedev/node/bin/npm run start
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

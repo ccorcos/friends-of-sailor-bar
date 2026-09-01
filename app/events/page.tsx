@@ -1,0 +1,16 @@
+export const dynamic = "force-dynamic";
+
+import { CalendarDays, MapPin } from "lucide-react";
+import { getUpcomingEvents } from "@/lib/db";
+
+function dateLabel(date: string) {
+  return new Intl.DateTimeFormat("en-US", { weekday: "short", month: "long", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(`${date}T12:00:00Z`));
+}
+
+export default function EventsPage() {
+  const events = getUpcomingEvents();
+  return <>
+    <section className="page-hero"><div className="shell"><p className="kicker"><CalendarDays size={15} /> Gather at the river</p><h1>Events & activities</h1><p>Fun, educational gatherings rooted in wildlife, local history, and hands-on care. Most monthly programs meet beneath the big oak near the boat launch.</p></div></section>
+    <section className="page-content"><div className="shell"><div className="event-list-page">{events.map(event => <article className="calendar-card" key={event.id}><time dateTime={event.date}>{dateLabel(event.date)}</time><div><span className="pill" style={{color:"#9c4f34"}}>{event.category}</span><h2>{event.title}</h2><p>{event.summary}</p></div><div className="calendar-meta"><strong>{event.time}</strong><br /><span><MapPin size={13} style={{verticalAlign:"middle"}} /> {event.location}</span><br /><small>Free and open to the community.</small></div></article>)}</div></div></section>
+  </>;
+}

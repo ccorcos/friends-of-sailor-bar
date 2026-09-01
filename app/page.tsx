@@ -3,16 +3,8 @@ export const dynamic = "force-dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CalendarDays, HandHeart, Leaf, Mail } from "lucide-react";
-import { SubscribeForm, VolunteerForm } from "@/components/forms";
 import { getPosts, getUpcomingEvents } from "@/lib/db";
-
-const projects = [
-  { number: "01", title: "A path for more of us", text: "Creating a more accessible nature walk around Turtle Pond.", tag: "Access", image: "/images/river-overlook.jpg" },
-  { number: "02", title: "A sanctuary on the wing", text: "Building butterfly habitat for monarchs and California pipevine swallowtails.", tag: "Habitat", image: "/images/woodpecker.jpg" },
-  { number: "03", title: "Water & welcome", text: "A drinking fountain and native plant garden at the Olive Street entrance.", tag: "Visitor care", image: "/images/grinding-rocks.jpg" },
-  { number: "04", title: "Oaks for the next century", text: "Planting shade trees near the benches at the Olive Street parking area.", tag: "Restoration", image: "/images/bench.jpg" },
-  { number: "05", title: "A meadow by the water", text: "Bringing a native plant meadow to the riverside bench west of the entrance.", tag: "Native plants", image: "/images/river-sunrise.jpg" },
-];
+import { projects } from "@/lib/projects";
 
 function formatDate(date: string) {
   return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(`${date}T12:00:00Z`));
@@ -30,7 +22,7 @@ export default function Home() {
           <p className="eyebrow light"><Leaf size={16} /> Community-powered stewardship</p>
           <h1>Keep the river<br /><em>wild at heart.</em></h1>
           <p className="hero-copy">We bring neighbors together to care for the wildlife, landscapes, and stories of Sailor Bar.</p>
-          <div className="hero-actions"><Link className="button button-sun" href="#volunteer">Get involved <ArrowRight size={18} /></Link><Link className="text-link light" href="/projects">See what we’re working on <ArrowRight size={17} /></Link></div>
+          <div className="hero-actions"><Link className="button button-sun" href="/volunteer">Get involved <ArrowRight size={18} /></Link><Link className="text-link light" href="/projects">See what we’re working on <ArrowRight size={17} /></Link></div>
         </div>
       </section>
 
@@ -44,8 +36,8 @@ export default function Home() {
       <section className="action-strip">
         <div className="shell action-grid">
           <Link href="/events"><CalendarDays /><span><small>Come outside</small><strong>Find an event</strong></span><ArrowRight /></Link>
-          <Link href="#volunteer"><HandHeart /><span><small>Lend a hand</small><strong>Volunteer with us</strong></span><ArrowRight /></Link>
-          <Link href="#updates"><Mail /><span><small>Stay close</small><strong>Get river updates</strong></span><ArrowRight /></Link>
+          <Link href="/volunteer"><HandHeart /><span><small>Lend a hand</small><strong>Volunteer with us</strong></span><ArrowRight /></Link>
+          <Link href="/subscribe"><Mail /><span><small>Stay close</small><strong>Get river updates</strong></span><ArrowRight /></Link>
         </div>
       </section>
 
@@ -53,12 +45,12 @@ export default function Home() {
         <div className="shell">
           <div className="section-heading"><div><p className="kicker">What we’re growing</p><h2>Five projects.<br />One healthier habitat.</h2></div><p>Our current work is focused on access, native habitat, shade, and small comforts that make it easier for everyone to spend meaningful time outside.</p></div>
           <div className="project-grid">
-            {projects.map((project, index) => <article className={`project-card project-${index + 1}`} key={project.title}>
+            {projects.map((project, index) => <Link className={`project-card project-${index + 1}`} href={`/projects/${project.slug}`} key={project.title}>
               <Image src={project.image} alt="" fill sizes="(max-width: 700px) 100vw, 50vw" />
               <div className="project-overlay" />
-              <span className="project-number">{project.number}</span><span className="project-tag">{project.tag}</span>
-              <div className="project-copy"><h3>{project.title}</h3><p>{project.text}</p></div>
-            </article>)}
+              <span className="project-tag">{project.tag}</span>
+              <div className="project-copy"><h3>{project.shortTitle}</h3><p>{project.summary}</p></div>
+            </Link>)}
           </div>
           <div className="center"><Link className="button button-dark" href="/projects">See all project details <ArrowRight size={18} /></Link></div>
         </div>
@@ -82,9 +74,9 @@ export default function Home() {
 
       <section className="quiet-quote"><div className="shell"><p>“The way of the river is our life force.”</p></div></section>
 
-      <section className="section updates" id="updates"><div className="shell updates-grid"><div><p className="kicker">A note from the river</p><h2>Good news, once a month.</h2><p>Upcoming events, project progress, wildlife moments, and simple ways to help.</p></div><SubscribeForm /></div></section>
+      <section className="section updates"><div className="shell updates-grid"><div><p className="kicker">A note from the river</p><h2>Good news, once a month.</h2><p>Upcoming events, project progress, wildlife moments, and simple ways to help.</p></div><Link className="button button-dark" href="/subscribe">Sign up for updates <ArrowRight size={18} /></Link></div></section>
 
-      <section className="section volunteer" id="volunteer"><div className="shell volunteer-grid"><div><p className="kicker light">Bring your good energy</p><h2>There’s a place for you here.</h2><p>No special experience needed—just care for this place and a willingness to pitch in. Tell us what sounds good and we’ll help you find a fit.</p><div className="volunteer-note"><HandHeart /><span><strong>Small acts add up.</strong><br />Join a workday, welcome guests, share a skill, or help behind the scenes.</span></div></div><VolunteerForm /></div></section>
+      <section className="section volunteer"><div className="shell volunteer-grid"><div><p className="kicker light">Bring your good energy</p><h2>There’s a place for you here.</h2><p>No special experience needed—just care for this place and a willingness to pitch in.</p></div><div className="volunteer-cta"><HandHeart size={28} /><p>Join a workday, welcome guests, share a skill, or help behind the scenes.</p><Link className="button button-light" href="/volunteer">Offer to volunteer <ArrowRight size={18} /></Link></div></div></section>
     </>
   );
 }

@@ -2,6 +2,14 @@
 
 Nothing on the site should be treated as final until a Friends of Sailor Bar reviewer has checked it. Prefer specific facts and plain language over slogans or promotional copy.
 
+## Homepage dashboard
+
+- [ ] Confirm which projects should be featured on the homepage and in what order.
+- [ ] Confirm that the Donate button should continue linking to the donation page on the previous website until it is migrated.
+- [ ] Review and migrate useful pages from the previous website, including About Sailor Bar, People, History, Photo Gallery, Map, and Contact.
+- [ ] Replace the temporary previous-website links in the homepage link row as each page is migrated.
+- [ ] Decide whether the one-sentence Sailor Bar description contains enough context above the fold once acreage is confirmed.
+
 ## Sailor Bar facts
 
 - [ ] Confirm Sailor Bar's acreage and add it to the homepage introduction.

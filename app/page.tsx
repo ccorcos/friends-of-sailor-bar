@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CalendarDays, HandHeart, Leaf, Mail, MapPin } from "lucide-react";
+import { ArrowRight, CalendarDays, HandHeart, Leaf, Mail } from "lucide-react";
 import { SubscribeForm, VolunteerForm } from "@/components/forms";
 import { getPosts, getUpcomingEvents } from "@/lib/db";
 
@@ -32,7 +32,6 @@ export default function Home() {
           <p className="hero-copy">We bring neighbors together to care for the wildlife, landscapes, and stories of Sailor Bar.</p>
           <div className="hero-actions"><Link className="button button-sun" href="#volunteer">Get involved <ArrowRight size={18} /></Link><Link className="text-link light" href="/projects">See what we’re working on <ArrowRight size={17} /></Link></div>
         </div>
-        <div className="hero-caption"><MapPin size={14} /> 38.6508° N, 121.2933° W</div>
       </section>
 
       <section className="intro section">
@@ -81,7 +80,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="quote-section"><Image src="/images/deer.jpg" alt="A deer among the trees at Sailor Bar" fill sizes="100vw" /><div className="quote-overlay" /><blockquote>“The way of the river<br />is our life force.”<small>— Friends of Sailor Bar</small></blockquote></section>
+      <section className="quiet-quote"><div className="shell"><p>“The way of the river is our life force.”</p></div></section>
 
       <section className="section updates" id="updates"><div className="shell updates-grid"><div><p className="kicker">A note from the river</p><h2>Good news, once a month.</h2><p>Upcoming events, project progress, wildlife moments, and simple ways to help.</p></div><SubscribeForm /></div></section>
 

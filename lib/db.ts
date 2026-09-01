@@ -88,9 +88,17 @@ export function getUpcomingEvents(limit?: number): Event[] {
   return (limit ? db.prepare(sql).all(limit) : db.prepare(sql).all()) as Event[];
 }
 
+export function getEventBySlug(slug: string): Event | undefined {
+  return db.prepare("SELECT * FROM events WHERE slug = ?").get(slug) as Event | undefined;
+}
+
 export function getPosts(limit?: number): Post[] {
   const sql = `SELECT * FROM posts ORDER BY published_at DESC${limit ? " LIMIT ?" : ""}`;
   return (limit ? db.prepare(sql).all(limit) : db.prepare(sql).all()) as Post[];
+}
+
+export function getPostBySlug(slug: string): Post | undefined {
+  return db.prepare("SELECT * FROM posts WHERE slug = ?").get(slug) as Post | undefined;
 }
 
 export default db;

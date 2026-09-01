@@ -68,7 +68,7 @@ export default function Home() {
         <div className="shell">
           <div className="section-heading on-dark"><div><p className="kicker">Meet us at the river</p><h2>Upcoming gatherings</h2></div><Link className="text-link light" href="/events">Full event calendar <ArrowRight size={17} /></Link></div>
           <div className="event-list">
-            {events.map((event) => <article className="event-row" key={event.id}><time dateTime={event.date}><strong>{new Date(`${event.date}T12:00:00Z`).toLocaleString("en-US", { month: "short", timeZone: "UTC" })}</strong><span>{new Date(`${event.date}T12:00:00Z`).getUTCDate()}</span></time><div className="event-info"><span className="pill">{event.category}</span><h3>{event.title}</h3><p>{event.summary}</p></div><div className="event-meta"><span>{event.time}</span><span>{event.location}</span></div><Link aria-label={`View ${event.title}`} href="/events"><ArrowRight /></Link></article>)}
+            {events.map((event) => <article className="event-row" key={event.id}><time dateTime={event.date}><strong>{new Date(`${event.date}T12:00:00Z`).toLocaleString("en-US", { month: "short", timeZone: "UTC" })}</strong><span>{new Date(`${event.date}T12:00:00Z`).getUTCDate()}</span></time><div className="event-info"><span className="pill">{event.category}</span><h3>{event.title}</h3><p>{event.summary}</p></div><div className="event-meta"><span>{event.time}</span><span>{event.location}</span></div><Link aria-label={`View ${event.title}`} href={`/events/${event.slug}`}><ArrowRight /></Link></article>)}
           </div>
         </div>
       </section>
@@ -76,7 +76,7 @@ export default function Home() {
       <section className="section stories-preview">
         <div className="shell">
           <div className="section-heading"><div><p className="kicker">Field notes</p><h2>Stories from Sailor Bar</h2></div><Link className="text-link" href="/stories">Read all stories <ArrowRight size={17} /></Link></div>
-          <div className="story-grid">{posts.map((post, index) => <article className={index === 0 ? "story-card featured" : "story-card"} key={post.id}><div className="story-image"><Image src={post.image} alt="" fill sizes="(max-width: 700px) 100vw, 50vw" /></div><div className="story-copy"><span>{post.category} · {formatDate(post.published_at)}</span><h3>{post.title}</h3><p>{post.excerpt}</p><Link href="/stories">Read story <ArrowRight size={16} /></Link></div></article>)}</div>
+          <div className="story-grid">{posts.map((post, index) => <article className={index === 0 ? "story-card featured" : "story-card"} key={post.id}><div className="story-image"><Image src={post.image} alt="" fill sizes="(max-width: 700px) 100vw, 50vw" /></div><div className="story-copy"><span>{post.category} · {formatDate(post.published_at)}</span><h3>{post.title}</h3><p>{post.excerpt}</p><Link href={`/stories/${post.slug}`}>Read story <ArrowRight size={16} /></Link></div></article>)}</div>
         </div>
       </section>
 

@@ -91,7 +91,7 @@ applyContentMigration("2026-09-02-archive-integration", () => {
     { title: "Family Health and Wellness Day", slug: "family-health-and-wellness-day-2026", date: "2026-06-13", time: "9:30 AM–12:00 PM", location: "Sailor Bar · Oak gathering area", summary: "A family program centered on spending healthy, active time outdoors.", category: "Community program", featured: 0, story_slug: "", flyer_path: "" },
     { title: "Celebrate American River Parkway Heroes", slug: "american-river-parkway-heroes-2026", date: "2026-07-18", time: "9:30 AM–12:00 PM", location: "Sailor Bar · Oak gathering area", summary: "A gathering recognizing volunteers, public servants, and community organizations that care for the American River Parkway.", category: "Community gathering", featured: 0, story_slug: "celebrating-parkway-heroes", flyer_path: "" },
     { title: "The Wild and Scenic American River", slug: "wild-and-scenic-american-river-2026", date: "2026-08-15", time: "9:30 AM–12:00 PM", location: "Sailor Bar · Oak gathering area", summary: "An educational program about the river corridor and the qualities that make it worth protecting.", category: "River program", featured: 0, story_slug: "", flyer_path: "" },
-    { title: "Sailor Bar Has Gone to the Birds!", slug: "real-wildlife-encounters", date: "2026-09-19", time: "9:30 AM–11:30 AM", location: "Sailor Bar · Oak gathering area near the boat ramp", summary: "Learn about local bald eagles with wildlife photographer Kathy Kayner, then help paint bird boxes planned for Sailor Bar. Bird-box painting requested a $35 materials donation and advance reservation.", category: "Nature program", featured: 1, story_slug: "", flyer_path: "/archive/media/sb-sep-19-event-flyer.pdf" },
+    { title: "Sailor Bar Has Gone to the Birds!", slug: "real-wildlife-encounters", date: "2026-09-19", time: "9:30 AM–11:30 AM", location: "Sailor Bar · Oak gathering area near the boat ramp", summary: "Learn about local bald eagles with wildlife photographer Kathy Kayner, then help paint bird boxes planned for Sailor Bar. Bird-box painting requested a $35 materials donation and advance reservation.", category: "Nature program", featured: 1, story_slug: "", flyer_path: "/files/sb-sep-19-event-flyer.pdf" },
     { title: "The Ghost of Sailor Bar", slug: "ghost-of-sailor-bar", date: "2026-10-17", time: "9:30 AM–12:00 PM", location: "Sailor Bar · Oak gathering area", summary: "Discover how Sailor Bar got its name through local legends, historical facts, and stories from the river.", category: "History walk", featured: 1, story_slug: "", flyer_path: "" },
     { title: "Something Fishy Is Going On Here!", slug: "salmon-spawning-journey", date: "2026-11-21", time: "9:30 AM–12:00 PM", location: "Sailor Bar · Oak gathering area", summary: "Follow the remarkable spawning journey of salmon returning to the American River.", category: "River ecology", featured: 1, story_slug: "", flyer_path: "" },
     { title: "New Year River Clean-up", slug: "new-year-river-cleanup", date: "2027-01-16", time: "9:30 AM–12:00 PM", location: "Sailor Bar · Illinois Avenue entrance", summary: "Start the year outside with neighbors caring for trails, shoreline, and wildlife habitat.", category: "Volunteer day", featured: 0, story_slug: "", flyer_path: "" }
@@ -118,7 +118,7 @@ applyContentMigration("2026-09-02-archive-integration", () => {
     "Learn about local bald eagles with wildlife photographer Kathy Kayner, then help paint bird boxes planned for Sailor Bar. Bird-box painting requested a $35 materials donation and advance reservation.",
     "Nature program",
     1,
-    "/archive/media/sb-sep-19-event-flyer.pdf",
+    "/files/sb-sep-19-event-flyer.pdf",
     "real-wildlife-encounters"
   );
 
@@ -129,6 +129,10 @@ applyContentMigration("2026-09-02-archive-integration", () => {
   ] as const;
   const updateEventStory = db.prepare("UPDATE events SET story_slug = ? WHERE slug = ?");
   eventStoryLinks.forEach(([storySlug, eventSlug]) => updateEventStory.run(storySlug, eventSlug));
+});
+
+applyContentMigration("2026-09-02-move-imported-files", () => {
+  db.prepare("UPDATE events SET flyer_path = REPLACE(flyer_path, '/archive/media/', '/files/') WHERE flyer_path LIKE '/archive/media/%'").run();
 });
 
 export function getSailorBarDate() {

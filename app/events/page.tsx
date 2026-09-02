@@ -14,7 +14,7 @@ export default function EventsPage() {
 
   return (
     <>
-      <PageIntro title="Events">Upcoming gatherings, nature programs, and volunteer days at Sailor Bar.</PageIntro>
+      <PageIntro title="Events" />
       <section className="page-content container" aria-label="Upcoming events">
         <div className="content-list">
           {events.map((event) => (

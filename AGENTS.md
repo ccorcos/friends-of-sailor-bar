@@ -28,6 +28,7 @@ The site should feel calm, grounded, welcoming, and nature-focused. Favor clear 
 
 - Mobile-friendly by default.
 - Keep the interface quiet and visually restrained.
+- Do not add taglines, descriptive subtitles, introductory filler, or other marketing copy unless the user explicitly requests it. Page headings should normally stand alone, using the established single-column title layout.
 - Interaction is a last resort; prefer strong typography, photography, spacing, and layout.
 - Avoid flashy animation, carousels, parallax, and excessive hover effects.
 - Do not enable smooth scrolling. Route changes and in-page navigation should be immediate and predictable.
@@ -44,7 +45,16 @@ The site should feel calm, grounded, welcoming, and nature-focused. Favor clear 
 - `/projects` — Current project index
 - `/projects/[slug]` — Individual project detail
 - `/events` — Upcoming event calendar
+- `/events/past` — Past event archive
 - `/events/[slug]` — Individual event detail
+- `/about` — Visitor guide, directions, activities, map, and points of interest
+- `/wildlife` — Sailor Bar wildlife overview
+- `/wildlife/birding` — Birding guide
+- `/wildlife/plant-life` — Plant guide
+- `/wildlife/salmon-and-steelhead` — Salmon and steelhead guide
+- `/history` — Sailor Bar history overview
+- `/history/nisenan-history` — Nisenan history introduction
+- `/history/mining-and-dredging` — Mining and dredging history
 - `/stories` — Field notes and newsletter index with email subscription form
 - `/stories/[slug]` — Individual story detail
 - `/volunteer` — Volunteer interest form
@@ -70,7 +80,8 @@ Do not replace dedicated routes with `/#volunteer`, `/#updates`, or generic link
 - `components/forms.tsx` — Subscription and volunteer client forms
 - `lib/db.ts` — SQLite setup, schema, seed content, and event/story queries
 - `lib/projects.ts` — Project content and project lookup by slug
-- `public/images` — Locally stored site photography
+- `public/images` — Primary site photography
+- `public/files` — Imported documents, historical images, and other supporting files served under `/files`
 - `data/sailorbar.db` — Runtime SQLite database; intentionally ignored by Git
 - `sailorbar.service` — Production systemd service
 
@@ -95,7 +106,7 @@ Project content currently lives in `lib/projects.ts`:
 - `projects`
 - `getProjectBySlug(slug)`
 
-Event listings use SQLite `date('now')` so past events automatically leave the upcoming list. Do not hardcode today's date into event queries.
+Event listings compare dates in the `America/Los_Angeles` time zone so events move into the past archive at local midnight. Do not hardcode today's date into event queries.
 
 ## Content conventions
 

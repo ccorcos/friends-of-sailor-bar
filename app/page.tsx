@@ -58,7 +58,10 @@ export default function Home() {
             ))}
             {!events.length && <p className="empty-state">No upcoming events are listed.</p>}
           </div>
-          <Link className="more-link" href="/events">All events <ArrowRight aria-hidden="true" /></Link>
+          <div className="panel-links">
+            <Link className="more-link" href="/events">All events <ArrowRight aria-hidden="true" /></Link>
+            <Link className="more-link" href="/events/past">Past events <ArrowRight aria-hidden="true" /></Link>
+          </div>
         </section>
 
         <section className="panel">

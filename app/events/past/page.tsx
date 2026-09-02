@@ -14,19 +14,20 @@ export default function PastEventsPage() {
 
   return (
     <>
-      <PageIntro title="Past events">A record of community programs and stewardship gatherings at Sailor Bar.</PageIntro>
+      <PageIntro title="Past events" />
       <section className="page-content container" aria-label="Past events">
         <div className="content-list">
           {events.map((event) => (
             <article className="event-card" key={event.id}>
               <Link
-                className="event-date-tile"
+                className="event-date-tile past-event-date-tile"
                 href={`/events/${event.slug}`}
                 aria-label={`View ${event.title} on ${formatDate(event.date, { month: "long", day: "numeric", year: "numeric" })}`}
               >
                 <time dateTime={event.date}>
                   <span className="event-month">{formatDate(event.date, { month: "short" })}</span>
                   <span className="event-day">{formatDate(event.date, { day: "numeric" })}</span>
+                  <span className="event-year">{formatDate(event.date, { year: "numeric" })}</span>
                 </time>
               </Link>
               <div className="event-copy">

@@ -19,14 +19,15 @@ export default function EventsPage() {
         <div className="content-list">
           {events.map((event) => (
             <article className="event-card" key={event.id}>
-              <time dateTime={event.date}>
-                {formatDate(event.date, { weekday: "short", month: "long", day: "numeric", year: "numeric" })}
-              </time>
+              <div className="event-when">
+                <time dateTime={event.date}>
+                  {formatDate(event.date, { weekday: "short", month: "long", day: "numeric", year: "numeric" })}
+                </time>
+                <span aria-hidden="true">·</span>
+                <span>{event.time}</span>
+              </div>
+              <p className="event-location">{event.location}</p>
               <h2><Link href={`/events/${event.slug}`}>{event.title}</Link></h2>
-              <dl className="event-list-facts">
-                <div><dt>Time</dt><dd>{event.time}</dd></div>
-                <div><dt>Place</dt><dd>{event.location}</dd></div>
-              </dl>
               <p>{event.summary}</p>
               <Link className="detail-link" href={`/events/${event.slug}`}>Event details <ArrowRight aria-hidden="true" /></Link>
             </article>

@@ -201,15 +201,21 @@ h1, h2, p { margin-block-start: 0; }
 .event-card {
   padding: 1.5rem;
 }
-.event-card > time { color: var(--rust); font-size: 0.78rem; font-weight: 700; line-height: 1.5; }
-.event-card h2 { margin-block-start: 0.35rem; }
-.event-list-facts {
-  display: grid;
-  gap: 0.65rem;
-  margin: 1rem 0;
-  padding-block: 1rem;
-  border-block: 1px solid var(--line);
+.event-when {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  color: var(--rust);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.5;
 }
+.event-location {
+  margin-block: 0.15rem 0.9rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.event-card h2 { margin-block: 0 0.5rem; }
 dt { display: flex; align-items: center; gap: 0.35rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
 dd { margin: 0.3rem 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1.45; }
 

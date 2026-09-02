@@ -2,7 +2,6 @@ export const siteLinks = [
   { href: "/projects", label: "Projects" },
   { href: "/events", label: "Events" },
   { href: "/stories", label: "Updates" },
-  { href: "/volunteer", label: "Volunteer" },
 ];
 
 export const resourceLinks = [

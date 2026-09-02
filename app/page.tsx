@@ -24,17 +24,6 @@ export default function Home() {
 
   return (
     <div className="home container">
-      <header className="home-intro">
-        <div>
-          <h1>Care for Sailor Bar</h1>
-          <p>Community stewardship along the American River in Fair Oaks, California.</p>
-        </div>
-        <nav className="home-actions" aria-label="Get involved">
-          <Link className="button button-primary" href="/volunteer">Volunteer</Link>
-          <a className="button" href="https://friendsofsailorbar.org/donate/">Donate</a>
-        </nav>
-      </header>
-
       <div className="home-grid">
         <section className="panel">
           <h2>Projects</h2>

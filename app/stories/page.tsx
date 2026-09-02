@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { SubscribeForm } from "@/components/forms";
 import { PageIntro } from "@/components/page-structure";
 import { getPosts } from "@/lib/db";
 import { formatDate } from "@/lib/format";
@@ -15,7 +16,10 @@ export default function StoriesPage() {
 
   return (
     <>
-      <PageIntro title="Updates">Project reports, event recaps, and other news from Friends of Sailor Bar.</PageIntro>
+      <PageIntro title="Updates" />
+      <section className="updates-subscribe container" aria-label="Subscribe to updates">
+        <SubscribeForm />
+      </section>
       <section className="page-content container" aria-label="Recent updates">
         <div className="content-list">
           {posts.map((post) => (

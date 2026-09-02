@@ -45,10 +45,9 @@ The site should feel calm, grounded, welcoming, and nature-focused. Favor clear 
 - `/projects/[slug]` — Individual project detail
 - `/events` — Upcoming event calendar
 - `/events/[slug]` — Individual event detail
-- `/stories` — Field notes and newsletter index
+- `/stories` — Field notes and newsletter index with email subscription form
 - `/stories/[slug]` — Individual story detail
 - `/volunteer` — Volunteer interest form
-- `/subscribe` — Email subscription form
 
 ### Compatibility route
 

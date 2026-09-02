@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-export function PageIntro({ title, children }: { title: string; children: React.ReactNode }) {
+export function PageIntro({ title, children }: { title: string; children?: React.ReactNode }) {
   return (
-    <header className="page-intro container">
+    <header className={`page-intro container${children ? "" : " page-intro-simple"}`}>
       <h1>{title}</h1>
-      <p>{children}</p>
+      {children && <p>{children}</p>}
     </header>
   );
 }

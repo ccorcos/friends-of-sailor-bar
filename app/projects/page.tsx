@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Projects" };
 export default function ProjectsPage() {
   return (
     <>
-      <PageIntro title="Projects">Projects currently being considered or planned at Sailor Bar.</PageIntro>
+      <PageIntro title="Projects" />
       <section className="page-content container" aria-label="Current projects">
         <div className="content-list">
           {projects.map((project) => (

@@ -5,7 +5,7 @@ export const siteLinks = [
 ];
 
 export const resourceLinks = [
-  { href: "/archive/contact", label: "Contact" },
+  { href: "/contact", label: "Contact" },
   { href: "/archive/about-sailor-bar", label: "About" },
   { href: "/archive/friends-of-sailor-bar-leaders", label: "People" },
   { href: "/archive/sailor-bar-history", label: "History" },

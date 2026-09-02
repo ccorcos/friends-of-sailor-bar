@@ -46,11 +46,11 @@ export default function Home() {
             {events.map((event) => (
               <Link className="home-event-summary" href={`/events/${event.slug}`} key={event.id}>
                 <time className="home-event-date" dateTime={event.date}>
-                  <strong>{formatDate(event.date, { day: "numeric" })}</strong>
                   <span>{formatDate(event.date, { month: "short" })}</span>
+                  <strong>{formatDate(event.date, { day: "numeric" })}</strong>
                 </time>
                 <span className="home-event-copy">
-                  <small>{event.time}</small>
+                  <small>{formatDate(event.date, { month: "long", day: "numeric", year: "numeric" })} · {event.time}</small>
                   <strong>{event.title}</strong>
                   <span>{event.location}</span>
                 </span>

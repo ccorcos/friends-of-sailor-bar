@@ -25,12 +25,14 @@ export default function EventsPage() {
                 aria-label={`View ${event.title} on ${formatDate(event.date, { month: "long", day: "numeric", year: "numeric" })}`}
               >
                 <time dateTime={event.date}>
-                  <span className="event-day">{formatDate(event.date, { day: "numeric" })}</span>
                   <span className="event-month">{formatDate(event.date, { month: "short" })}</span>
+                  <span className="event-day">{formatDate(event.date, { day: "numeric" })}</span>
                 </time>
               </Link>
               <div className="event-copy">
-                <p className="event-time">{event.time}</p>
+                <p className="event-time">
+                  {formatDate(event.date, { weekday: "long", month: "long", day: "numeric", year: "numeric" })} · {event.time}
+                </p>
                 <p className="event-location">{event.location}</p>
                 <h2><Link href={`/events/${event.slug}`}>{event.title}</Link></h2>
                 <p>{event.summary}</p>

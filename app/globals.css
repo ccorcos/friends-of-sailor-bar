@@ -149,7 +149,7 @@ h1, h2, p { margin-block-start: 0; }
   line-height: 0.85;
 }
 .home-event-date span {
-  margin-block-start: 0.3rem;
+  margin-block-end: 0.3rem;
   color: var(--rust);
   font-size: 0.58rem;
   font-weight: 700;
@@ -250,7 +250,7 @@ h1, h2, p { margin-block-start: 0; }
   line-height: 0.9;
 }
 .event-month {
-  margin-block-start: 0.45rem;
+  margin-block-end: 0.45rem;
   color: var(--rust);
   font-size: 0.9rem;
   font-weight: 700;
@@ -323,6 +323,7 @@ dd { margin: 0.3rem 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1
   line-height: 1.65;
 }
 .essay-body .button { margin-block-start: 0.5rem; }
+.essay-body a:not(.button) { text-decoration: underline; text-underline-offset: 0.2em; }
 
 .standalone-detail { padding-block-start: clamp(2rem, 6vw, 4.5rem); }
 .donate-content h2 {

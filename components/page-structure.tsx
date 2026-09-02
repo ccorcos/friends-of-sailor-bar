@@ -10,17 +10,10 @@ export function PageIntro({ title, children }: { title: string; children?: React
   );
 }
 
-export function DetailIntro({ backHref, backLabel, title, meta }: {
-  backHref: string;
-  backLabel: string;
-  title: string;
-  meta?: React.ReactNode;
-}) {
+export function DetailBackLink({ href, label }: { href: string; label: string }) {
   return (
-    <header className="detail-intro container">
-      <Link className="back-link" href={backHref}><ArrowLeft aria-hidden="true" /> {backLabel}</Link>
-      {meta && <p className="meta">{meta}</p>}
-      <h1>{title}</h1>
-    </header>
+    <div className="detail-nav container">
+      <Link className="back-link" href={href}><ArrowLeft aria-hidden="true" /> {label}</Link>
+    </div>
   );
 }

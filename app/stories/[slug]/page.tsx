@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { DetailIntro } from "@/components/page-structure";
+import { DetailBackLink } from "@/components/page-structure";
 import { getPostBySlug } from "@/lib/db";
 import { formatDate } from "@/lib/format";
 
@@ -18,18 +18,15 @@ export default async function StoryDetailPage({ params }: { params: Promise<{ sl
 
   return (
     <>
-      <DetailIntro
-        backHref="/stories"
-        backLabel="All updates"
-        title={post.title}
-        meta={formatDate(post.published_at, { month: "long", day: "numeric", year: "numeric" })}
-      />
-      <section className="page-content container">
-        <article className="story-card">
+      <DetailBackLink href="/stories" label="All updates" />
+      <section className="detail-page container">
+        <article className="essay-card">
+          <h1>{post.title}</h1>
+          <p className="essay-date">{formatDate(post.published_at, { month: "long", day: "numeric", year: "numeric" })}</p>
           <div className="feature-image">
-            <Image src={post.image} alt="" fill sizes="(max-width: 700px) 100vw, 60vw" priority />
+            <Image src={post.image} alt="" fill sizes="(max-width: 700px) 100vw, 48rem" priority />
           </div>
-          <div className="story-body">
+          <div className="essay-body">
             <p className="lead">{post.excerpt}</p>
             <p>{post.body}</p>
           </div>

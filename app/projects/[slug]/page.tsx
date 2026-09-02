@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
-import { DetailIntro } from "@/components/page-structure";
+import { DetailBackLink } from "@/components/page-structure";
 import { getProjectBySlug } from "@/lib/projects";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -17,13 +17,14 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   return (
     <>
-      <DetailIntro backHref="/projects" backLabel="All projects" title={project.title} />
-      <section className="page-content container">
-        <article className="story-card">
+      <DetailBackLink href="/projects" label="All projects" />
+      <section className="detail-page container">
+        <article className="essay-card">
+          <h1>{project.title}</h1>
           <div className="feature-image">
-            <Image src={project.image} alt="" fill sizes="(max-width: 700px) 100vw, 60vw" priority />
+            <Image src={project.image} alt="" fill sizes="(max-width: 700px) 100vw, 48rem" priority />
           </div>
-          <div className="story-body">
+          <div className="essay-body">
             <p className="lead">{project.summary}</p>
             <p>{project.detail}</p>
             <Link className="button button-primary" href="/volunteer">Help with this work <ArrowRight aria-hidden="true" /></Link>

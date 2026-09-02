@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
-import { DetailIntro } from "@/components/page-structure";
+import { DetailBackLink } from "@/components/page-structure";
 import { getEventBySlug } from "@/lib/db";
 import { formatDate } from "@/lib/format";
 
@@ -19,18 +19,19 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
 
   return (
     <>
-      <DetailIntro backHref="/events" backLabel="All events" title={event.title} meta={event.category} />
-      <section className="page-content container">
-        <article className="detail-card">
-          <div className="detail-body">
-            <p className="lead">{event.summary}</p>
-            <Link className="button button-primary" href="/volunteer">Ask about helping <ArrowRight aria-hidden="true" /></Link>
-          </div>
-          <dl className="detail-facts">
+      <DetailBackLink href="/events" label="All events" />
+      <section className="detail-page container">
+        <article className="essay-card">
+          <h1>{event.title}</h1>
+          <dl className="essay-facts">
             <div><dt>Date</dt><dd>{formatDate(event.date, { weekday: "long", month: "long", day: "numeric", year: "numeric" })}</dd></div>
             <div><dt>Time</dt><dd>{event.time}</dd></div>
             <div><dt>Meeting place</dt><dd>{event.location}</dd></div>
           </dl>
+          <div className="essay-body">
+            <p className="lead">{event.summary}</p>
+            <Link className="button button-primary" href="/volunteer">Ask about helping <ArrowRight aria-hidden="true" /></Link>
+          </div>
         </article>
       </section>
     </>

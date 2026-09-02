@@ -12,7 +12,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   return <>
     <section className="detail-hero"><div className="shell">
       <Link className="back-link" href="/projects"><ArrowLeft size={16} /> All projects</Link>
-      <span className="category">{project.tag} · {project.status}</span>
       <h1>{project.title}</h1>
     </div></section>
     <article className="story-detail">

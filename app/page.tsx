@@ -41,7 +41,7 @@ export default function Home() {
             {featuredProjects.map((project) => (
               <Link className="home-project" href={`/projects/${project.slug}`} key={project.slug}>
                 <span className="home-project-image"><Image src={project.image} alt="" fill sizes="72px" /></span>
-                <span><strong>{project.title}</strong><small>{project.status}</small></span>
+                <span><strong>{project.title}</strong></span>
               </Link>
             ))}
           </div>

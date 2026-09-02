@@ -1,31 +1,36 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { DetailIntro } from "@/components/page-structure";
 import { getEventBySlug } from "@/lib/db";
+import { formatDate } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
-function formatDate(date: string) {
-  return new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(`${date}T12:00:00Z`));
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const event = getEventBySlug((await params).slug);
+  return { title: event?.title ?? "Event" };
 }
 
 export default async function EventDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const event = getEventBySlug(slug);
+  const event = getEventBySlug((await params).slug);
   if (!event) notFound();
 
-  return <>
-    <section className="detail-hero"><div className="shell">
-      <Link className="back-link" href="/events"><ArrowLeft size={16} /> All events</Link>
-      <h1>{event.title}</h1>
-    </div></section>
-    <section><div className="shell event-detail-grid">
-      <div><p className="lead">{event.summary}</p></div>
-      <aside className="event-facts">
-        <div><span><strong>Date</strong>{formatDate(event.date)}</span></div>
-        <div><span><strong>Time</strong>{event.time}</span></div>
-        <div><span><strong>Meeting place</strong>{event.location}</span></div>
-      </aside>
-    </div></section>
-  </>;
+  return (
+    <>
+      <DetailIntro backHref="/events" backLabel="All events" title={event.title} meta={event.category} />
+      <article className="detail-card container">
+        <div className="detail-body">
+          <p className="lead">{event.summary}</p>
+          <Link className="button button-primary" href="/volunteer">Ask about helping <ArrowRight aria-hidden="true" /></Link>
+        </div>
+        <dl className="detail-facts">
+          <div><dt>Date</dt><dd>{formatDate(event.date, { weekday: "long", month: "long", day: "numeric", year: "numeric" })}</dd></div>
+          <div><dt>Time</dt><dd>{event.time}</dd></div>
+          <div><dt>Meeting place</dt><dd>{event.location}</dd></div>
+        </dl>
+      </article>
+    </>
+  );
 }

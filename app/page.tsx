@@ -4,87 +4,82 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getPosts, getUpcomingEvents } from "@/lib/db";
+import { formatDate } from "@/lib/format";
 import { projects } from "@/lib/projects";
 
-function formatEventDate(date: string) {
-  return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(`${date}T12:00:00Z`));
-}
-
-function formatPostDate(date: string) {
-  return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(`${date}T12:00:00Z`));
-}
+const featuredProjectSlugs = [
+  "butterfly-sanctuary",
+  "accessible-turtle-pond-walk",
+  "water-fountain-welcome-garden",
+  "oak-trees",
+];
 
 export default function Home() {
   const events = getUpcomingEvents(3);
-  const posts = getPosts(4);
-  const projectOrder = ["butterfly-sanctuary", "accessible-turtle-pond-walk", "water-fountain-welcome-garden", "oak-trees"];
-  const featuredProjects = projectOrder.map((slug) => projects.find((project) => project.slug === slug)).filter((project) => project !== undefined);
+  const posts = getPosts(3);
+  const featuredProjects = featuredProjectSlugs.flatMap((slug) => {
+    const project = projects.find((item) => item.slug === slug);
+    return project ? [project] : [];
+  });
 
   return (
-    <div className="home-dashboard">
-      <header className="home-heading">
+    <div className="home container">
+      <header className="home-intro">
         <div>
-          <Link className="home-title" href="/">Friends of Sailor Bar</Link>
-          <p>Sailor Bar is a Sacramento County park along the American River in Fair Oaks, California.</p>
+          <h1>Care for Sailor Bar</h1>
+          <p>Community stewardship along the American River in Fair Oaks, California.</p>
         </div>
-        <div className="home-actions" aria-label="Get involved">
-          <Link className="home-button primary" href="/volunteer">Volunteer</Link>
-          <Link className="home-button" href="/subscribe">Subscribe</Link>
-          <a className="home-button" href="https://friendsofsailorbar.org/donate/">Donate</a>
-        </div>
+        <nav className="home-actions" aria-label="Get involved">
+          <Link className="button button-primary" href="/volunteer">Volunteer</Link>
+          <a className="button" href="https://friendsofsailorbar.org/donate/">Donate</a>
+        </nav>
       </header>
 
-      <main className="home-columns">
-        <section className="home-panel">
-          <h1>Projects</h1>
-          <div className="home-project-list">
+      <div className="home-grid">
+        <section className="panel">
+          <h2>Projects</h2>
+          <div className="panel-list project-list">
             {featuredProjects.map((project) => (
-              <Link className="home-project" href={`/projects/${project.slug}`} key={project.slug}>
-                <span className="home-project-image"><Image src={project.image} alt="" fill sizes="72px" /></span>
-                <span><strong>{project.title}</strong></span>
+              <Link className="project-summary" href={`/projects/${project.slug}`} key={project.slug}>
+                <span className="thumbnail">
+                  <Image src={project.image} alt="" fill sizes="(max-width: 900px) 25vw, 10vw" />
+                </span>
+                <span><strong>{project.title}</strong><small>{project.summary}</small></span>
               </Link>
             ))}
           </div>
-          <Link className="home-more" href="/projects">All projects <ArrowRight size={15} /></Link>
+          <Link className="more-link" href="/projects">All projects <ArrowRight aria-hidden="true" /></Link>
         </section>
 
-        <section className="home-panel">
-          <h1>Events</h1>
-          <div className="home-event-list">
+        <section className="panel">
+          <h2>Events</h2>
+          <div className="panel-list">
             {events.map((event) => (
-              <Link className="home-event" href={`/events/${event.slug}`} key={event.id}>
-                <span><strong>{formatEventDate(event.date)}</strong>{event.time}</span>
-                <h2>{event.title}</h2>
-                <p>{event.location}</p>
+              <Link className="text-summary" href={`/events/${event.slug}`} key={event.id}>
+                <small>{formatDate(event.date, { month: "short", day: "numeric" })} · {event.time}</small>
+                <strong>{event.title}</strong>
+                <span>{event.location}</span>
               </Link>
             ))}
-            {!events.length && <p className="home-empty">No upcoming events are listed.</p>}
+            {!events.length && <p className="empty-state">No upcoming events are listed.</p>}
           </div>
-          <Link className="home-more" href="/events">All events <ArrowRight size={15} /></Link>
+          <Link className="more-link" href="/events">All events <ArrowRight aria-hidden="true" /></Link>
         </section>
 
-        <section className="home-panel">
-          <h1>Updates</h1>
-          <div className="home-update-list">
+        <section className="panel">
+          <h2>Updates</h2>
+          <div className="panel-list">
             {posts.map((post) => (
-              <Link className="home-update" href={`/stories/${post.slug}`} key={post.id}>
-                <time dateTime={post.published_at}>{formatPostDate(post.published_at)}</time>
-                <h2>{post.title}</h2>
+              <Link className="text-summary" href={`/stories/${post.slug}`} key={post.id}>
+                <small>{formatDate(post.published_at, { month: "short", day: "numeric", year: "numeric" })}</small>
+                <strong>{post.title}</strong>
+                <span>{post.excerpt}</span>
               </Link>
             ))}
           </div>
-          <Link className="home-more" href="/stories">All updates <ArrowRight size={15} /></Link>
+          <Link className="more-link" href="/stories">All updates <ArrowRight aria-hidden="true" /></Link>
         </section>
-      </main>
-
-      <nav className="home-links" aria-label="More information">
-        <a href="https://friendsofsailorbar.org/contact/">Contact</a>
-        <a href="https://friendsofsailorbar.org/about-sailor-bar/">About Sailor Bar</a>
-        <a href="https://friendsofsailorbar.org/friends-of-sailor-bar-leaders/">People</a>
-        <a href="https://friendsofsailorbar.org/sailor-bar-history/">History</a>
-        <a href="https://friendsofsailorbar.org/photo-gallery/">Photo gallery</a>
-        <a href="https://friendsofsailorbar.org/friends-of-sailor-bar-brochure-and-map/">Map</a>
-      </nav>
+      </div>
     </div>
   );
 }

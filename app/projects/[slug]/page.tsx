@@ -1,24 +1,33 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { DetailIntro } from "@/components/page-structure";
 import { getProjectBySlug } from "@/lib/projects";
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const project = getProjectBySlug((await params).slug);
+  return { title: project?.title ?? "Project" };
+}
+
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const project = getProjectBySlug((await params).slug);
   if (!project) notFound();
 
-  return <>
-    <section className="detail-hero"><div className="shell">
-      <Link className="back-link" href="/projects"><ArrowLeft size={16} /> All projects</Link>
-      <h1>{project.title}</h1>
-    </div></section>
-    <article className="story-detail">
-      <div className="story-detail-image"><Image src={project.image} alt="" fill sizes="760px" /></div>
-      <p className="lead">{project.summary}</p>
-      <p>{project.detail}</p>
-      <Link className="button button-dark" href="/volunteer">Help with this work <ArrowRight size={17} /></Link>
-    </article>
-  </>;
+  return (
+    <>
+      <DetailIntro backHref="/projects" backLabel="All projects" title={project.title} />
+      <article className="story-card container">
+        <div className="feature-image">
+          <Image src={project.image} alt="" fill sizes="(max-width: 700px) 100vw, 60vw" priority />
+        </div>
+        <div className="story-body">
+          <p className="lead">{project.summary}</p>
+          <p>{project.detail}</p>
+          <Link className="button button-primary" href="/volunteer">Help with this work <ArrowRight aria-hidden="true" /></Link>
+        </div>
+      </article>
+    </>
+  );
 }

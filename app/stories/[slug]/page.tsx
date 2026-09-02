@@ -1,30 +1,38 @@
+import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { DetailIntro } from "@/components/page-structure";
 import { getPostBySlug } from "@/lib/db";
+import { formatDate } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
-function formatDate(date: string) {
-  return new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(`${date}T12:00:00Z`));
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const post = getPostBySlug((await params).slug);
+  return { title: post?.title ?? "Update" };
 }
 
 export default async function StoryDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug((await params).slug);
   if (!post) notFound();
 
-  return <>
-    <section className="detail-hero"><div className="shell">
-      <Link className="back-link" href="/stories"><ArrowLeft size={16} /> All updates</Link>
-      <span className="category">{formatDate(post.published_at)}</span>
-      <h1>{post.title}</h1>
-    </div></section>
-    <article className="story-detail">
-      <div className="story-detail-image"><Image src={post.image} alt="" fill sizes="760px" /></div>
-      <p className="lead">{post.excerpt}</p>
-      <p>{post.body}</p>
-    </article>
-  </>;
+  return (
+    <>
+      <DetailIntro
+        backHref="/stories"
+        backLabel="All updates"
+        title={post.title}
+        meta={formatDate(post.published_at, { month: "long", day: "numeric", year: "numeric" })}
+      />
+      <article className="story-card container">
+        <div className="feature-image">
+          <Image src={post.image} alt="" fill sizes="(max-width: 700px) 100vw, 60vw" priority />
+        </div>
+        <div className="story-body">
+          <p className="lead">{post.excerpt}</p>
+          <p>{post.body}</p>
+        </div>
+      </article>
+    </>
+  );
 }

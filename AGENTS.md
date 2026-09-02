@@ -29,6 +29,7 @@ The site should feel calm, grounded, welcoming, and nature-focused. Favor clear 
 - Mobile-friendly by default.
 - Keep the interface quiet and visually restrained.
 - Do not add taglines, descriptive subtitles, introductory filler, or other marketing copy unless the user explicitly requests it. Page headings should normally stand alone, using the established single-column title layout.
+- Do not use `<hr>` elements or horizontal divider rules. Separate content with whitespace, grouping, and typography instead.
 - Interaction is a last resort; prefer strong typography, photography, spacing, and layout.
 - Avoid flashy animation, carousels, parallax, and excessive hover effects.
 - Do not enable smooth scrolling. Route changes and in-page navigation should be immediate and predictable.

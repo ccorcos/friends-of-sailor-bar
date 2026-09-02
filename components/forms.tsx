@@ -27,12 +27,11 @@ export function SubscribeForm() {
   }
 
   if (status === "done") {
-    return <p className="form-success" role="status"><Check aria-hidden="true" /> Subscription confirmed.</p>;
+    return <p className="form-success subscribe-success" role="status"><Check aria-hidden="true" /> Subscription confirmed.</p>;
   }
 
   return (
     <form className="subscribe-form" onSubmit={submit}>
-      <label>First name <span>(optional)</span><input name="firstName" autoComplete="given-name" /></label>
       <label>Email address<input name="email" type="email" autoComplete="email" required /></label>
       <button className="button button-primary" type="submit" disabled={status === "loading"}>
         {status === "loading" ? "Submitting…" : "Subscribe"} <ArrowRight aria-hidden="true" />

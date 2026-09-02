@@ -24,15 +24,17 @@ export default async function StoryDetailPage({ params }: { params: Promise<{ sl
         title={post.title}
         meta={formatDate(post.published_at, { month: "long", day: "numeric", year: "numeric" })}
       />
-      <article className="story-card container">
-        <div className="feature-image">
-          <Image src={post.image} alt="" fill sizes="(max-width: 700px) 100vw, 60vw" priority />
-        </div>
-        <div className="story-body">
-          <p className="lead">{post.excerpt}</p>
-          <p>{post.body}</p>
-        </div>
-      </article>
+      <section className="page-content container">
+        <article className="story-card">
+          <div className="feature-image">
+            <Image src={post.image} alt="" fill sizes="(max-width: 700px) 100vw, 60vw" priority />
+          </div>
+          <div className="story-body">
+            <p className="lead">{post.excerpt}</p>
+            <p>{post.body}</p>
+          </div>
+        </article>
+      </section>
     </>
   );
 }

@@ -25,11 +25,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </header>
         <main>{children}</main>
         <footer className="site-footer container">
-          <Link className="footer-brand" href="/">Friends of Sailor Bar</Link>
           <nav aria-label="More information">
             {resourceLinks.map((link) => <a href={link.href} key={link.href}>{link.label}</a>)}
           </nav>
-          <small>© 2026 Friends of Sailor Bar</small>
         </footer>
       </body>
     </html>

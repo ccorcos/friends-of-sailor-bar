@@ -20,17 +20,19 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
   return (
     <>
       <DetailIntro backHref="/events" backLabel="All events" title={event.title} meta={event.category} />
-      <article className="detail-card container">
-        <div className="detail-body">
-          <p className="lead">{event.summary}</p>
-          <Link className="button button-primary" href="/volunteer">Ask about helping <ArrowRight aria-hidden="true" /></Link>
-        </div>
-        <dl className="detail-facts">
-          <div><dt>Date</dt><dd>{formatDate(event.date, { weekday: "long", month: "long", day: "numeric", year: "numeric" })}</dd></div>
-          <div><dt>Time</dt><dd>{event.time}</dd></div>
-          <div><dt>Meeting place</dt><dd>{event.location}</dd></div>
-        </dl>
-      </article>
+      <section className="page-content container">
+        <article className="detail-card">
+          <div className="detail-body">
+            <p className="lead">{event.summary}</p>
+            <Link className="button button-primary" href="/volunteer">Ask about helping <ArrowRight aria-hidden="true" /></Link>
+          </div>
+          <dl className="detail-facts">
+            <div><dt>Date</dt><dd>{formatDate(event.date, { weekday: "long", month: "long", day: "numeric", year: "numeric" })}</dd></div>
+            <div><dt>Time</dt><dd>{event.time}</dd></div>
+            <div><dt>Meeting place</dt><dd>{event.location}</dd></div>
+          </dl>
+        </article>
+      </section>
     </>
   );
 }

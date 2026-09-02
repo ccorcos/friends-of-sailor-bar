@@ -5,11 +5,7 @@ export const siteLinks = [
 ];
 
 export const resourceLinks = [
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
-  { href: "/archive/about-sailor-bar", label: "About" },
-  { href: "/archive/friends-of-sailor-bar-leaders", label: "People" },
-  { href: "/archive/sailor-bar-history", label: "History" },
-  { href: "/archive/photo-gallery", label: "Photos" },
-  { href: "/archive/friends-of-sailor-bar-brochure-and-map", label: "Map" },
   { href: "/archive", label: "Archive" },
 ];

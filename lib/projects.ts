@@ -29,16 +29,16 @@ export const projects: Project[] = [
     title: "Drinking Fountain and Welcome Garden",
     shortTitle: "Drinking Fountain and Welcome Garden",
     image: "/images/grinding-rocks.jpg",
-    summary: "Adding drinking water and native plants at the Olive Street entrance.",
-    detail: "This project proposes a drinking fountain and native planting in the parking island at the Olive Street entrance. The site plan, approvals, budget, and schedule still need to be documented and reviewed.",
+    summary: "Adding drinking water and native plants at the Olive Avenue entrance.",
+    detail: "This project proposes a drinking fountain and native planting in the parking island at the Olive Avenue entrance. The site plan, approvals, budget, and schedule still need to be documented and reviewed.",
   },
   {
     slug: "oak-trees",
     title: "Oak Tree Planting",
     shortTitle: "Oak Tree Planting",
     image: "/images/bench.jpg",
-    summary: "Planting native oak trees near the Olive Street parking area.",
-    detail: "This project proposes planting native oak trees near the benches at the Olive Street parking area. Tree species, locations, irrigation, maintenance, approvals, and timing still need to be documented and reviewed.",
+    summary: "Planting native oak trees near the Olive Avenue parking area.",
+    detail: "This project proposes planting native oak trees near the benches at the Olive Avenue parking area. Tree species, locations, irrigation, maintenance, approvals, and timing still need to be documented and reviewed.",
   },
   {
     slug: "riverside-native-meadow",
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     shortTitle: "Riverside Native Meadow",
     image: "/images/river-sunrise.jpg",
     summary: "Establishing a native meadow near the riverside bench west of the entrance.",
-    detail: "This project proposes a native planting area near the riverside bench west of the Olive Street entrance. The exact site, plant list, site preparation, maintenance plan, approvals, and schedule still need to be documented and reviewed.",
+    detail: "This project proposes a native planting area near the riverside bench west of the Olive Avenue entrance. The exact site, plant list, site preparation, maintenance plan, approvals, and schedule still need to be documented and reviewed.",
   },
 ];
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CalendarDays, Clock, MapPin } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { getEventBySlug } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
@@ -17,15 +17,14 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
   return <>
     <section className="detail-hero"><div className="shell">
       <Link className="back-link" href="/events"><ArrowLeft size={16} /> All events</Link>
-      <span className="category">{event.category}</span>
       <h1>{event.title}</h1>
     </div></section>
     <section><div className="shell event-detail-grid">
       <div><p className="lead">{event.summary}</p></div>
       <aside className="event-facts">
-        <div><CalendarDays size={20} /><span><strong>Date</strong>{formatDate(event.date)}</span></div>
-        <div><Clock size={20} /><span><strong>Time</strong>{event.time}</span></div>
-        <div><MapPin size={20} /><span><strong>Meeting place</strong>{event.location}</span></div>
+        <div><span><strong>Date</strong>{formatDate(event.date)}</span></div>
+        <div><span><strong>Time</strong>{event.time}</span></div>
+        <div><span><strong>Meeting place</strong>{event.location}</span></div>
       </aside>
     </div></section>
   </>;

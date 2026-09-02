@@ -18,7 +18,7 @@ export default async function StoryDetailPage({ params }: { params: Promise<{ sl
   return <>
     <section className="detail-hero"><div className="shell">
       <Link className="back-link" href="/stories"><ArrowLeft size={16} /> All updates</Link>
-      <span className="category">{post.category} · {formatDate(post.published_at)}</span>
+      <span className="category">{formatDate(post.published_at)}</span>
       <h1>{post.title}</h1>
     </div></section>
     <article className="story-detail">

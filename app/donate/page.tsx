@@ -9,8 +9,6 @@ export default function DonatePage() {
       <article className="essay-card">
         <h1>Donate</h1>
         <div className="essay-body donate-content">
-          <p className="lead">Your contribution supports Sailor Bar activities, educational events, guided walks, and restoration work.</p>
-
           <h2>Donate online</h2>
           <p>Online donations are accepted through the Sailor Bar Fund administered by Save the American River Association.</p>
           <p>

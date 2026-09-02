@@ -5,10 +5,11 @@ export const siteLinks = [
 ];
 
 export const resourceLinks = [
-  { href: "https://friendsofsailorbar.org/contact/", label: "Contact" },
-  { href: "https://friendsofsailorbar.org/about-sailor-bar/", label: "About" },
-  { href: "https://friendsofsailorbar.org/friends-of-sailor-bar-leaders/", label: "People" },
-  { href: "https://friendsofsailorbar.org/sailor-bar-history/", label: "History" },
-  { href: "https://friendsofsailorbar.org/photo-gallery/", label: "Photos" },
-  { href: "https://friendsofsailorbar.org/friends-of-sailor-bar-brochure-and-map/", label: "Map" },
+  { href: "/archive/contact", label: "Contact" },
+  { href: "/archive/about-sailor-bar", label: "About" },
+  { href: "/archive/friends-of-sailor-bar-leaders", label: "People" },
+  { href: "/archive/sailor-bar-history", label: "History" },
+  { href: "/archive/photo-gallery", label: "Photos" },
+  { href: "/archive/friends-of-sailor-bar-brochure-and-map", label: "Map" },
+  { href: "/archive", label: "Archive" },
 ];

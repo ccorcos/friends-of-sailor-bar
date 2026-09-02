@@ -253,6 +253,60 @@ dd { margin: 0.3rem 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1
 }
 .essay-body .button { margin-block-start: 0.5rem; }
 
+/* Archive */
+.archive-page { padding-block: 0 3rem; }
+.archive-directory {
+  max-inline-size: 48rem;
+  margin-inline: auto;
+  padding: clamp(1.5rem, 5vw, 4rem);
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+.archive-note { margin-block-end: 2.5rem; color: var(--muted); line-height: 1.6; }
+.archive-group + .archive-group { margin-block-start: 2.5rem; }
+.archive-group h2 {
+  margin-block-end: 0.75rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+.archive-group ul { margin: 0; padding: 0; list-style: none; }
+.archive-group li { padding-block: 0.65rem; border-top: 1px solid var(--line); }
+.archive-group a { font-size: 0.88rem; font-weight: 700; line-height: 1.4; }
+.archive-group a:hover { text-decoration: underline; text-underline-offset: 0.25em; }
+.archive-content {
+  max-inline-size: 40rem;
+  color: var(--muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.02rem;
+  line-height: 1.8;
+}
+.archive-content h2, .archive-content h3, .archive-content h4 {
+  margin-block: 2em 0.6em;
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.2;
+}
+.archive-content h2 { font-size: clamp(1.45rem, 3vw, 2rem); }
+.archive-content h3 { font-size: 1.25rem; }
+.archive-content p, .archive-content ul, .archive-content ol, .archive-content blockquote { margin-block: 0 1.25rem; }
+.archive-content ul, .archive-content ol { padding-inline-start: 1.3rem; }
+.archive-content li + li { margin-block-start: 0.5rem; }
+.archive-content a { color: var(--ink); text-decoration: underline; text-underline-offset: 0.2em; }
+.archive-content img {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+  margin-block: 1.5rem;
+}
+.archive-content iframe {
+  inline-size: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+.archive-content figcaption { margin-block-start: -1rem; font-size: 0.8rem; }
+.archive-content hr { margin-block: 2rem; border: 0; border-block-start: 1px solid var(--line); }
+
 /* Forms */
 .subscribe-form, .volunteer-form { display: grid; gap: 1.25rem; }
 .volunteer-form { max-inline-size: 48rem; padding: clamp(1rem, 3vw, 2rem); }
@@ -308,7 +362,7 @@ fieldset { margin: 0; padding: 0; border: 0; }
   .card-image { aspect-ratio: 16 / 7; }
   .card-copy { padding: 1rem; }
   .card-facts { padding-block-start: 1rem; padding-inline-start: 0; border-block-start: 1px solid var(--line); border-inline-start: 0; }
-  .essay-card { padding: 1.25rem; }
+  .essay-card, .archive-directory { padding: 1.25rem; }
   .essay-card .feature-image { aspect-ratio: 4 / 3; }
   .site-footer nav { gap: 0.75rem 1rem; }
 }

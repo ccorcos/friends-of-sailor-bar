@@ -19,7 +19,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Link className="brand" href="/">Friends of Sailor Bar</Link>
           <nav aria-label="Main navigation">
             {siteLinks.map((link) => <Link href={link.href} key={link.href}>{link.label}</Link>)}
-            <Link className="button" href="/archive/donate">Donate</Link>
+            <Link className="button" href="/donate">Donate</Link>
             <Link className="button header-volunteer" href="/volunteer">Volunteer</Link>
           </nav>
         </header>

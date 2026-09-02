@@ -15,7 +15,7 @@
     "originalPath": "/contact/",
     "modified": "2026-05-21",
     "excerpt": "For more information about Sailor Bar, please send an email to protectsailorbar@yahoo.com. We will respond as soon as we can. Thank you for your interest in Sailor Bar!",
-    "contentHtml": "<p>For more information about Sailor Bar, please send an email to protectsailorbar@yahoo.com.</p>\n<p>We will respond as soon as we can.</p>\n<p><em>Thank you for your interest in Sailor Bar!</em></p>"
+    "contentHtml": "<p>For more information about Sailor Bar, please send an email to <a href=\"mailto:protectsailorbar@yahoo.com\">protectsailorbar@yahoo.com</a>.</p>\n<p>We will respond as soon as we can.</p>\n<p><em>Thank you for your interest in Sailor Bar!</em></p>"
   },
   {
     "slug": "donate",

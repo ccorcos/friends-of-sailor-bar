@@ -23,9 +23,13 @@ export default function StoriesPage() {
         <div className="content-list">
           {posts.map((post) => (
             <article className="image-card" key={post.id}>
-              <div className="card-image">
-                <Image src={post.image} alt="" fill sizes="(max-width: 700px) 35vw, 25vw" />
-              </div>
+              <Link
+                className="card-image"
+                href={`/stories/${post.slug}`}
+                aria-label={`Read ${post.title}`}
+              >
+                <Image src={post.image} alt="" fill sizes="(max-width: 700px) 100vw, 10rem" />
+              </Link>
               <div className="card-copy">
                 <p className="meta">{formatDate(post.published_at, { month: "long", day: "numeric", year: "numeric" })}</p>
                 <h2><Link href={`/stories/${post.slug}`}>{post.title}</Link></h2>

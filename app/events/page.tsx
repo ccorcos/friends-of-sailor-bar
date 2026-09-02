@@ -19,17 +19,23 @@ export default function EventsPage() {
         <div className="content-list">
           {events.map((event) => (
             <article className="event-card" key={event.id}>
-              <div className="event-when">
+              <Link
+                className="event-date-tile"
+                href={`/events/${event.slug}`}
+                aria-label={`View ${event.title} on ${formatDate(event.date, { month: "long", day: "numeric", year: "numeric" })}`}
+              >
                 <time dateTime={event.date}>
-                  {formatDate(event.date, { weekday: "short", month: "long", day: "numeric", year: "numeric" })}
+                  <span className="event-day">{formatDate(event.date, { day: "numeric" })}</span>
+                  <span className="event-month">{formatDate(event.date, { month: "short" })}</span>
                 </time>
-                <span aria-hidden="true">·</span>
-                <span>{event.time}</span>
+              </Link>
+              <div className="event-copy">
+                <p className="event-time">{event.time}</p>
+                <p className="event-location">{event.location}</p>
+                <h2><Link href={`/events/${event.slug}`}>{event.title}</Link></h2>
+                <p>{event.summary}</p>
+                <Link className="detail-link" href={`/events/${event.slug}`}>Event details <ArrowRight aria-hidden="true" /></Link>
               </div>
-              <p className="event-location">{event.location}</p>
-              <h2><Link href={`/events/${event.slug}`}>{event.title}</Link></h2>
-              <p>{event.summary}</p>
-              <Link className="detail-link" href={`/events/${event.slug}`}>Event details <ArrowRight aria-hidden="true" /></Link>
             </article>
           ))}
           {!events.length && <p className="empty-state">No upcoming events are listed.</p>}

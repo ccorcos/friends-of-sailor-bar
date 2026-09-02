@@ -15,9 +15,13 @@ export default function ProjectsPage() {
         <div className="content-list">
           {projects.map((project) => (
             <article className="image-card" key={project.slug}>
-              <div className="card-image">
-                <Image src={project.image} fill alt="" sizes="(max-width: 700px) 35vw, 25vw" />
-              </div>
+              <Link
+                className="card-image"
+                href={`/projects/${project.slug}`}
+                aria-label={`View ${project.title}`}
+              >
+                <Image src={project.image} fill alt="" sizes="(max-width: 700px) 100vw, 10rem" />
+              </Link>
               <div className="card-copy">
                 <h2><Link href={`/projects/${project.slug}`}>{project.title}</Link></h2>
                 <p>{project.summary}</p>

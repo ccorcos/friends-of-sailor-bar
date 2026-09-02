@@ -44,10 +44,16 @@ export default function Home() {
           <h2>Events</h2>
           <div className="panel-list">
             {events.map((event) => (
-              <Link className="text-summary" href={`/events/${event.slug}`} key={event.id}>
-                <small>{formatDate(event.date, { month: "short", day: "numeric" })} · {event.time}</small>
-                <strong>{event.title}</strong>
-                <span>{event.location}</span>
+              <Link className="home-event-summary" href={`/events/${event.slug}`} key={event.id}>
+                <time className="home-event-date" dateTime={event.date}>
+                  <strong>{formatDate(event.date, { day: "numeric" })}</strong>
+                  <span>{formatDate(event.date, { month: "short" })}</span>
+                </time>
+                <span className="home-event-copy">
+                  <small>{event.time}</small>
+                  <strong>{event.title}</strong>
+                  <span>{event.location}</span>
+                </span>
               </Link>
             ))}
             {!events.length && <p className="empty-state">No upcoming events are listed.</p>}

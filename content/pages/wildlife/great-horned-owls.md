@@ -4,7 +4,7 @@ image: ""
 order: 60
 ---
 
-> **Editorial note:** This page preserves a legacy report about a nesting site; it is not a claim that a nest is currently occupied. Never approach, climb toward, call to, shine lights on, or otherwise disturb nesting wildlife. Observe wildlife from a respectful distance and follow all posted closures and guidance.
+> **Editorial note:** This page describes a reported nesting site; it is not a claim that a nest is currently occupied. Never approach, climb toward, call to, shine lights on, or otherwise disturb nesting wildlife. Observe wildlife from a respectful distance and follow all posted closures and guidance.
 
 ### A hidden nest with a remarkable view
 

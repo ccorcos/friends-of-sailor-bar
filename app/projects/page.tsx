@@ -27,7 +27,7 @@ export default function ProjectsPage() {
         <div className="content-list">
           {index?.html && <MarkdownContent className="essay-body" html={index.html} />}
           {projects.map((project) => (
-            <article className={`image-card${project.image ? "" : " legacy-text-card"}`} key={project.slug}>
+            <article className={`image-card${project.image ? "" : " text-card"}`} key={project.slug}>
               {project.image && (
                 <Link
                   className="card-image"

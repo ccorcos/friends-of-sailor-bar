@@ -8,9 +8,7 @@
     "start": "next start -H 0.0.0.0 -p 8000",
     "lint": "eslint .",
     "test:content": "node --conditions=react-server --import tsx --test tests/content-loader.test.ts",
-    "content:validate": "node --conditions=react-server --import tsx scripts/validate-content.mjs",
-    "migration:import": "node scripts/import-legacy-content.mjs",
-    "migration:verify": "node scripts/verify-legacy-content.mjs && node --no-warnings scripts/verify-event-content.mjs && node --no-warnings scripts/verify-promoted-markdown.mjs && node --no-warnings scripts/verify-update-content.mjs"
+    "content:validate": "node --conditions=react-server --import tsx scripts/validate-content.mjs"
   },
   "dependencies": {
     "better-sqlite3": "^13.0.3",

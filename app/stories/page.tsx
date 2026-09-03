@@ -36,7 +36,7 @@ export default function StoriesPage() {
             const showImage = Boolean(update.image);
 
             return (
-              <article className={`image-card${showImage ? "" : " legacy-text-card"}`} key={update.slug}>
+              <article className={`image-card${showImage ? "" : " text-card"}`} key={update.slug}>
                 {showImage && update.image && (
                   <Link
                     className="card-image"

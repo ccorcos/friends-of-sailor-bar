@@ -39,7 +39,7 @@ export function ContentPage({ section, segments = [] }: ContentPageProps) {
   return (
     <AboutArticle currentSection={section}>
       <h1>{page.title}</h1>
-      <MarkdownContent className="archive-content" html={page.html} />
+      <MarkdownContent className="article-content" html={page.html} />
     </AboutArticle>
   );
 }

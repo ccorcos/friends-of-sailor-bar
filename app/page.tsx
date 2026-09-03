@@ -7,9 +7,9 @@ import { getProjects, getUpcomingEvents, getUpdates } from "@/lib/content";
 import { formatDate } from "@/lib/format";
 
 export default function Home() {
-  const events = getUpcomingEvents(3);
-  const updates = getUpdates(3);
-  const featuredProjects = getProjects().slice(0, 5);
+  const events = getUpcomingEvents(4);
+  const updates = getUpdates(4);
+  const featuredProjects = getProjects().slice(0, 4);
 
   return (
     <div className="home container">
@@ -73,13 +73,27 @@ export default function Home() {
           <div className="panel-list">
             {updates.map((update) => (
               <Link
-                className="text-summary"
+                className={update.image ? "project-summary update-summary" : "text-summary"}
                 href={`/stories/${update.slug}`}
                 key={update.slug}
                 aria-label={`Read ${update.title}`}
               >
-                <small>{formatDate(update.publishedAt, { month: "short", day: "numeric", year: "numeric" })}</small>
-                <strong>{update.title}</strong>
+                {update.image ? (
+                  <>
+                    <span className="thumbnail">
+                      <Image src={update.image} alt="" fill unoptimized={update.image.startsWith("/media/")} sizes="(max-width: 900px) 25vw, 10vw" />
+                    </span>
+                    <span>
+                      <small>{formatDate(update.publishedAt, { month: "short", day: "numeric", year: "numeric" })}</small>
+                      <strong>{update.title}</strong>
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <small>{formatDate(update.publishedAt, { month: "short", day: "numeric", year: "numeric" })}</small>
+                    <strong>{update.title}</strong>
+                  </>
+                )}
               </Link>
             ))}
           </div>

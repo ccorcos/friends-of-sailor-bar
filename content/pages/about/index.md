@@ -1,5 +1,5 @@
 ---
-title: "About Sailor Bar"
+title: "Sailor Bar"
 image: ""
 order: 10
 ---

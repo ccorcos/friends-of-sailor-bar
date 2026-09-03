@@ -1,5 +1,5 @@
 ---
-title: "A Detailed History of Sailor Bar"
+title: "History"
 image: ""
 order: 10
 ---

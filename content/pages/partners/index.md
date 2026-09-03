@@ -1,5 +1,5 @@
 ---
-title: "Our Partners"
+title: "Partners"
 image: ""
 order: 40
 ---

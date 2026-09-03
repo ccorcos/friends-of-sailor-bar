@@ -54,6 +54,9 @@ const knownPages = {
 
 const promotedTitleOverrides = {
   "friends-of-sailor-bar/index.md": "Friends of Sailor Bar",
+  "about/index.md": "Sailor Bar",
+  "history/index.md": "History",
+  "partners/index.md": "Partners",
 };
 
 const intentionallyOmittedSourceBlocks = {

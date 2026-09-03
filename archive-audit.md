@@ -46,9 +46,9 @@ These records remain public because their useful details have not yet received a
 
 The two remaining History records are now faithful Markdown pages at `/history/gold-rush-legacy` and `/history/the-ghost-of-sailor-bar`.
 
-All three legacy Places records are now in the About Sailor Bar section at `/about/grinding-rocks`, `/about/heron-rookeries`, and `/about/flag-pole`.
+All three legacy Places records are now in the Sailor Bar section at `/about/grinding-rocks`, `/about/heron-rookeries`, and `/about/flag-pole`.
 
-All four remaining Partners records are now in the Our Partners section at `/partners/american-river-parkway-equestrian-patrol`, `/partners/friends-of-lakes-folsom-and-natoma-folfan`, `/partners/project-pick-up-fishing-line`, and `/partners/sacramento-bird-alliance`.
+All four remaining Partners records are now in the Partners section at `/partners/american-river-parkway-equestrian-patrol`, `/partners/friends-of-lakes-folsom-and-natoma-folfan`, `/partners/project-pick-up-fishing-line`, and `/partners/sacramento-bird-alliance`.
 
 Each page preserves every legacy text block, link, caption, image, and downloadable file referenced by its source. The nine resolved records no longer appear in the public archive.
 

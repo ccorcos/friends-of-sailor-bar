@@ -624,27 +624,23 @@ fieldset { margin: 0; padding: 0; border: 0; }
   .site-header {
     inline-size: 100%;
     display: grid;
-    justify-items: center;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: stretch;
     gap: 0.8rem;
+    padding-inline: 0.5rem;
     text-align: center;
   }
-  .site-header .brand { font-size: 1.75rem; }
+  .site-header .brand { justify-self: center; font-size: 1.75rem; }
   .site-header nav {
     inline-size: 100%;
-    justify-content: center;
-    gap: 0.35rem 0.5rem;
-    font-size: 0.875rem;
-    flex-wrap: wrap;
+    margin-inline: 0;
+    padding-inline: 0;
+    justify-content: space-between;
+    gap: 0;
+    font-size: clamp(0.75rem, 3.6vw, 0.875rem);
+    flex-wrap: nowrap;
   }
-  .site-header nav a:not(.button) { order: 1; }
-  .site-header nav::before {
-    content: "";
-    flex-basis: 100%;
-    block-size: 0;
-    order: 2;
-  }
-  .site-header nav .button { order: 3; }
-  .site-header .button { padding: 0.6rem 0.25rem; font-size: 0.875rem; }
+  .site-header .button { padding: 0.6rem 0.125rem; font-size: inherit; }
   .home-grid, .page-intro, .updates-intro, .image-card,
   .subscribe-form, .field-row, .check-grid, .about-layout { grid-template-columns: 1fr; }
   .home-grid .panel:last-child, .subscribe-form .form-error { grid-column: auto; }

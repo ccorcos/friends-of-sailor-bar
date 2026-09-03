@@ -17,8 +17,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <header className="site-header container">
           <Link className="brand" href="/">Friends of Sailor Bar</Link>
-          <nav aria-label="Main navigation">
+          <nav className="header-navigation" aria-label="Main navigation">
             {siteLinks.map((link) => <Link href={link.href} key={link.href}>{link.label}</Link>)}
+          </nav>
+          <nav className="header-actions" aria-label="Support Friends of Sailor Bar">
             <Link className="button" href="/donate">Donate</Link>
             <Link className="button header-volunteer" href="/volunteer">Volunteer</Link>
           </nav>

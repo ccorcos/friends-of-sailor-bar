@@ -42,12 +42,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .site-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: var(--space);
   padding-block: 1rem;
 }
 .brand { font-weight: 700; letter-spacing: -0.03em; }
 .brand { font-size: var(--font-size-brand); }
+.header-navigation { margin-inline-start: auto; }
 .site-header nav, .site-footer nav {
   display: flex;
   align-items: center;
@@ -656,29 +657,36 @@ fieldset { margin: 0; padding: 0; border: 0; }
 
 @media (max-width: 650px) {
   :root {
-    --font-size-brand: 28px;
+    --font-size-brand: 16px;
     --font-size-page-title: 32px;
     --font-size-date-large: 44px;
   }
   .site-header {
     inline-size: 100%;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    justify-items: stretch;
-    gap: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 0.4rem;
+    row-gap: 0.8rem;
     padding-inline: 0.5rem;
     text-align: center;
   }
-  .site-header .brand { justify-self: center; }
-  .site-header nav {
-    inline-size: 100%;
-    margin-inline: 0;
-    padding-inline: 0;
-    justify-content: space-between;
-    gap: 0;
-    flex-wrap: nowrap;
+  .site-header .brand { order: 1; }
+  .site-header .header-actions {
+    order: 2;
+    gap: 0.4rem;
   }
-  .site-header .button { padding: 0.6rem 0.125rem; }
+  .site-header .header-navigation {
+    order: 3;
+    flex: 1 0 100%;
+    justify-content: center;
+    margin-inline-start: 0;
+    gap: clamp(1rem, 6vw, 2rem);
+  }
+  .site-header .button {
+    padding: 0.55rem 0.4rem;
+    font-size: var(--font-size-small);
+  }
   .home-grid, .page-intro, .updates-intro, .image-card,
   .subscribe-form, .field-row, .check-grid, .about-layout { grid-template-columns: 1fr; }
   .home-grid .panel:last-child, .subscribe-form .form-error { grid-column: auto; }

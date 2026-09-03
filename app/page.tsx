@@ -54,8 +54,8 @@ export default function Home() {
                   <strong>{formatDate(event.date, { day: "numeric" })}</strong>
                 </time>
                 <span className="home-event-copy">
-                  <small>{formatDate(event.date, { month: "long", day: "numeric", year: "numeric" })} · {event.time}</small>
                   <strong>{event.title}</strong>
+                  <small>{formatDate(event.date, { month: "long", day: "numeric", year: "numeric" })} · {event.time}</small>
                   <span>{event.location}</span>
                 </span>
               </Link>

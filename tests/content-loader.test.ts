@@ -49,7 +49,7 @@ test("runtime content loading, caching, and validation", async () => {
     fs.mkdirSync(path.join(temporaryRoot, "content", "events"), { recursive: true });
     fs.mkdirSync(path.join(temporaryRoot, "content", "projects"), { recursive: true });
     fs.mkdirSync(path.join(temporaryRoot, "content", "updates"), { recursive: true });
-    fs.mkdirSync(path.join(temporaryRoot, "content", "pages", "about"), { recursive: true });
+    fs.mkdirSync(path.join(temporaryRoot, "content", "about", "about"), { recursive: true });
 
     const eventPath = path.join(temporaryRoot, "content", "events", "alpha.md");
     fs.writeFileSync(eventPath, eventMarkdown("Alpha"));
@@ -58,8 +58,8 @@ test("runtime content loading, caching, and validation", async () => {
     fs.writeFileSync(path.join(temporaryRoot, "content", "projects", "project.md"), projectMarkdown("Project"));
     fs.writeFileSync(path.join(temporaryRoot, "content", "projects", "index.md"), "---\ntitle: Projects\n---\n");
     fs.writeFileSync(path.join(temporaryRoot, "content", "updates", "update.md"), updateMarkdown("Update"));
-    fs.writeFileSync(path.join(temporaryRoot, "content", "pages", "about", "index.md"), "---\ntitle: About\nimage: \"\"\norder: 1\n---\n\nAbout body.\n");
-    fs.writeFileSync(path.join(temporaryRoot, "content", "pages", "about", "visit.md"), "---\ntitle: Visit\nimage: \"\"\norder: 2\n---\n\nVisit body.\n");
+    fs.writeFileSync(path.join(temporaryRoot, "content", "about", "about", "index.md"), "---\ntitle: About\nimage: \"\"\norder: 1\n---\n\nAbout body.\n");
+    fs.writeFileSync(path.join(temporaryRoot, "content", "about", "about", "visit.md"), "---\ntitle: Visit\nimage: \"\"\norder: 2\n---\n\nVisit body.\n");
 
     process.chdir(temporaryRoot);
     const loaderUrl = pathToFileURL(path.join(repositoryRoot, "lib", "content", "index.ts")).href;

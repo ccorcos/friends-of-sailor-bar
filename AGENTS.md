@@ -46,9 +46,9 @@ The site should feel calm, grounded, welcoming, and nature-focused. Favor clear 
 - `/projects` and `/projects/[slug]` — Project index and details
 - `/events`, `/events/past`, and `/events/[slug]` — Upcoming events, past events, and event details
 - `/stories` and `/stories/[slug]` — Field notes and updates
-- `/friends-of-sailor-bar` — Organization information
-- `/friends-of-sailor-bar/contact` — Contact information
-- `/about` and `/about/[slug]` — Sailor Bar visitor information and points of interest
+- `/about` — Organization information
+- `/about/contact` — Contact information
+- `/sailor-bar` and `/sailor-bar/[slug]` — Sailor Bar visitor information and points of interest
 - `/wildlife` and `/wildlife/[slug]` — Wildlife, birding, plants, salmon, elderberry, and owl articles
 - `/history` and `/history/[slug]` — Sailor Bar history articles
 - `/partners` and `/partners/[slug]` — Partner directory and profiles
@@ -57,7 +57,8 @@ The site should feel calm, grounded, welcoming, and nature-focused. Favor clear 
 
 ### Compatibility routes
 
-- `/contact` — Redirects to `/friends-of-sailor-bar/contact`
+- `/contact` — Redirects to `/about/contact`
+- `/friends-of-sailor-bar` and `/friends-of-sailor-bar/[slug]` — Redirect to the corresponding `/about` route
 - `/voluneer` — Redirects to `/volunteer` to accommodate the earlier misspelling
 - `next.config.ts` — Permanent redirects from superseded public URLs to their current destinations
 
@@ -77,11 +78,12 @@ Do not replace dedicated routes with `/#volunteer`, `/#updates`, or generic link
 - `app/api/**/route.ts` — Form handlers
 - `components/forms.tsx` — Subscription and volunteer client forms
 - `components/markdown-content.tsx` — Server-rendered Markdown content view
-- `components/content-page.tsx` — Shared request-time About, Wildlife, History, and Partners page renderer
+- `components/content-page.tsx` — Shared request-time About, Sailor Bar, Wildlife, History, and Partners page renderer
 - `lib/db.ts` — SQLite setup for subscriber and volunteer form submissions
 - `lib/content/` — Server-only Markdown discovery, caching, schemas, loading, and compilation
 - `lib/site.ts` — Shared navigation links
-- `content/` — Runtime-editable events, projects, updates, and section pages
+- `content/events`, `content/projects`, and `content/updates` — Runtime-editable collection content
+- `content/about/` — Runtime-editable About, Sailor Bar, Wildlife, History, and Partners pages
 - `public/images` — Primary site photography
 - `public/files` — Documents and supporting images served under `/files`
 - `scripts/validate-content.mjs` — Validates Markdown schemas, relationships, links, and local assets
@@ -110,7 +112,7 @@ Editorial content lives in Markdown under `content/`. Events are classified as u
 
 ## Markdown authoring workflow
 
-- Store events, projects, and updates in `content/events`, `content/projects`, and `content/updates`; store section pages in `content/pages/<section>`.
+- Store events, projects, and updates in `content/events`, `content/projects`, and `content/updates`; store About-directory section pages in `content/about/<section>`.
 - The filename is the canonical lowercase, hyphen-separated slug. Do not add a frontmatter `slug` field.
 - Copy the collection's `__template.md` and fill in the schema-required frontmatter. Content files publish immediately, so keep work-in-progress filenames underscore-prefixed until ready. Templates and underscore-prefixed notes are ignored by public loaders.
 - Put the page title in frontmatter; Markdown bodies must not contain a level-one heading. Use standard Markdown; raw HTML is not part of the supported content contract.

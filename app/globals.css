@@ -6,6 +6,8 @@
   --canvas: #f3f1eb;
   --line: rgba(23, 53, 45, 0.16);
   --space: clamp(1rem, 3vw, 2.5rem);
+  --container-padding: clamp(1rem, 5vw, 5rem);
+  --content-width: 48rem;
   --font-size-small: 14px;
   --font-size-primary: 16px;
   --font-size-section-title: 20px;
@@ -37,7 +39,7 @@ small, sub, sup { font-size: var(--font-size-small); }
 button, a { -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; }
 
-.container { padding-inline: clamp(1rem, 5vw, 5rem); }
+.container { padding-inline: var(--container-padding); }
 
 .site-header {
   display: flex;
@@ -211,7 +213,7 @@ h1, h2, p { margin-block-start: 0; }
 }
 .page-intro h1, .updates-intro h1 { margin: 0; }
 .page-intro-simple, .updates-intro {
-  max-inline-size: 58rem;
+  max-inline-size: calc(var(--content-width) + var(--container-padding) + var(--container-padding));
   margin-inline: auto;
 }
 .page-intro-simple { grid-template-columns: 1fr; }
@@ -242,7 +244,7 @@ h1, h2, p { margin-block-start: 0; }
 .content-list {
   display: grid;
   gap: 0.75rem;
-  max-inline-size: 48rem;
+  max-inline-size: var(--content-width);
   margin-inline: auto;
 }
 .image-card, .event-card, .essay-card, .form-success {
@@ -344,7 +346,7 @@ dd { margin: 0.3rem 0 0; color: var(--muted); font-size: var(--font-size-primary
   padding-block: 1.25rem;
 }
 .essay-facts dd { margin-block-start: 0.2rem; font-size: var(--font-size-primary); }
-.essay-body { max-inline-size: 40rem; }
+.essay-body { max-inline-size: var(--content-width); }
 .essay-body h2 { font-size: var(--font-size-feature-title); }
 .essay-body h3 { font-size: var(--font-size-section-title); }
 .essay-body p {

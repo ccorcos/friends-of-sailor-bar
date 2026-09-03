@@ -6,7 +6,7 @@ order: 90
 
 ## Watching the Giants of the Canopy: The Great Blue Heron Rookeries at Sailor Bar
 
-The **Great Blue Heron rookeries** located within the mature trees of [Sailor Bar Park](https://regionalparks.saccounty.gov/content/regionalparks/us/en/parks/american-river-parkway/sailor-bar.html) provide birdwatchers and nature enthusiasts with a **magnificent, active nesting spectacle** along the American River Parkway. Recognized by the [Friends of Sailor Bar](/friends-of-sailor-bar) as a prime wildlife viewing highlight, these communal nesting sites (rookeries) host multiple large nests high in the cottonwoods and oaks.
+The **Great Blue Heron rookeries** located within the mature trees of [Sailor Bar Park](https://regionalparks.saccounty.gov/content/regionalparks/us/en/parks/american-river-parkway/sailor-bar.html) provide birdwatchers and nature enthusiasts with a **magnificent, active nesting spectacle** along the American River Parkway. Recognized by the [Friends of Sailor Bar](/about) as a prime wildlife viewing highlight, these communal nesting sites (rookeries) host multiple large nests high in the cottonwoods and oaks.
 
 ## The Nesting Experience
 

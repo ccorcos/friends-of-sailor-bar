@@ -1,7 +1,7 @@
 import { AboutDirectorySections, type DirectorySection } from "@/components/about-directory-sections";
 import { getPageByPath, getPageNavigation, type PageNavigationItem } from "@/lib/content";
 
-const SECTIONS = ["friends-of-sailor-bar", "about", "wildlife", "history", "partners"] as const;
+const SECTIONS = ["about", "sailor-bar", "wildlife", "history", "partners"] as const;
 
 type DirectoryLink = { href: string; label: string };
 

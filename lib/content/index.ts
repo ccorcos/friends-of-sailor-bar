@@ -139,8 +139,8 @@ export function getPageByPath(section: string, segments: readonly string[] = [])
   if (section.startsWith("_") || segments.some((segment) => segment.startsWith("_"))) return undefined;
 
   const file = segments.length === 0
-    ? resolveContentPath("pages", section, "index.md")
-    : resolveContentPath("pages", section, ...segments.slice(0, -1), `${segments.at(-1)}.md`);
+    ? resolveContentPath("about", section, "index.md")
+    : resolveContentPath("about", section, ...segments.slice(0, -1), `${segments.at(-1)}.md`);
   if (!markdownFileExists(file)) return undefined;
 
   const page = documentFromFile<PageFrontmatter>(file, pageFrontmatterSchema);
@@ -154,7 +154,7 @@ export function getPageByPath(section: string, segments: readonly string[] = [])
 
 export function getPageNavigation(section?: string): PageNavigationItem[] {
   if (section !== undefined) assertSafePart(section, "page section");
-  const pagesRoot = resolveContentPath("pages");
+  const pagesRoot = resolveContentPath("about");
   const files = listMarkdownFiles(pagesRoot, true);
   const navigation = files.flatMap((file): PageNavigationItem[] => {
     const relative = path.relative(pagesRoot, file);

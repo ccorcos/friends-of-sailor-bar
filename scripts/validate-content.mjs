@@ -203,7 +203,7 @@ function validateTemplates() {
     );
   }
 
-  const pagesRoot = resolveContentPath("pages");
+  const pagesRoot = resolveContentPath("about");
   for (const directory of directoriesWithMarkdown(pagesRoot)) {
     validateTemplate(path.join(directory, "__template.md"), pageFrontmatterSchema);
   }
@@ -246,16 +246,16 @@ function validateCollections() {
 }
 
 function validatePages() {
-  const pagesRoot = resolveContentPath("pages");
+  const pagesRoot = resolveContentPath("about");
   if (!fs.existsSync(pagesRoot)) {
-    addError("content/pages is missing");
+    addError("content/about is missing");
     return;
   }
 
   const sectionEntries = fs.readdirSync(pagesRoot, { withFileTypes: true }).filter((entry) => entry.isDirectory() && !entry.name.startsWith("_"));
   for (const sectionEntry of sectionEntries) {
     const indexPath = path.join(pagesRoot, sectionEntry.name, "index.md");
-    if (!fs.existsSync(indexPath)) addError(`content/pages/${sectionEntry.name}/index.md is missing`);
+    if (!fs.existsSync(indexPath)) addError(`content/about/${sectionEntry.name}/index.md is missing`);
   }
 
   for (const filePath of readDirectoryFiles(pagesRoot, true)) {
@@ -268,7 +268,7 @@ function validatePages() {
       ? []
       : [...parts.slice(1, -1), stem];
     const route = `/${[section, ...segments].join("/")}`;
-    validateSlug(section, `content/pages/${section}`);
+    validateSlug(section, `content/about/${section}`);
     segments.forEach((segment) => validateSlug(segment, labelFor(filePath)));
     if (pageRoutes.has(route)) addError(`${labelFor(filePath)}: duplicate page route ${route}`);
     pageRoutes.add(route);

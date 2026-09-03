@@ -24,7 +24,7 @@ const summaries = [];
 /* ------------------------------------------------------------------ *
  * Expected collection
  *
- * The four published updates, the legacy pages each one was promoted from
+ * The published updates, the legacy pages each one was promoted from
  * (in order; the first entry is the primary source), and the currently
  * visible title, published date, and index excerpt choices.
  * ------------------------------------------------------------------ */
@@ -64,6 +64,17 @@ const knownUpdates = {
     // on /events/bench-and-table-dedication and under /archive.
     legacySources: [],
   },
+  "water-forum-2050-agreement": {
+    title: "Sacramento Water Forum",
+    publishedAt: "2026-08-20",
+    excerpt:
+      "The Sacramento Water Forum is a voluntary organization started by the City and County of Sacramento in 1993 in recognition that the lower American River requires diligent…",
+    category: "Community news",
+    image: "/images/river-sunrise.jpg",
+    relatedEvent: "",
+    relatedProject: "",
+    legacySources: ["sacramento-water-forum"],
+  },
   "welcoming-path-turtle-pond": {
     title: "Turtle Pond",
     publishedAt: "2026-08-30",
@@ -75,6 +86,10 @@ const knownUpdates = {
     relatedProject: "accessible-turtle-pond-walk",
     legacySources: ["turtle-pond"],
   },
+};
+
+const archiveLinkReplacements = {
+  "/archive/home": "/",
 };
 
 const requiredFields = [
@@ -409,7 +424,10 @@ for (const name of updateFiles) {
       if (!bodyLinks.includes(link)) errors.push(`${label}: external link ${link} from ${sourceSlug} is not retained`);
     }
     for (const link of sourceArchiveLinks(item.contentHtml)) {
-      if (!bodyArchiveLinks.includes(link)) errors.push(`${label}: archive link ${link} from ${sourceSlug} is not retained`);
+      const replacement = archiveLinkReplacements[link];
+      if (!bodyArchiveLinks.includes(link) && !(replacement && body.includes(`](${replacement})`))) {
+        errors.push(`${label}: archive link ${link} from ${sourceSlug} is not retained or redirected`);
+      }
     }
     for (const embed of sourceEmbeds(item.contentHtml)) {
       const videoId = embed.match(/youtube\.com\/embed\/([\w-]+)/)?.[1];

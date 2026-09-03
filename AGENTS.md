@@ -20,13 +20,14 @@ The site is in an active, page-by-page migration from the former WordPress websi
 
 - Treat `migration.md` as the authoritative checklist and route map for every legacy public page.
 - Faithful migration means preserving the complete published title, body text, headings, lists, captions, links, images, and downloadable files. Do not paraphrase, condense, modernize, silently correct, or replace source copy with a summary.
-- Index cards may use short excerpts for navigation, but every migrated detail page must expose the complete legacy source content.
-- Keep a permanent faithful copy under `/archive` even when the content is also promoted into `/about`, `/history`, `/wildlife`, `/events`, `/stories`, or another primary section. The sole owner-requested exception is the legacy `friends-of-sailor-bar` page: its source remains in `data/archive.json`, but it must not appear in the public archive index or resolve at `/archive/friends-of-sailor-bar`.
+- Index cards may use short excerpts for navigation, but every promoted detail page must expose the complete legacy source content.
+- Keep the complete faithful source snapshot in `data/archive.json` while migration verification is needed. The public `/archive` is only a temporary queue for unresolved records: remove a page from the public archive after it has been fully promoted, judged empty/useless, or otherwise resolved by the owner. The owner's goal is to retire `/archive` entirely.
+- The `friends-of-sailor-bar` source remains in `data/archive.json`, but it must not appear in the public archive index or resolve at `/archive/friends-of-sailor-bar`.
 - Promoted pages may clean up legacy formatting, remove duplicated facts, and omit obsolete interface instructions such as “click for flyer,” but they must retain every unique factual detail and remain complete rather than becoming summaries. Keep links to source flyers, videos, PDFs, and related records when they carry information.
-- Preserve empty pages, placeholders, duplicates, contradictions, misspellings, and outdated claims in the faithful archive. On promoted pages, identify contradictions in a visibly separate editorial note rather than silently choosing one version.
+- Preserve empty pages, placeholders, duplicates, contradictions, misspellings, and outdated claims in the internal faithful snapshot. On promoted pages, identify contradictions in a visibly separate editorial note rather than silently choosing one version.
 - Copy legacy images and files into `public/files` rather than hotlinking them. Preserve every media item referenced by imported content.
 - Do not mark a migration complete until its full text and referenced local media have been checked against the legacy source.
-- Newly authored summaries or reorganized guides are supplemental editorial content, not substitutes for a faithful migration. Cleaned promoted pages must be checked for information coverage against their archived sources.
+- Newly authored summaries or reorganized guides are supplemental editorial content, not substitutes for a faithful migration. Cleaned promoted pages must be checked for information coverage against the internal source snapshot.
 
 ## Technology
 
@@ -63,17 +64,25 @@ The site is in an active, page-by-page migration from the former WordPress websi
 - `/events/past` — Past event archive
 - `/events/[slug]` — Individual event detail
 - `/about` — Faithful About Sailor Bar article with links to imported visitor guides and points of interest
+- `/about/aerojet-groundwater-pumps` — Legacy explanation of the groundwater extraction and treatment infrastructure
 - `/wildlife` — Faithful legacy wildlife article
 - `/wildlife/birding` — Faithful legacy birding guide
 - `/wildlife/plant-life` — Faithful legacy plant guide
 - `/wildlife/salmon-and-steelhead` — Faithful legacy salmon and steelhead guide
+- `/wildlife/elderberry` — Faithful legacy elderberry article
+- `/wildlife/great-horned-owls` — Faithful legacy owl-nesting article with an editorial disturbance warning
 - `/history` — Faithful detailed Sailor Bar history article
 - `/history/nisenan-history` — Faithful legacy Native American History article
 - `/history/mining-and-dredging` — Faithful legacy gold-dredging article
+- `/history/chinese-diggings` — Faithful legacy Chinese Diggings article
+- `/history/river-changes` — Faithful legacy river-channel-change article
+- `/history/camp-sabadaca` — Faithful legacy Camp Sabadaca article
 - `/stories` — Field notes and newsletter index with email subscription form
 - `/stories/[slug]` — Individual story detail
-- `/archive` — Permanent index of faithfully imported legacy pages
-- `/archive/[slug]` — Complete legacy page title, body, and media, except the intentionally unpublished `friends-of-sailor-bar` record
+- `/partners` — Partner directory
+- `/partners/[slug]` — Individual partner profile
+- `/archive` — Temporary index of unresolved legacy records pending placement or removal
+- `/archive/[slug]` — Complete unresolved legacy page body; resolved records return 404
 - `/volunteer` — Volunteer interest form
 
 ### Compatibility route
@@ -97,16 +106,17 @@ Do not replace dedicated routes with `/#volunteer`, `/#updates`, or generic link
 - `app/media/[...path]/route.ts` — Runtime media handler for `content/media`
 - `components/forms.tsx` — Subscription and volunteer client forms
 - `components/markdown-content.tsx` — Server-rendered Markdown content view
-- `components/content-page.tsx` — Shared request-time About, Wildlife, and History page renderer
+- `components/content-page.tsx` — Shared request-time About, Wildlife, History, and Partners page renderer
 - `lib/db.ts` — SQLite setup for subscriber and volunteer form submissions
 - `lib/content/` — Server-only Markdown file discovery, caching, schemas, loading, and compilation
 - `public/images` — Primary site photography
 - `public/files` — Imported documents, historical images, and other supporting files served under `/files`
 - `content/` — Runtime-editable events, projects, updates, and promoted section pages
 - `content/media` — Runtime-editable Markdown-referenced media served through `/media`
-- `data/archive.json` — Complete imported legacy page bodies with local URLs
+- `data/archive.json` — Complete internal legacy page bodies with local URLs; public `/archive` exposes only unresolved allowlisted records
 - `data/archive-assets.json` — Legacy media source-to-local-file mappings
 - `data/archive-manifest.json` — Per-page word counts, media references, and text hashes
+- `data/public-archive-slugs.json` — Temporary allowlist of unresolved records still exposed under `/archive`
 - `migration.md` — Authoritative legacy page checklist and destination map
 - `scripts/import-legacy-content.mjs` — Rebuilds the faithful snapshot from the legacy APIs
 - `scripts/validate-content.mjs` — Validates Markdown schemas, relationships, and local assets
@@ -197,4 +207,4 @@ Before considering a change complete:
 
 ## Current status
 
-As of September 3, 2026, the site has working project, event, update, volunteer, and subscription routes; persistent SQLite form storage; responsive layouts; a systemd-managed production server; and faithful local copies of all 71 public legacy pages and their referenced media. Events, projects, updates, and promoted About/Wildlife/History pages are runtime Markdown with modification-aware caching, dynamic media, validation, and archive coverage checks. Superseded TypeScript and SQLite editorial sources have been removed; `/archive` remains the permanent faithful record.
+As of September 3, 2026, the site has working project, event, update, volunteer, subscription, partner, and promoted About/Wildlife/History routes; persistent SQLite form storage; responsive layouts; a systemd-managed production server; and faithful internal copies of all 71 public legacy pages and their referenced media. Events, projects, updates, and promoted section pages are runtime Markdown with modification-aware caching, dynamic media, validation, and source-coverage checks. The public `/archive` is being reduced to unresolved records and will be retired after the remaining fragments, organizational copy, and media assets are resolved.

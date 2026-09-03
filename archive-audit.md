@@ -1,159 +1,113 @@
 # Archive content audit
 
 **Audit date:** September 3, 2026  
-**Scope:** Every item currently exposed under `/archive`, compared with the site's public routes and Markdown content. The source record `friends-of-sailor-bar` is covered separately because it remains in `data/archive.json` but is intentionally not exposed under `/archive`.
+**Scope:** The post-pruning public archive and the legacy source snapshot retained in `data/archive.json`.
 
-This is an editorial placement audit, not an external fact-check. A page counts as incorporated only when its substantive information appears outside `/archive`; preservation in `/archive` alone does not count.
+This is an editorial placement audit, not an external fact-check. The records with clear destinations have now been promoted, and public archive access is limited to unresolved material while the complete source snapshot remains available internally for migration verification.
 
-## Summary
+## Post-change summary
 
-The public archive contains **71 items**: 70 imported legacy records plus the synthetic legacy media-library page.
+The public archive now contains **exactly 15 items**:
 
 | Disposition | Count | Meaning |
 | --- | ---: | --- |
-| **Incorporated** | 26 | Substantive source information already appears on a public non-archive page. |
-| **Archive only** | 15 | Empty page, placeholder, obsolete navigation shell, or content too insubstantial to promote. |
-| **Fold in** | 13 | Short but useful information that should be added to an existing page. |
-| **Markdown candidate** | 16 | Substantial content with a clear destination and enough material for a promoted Markdown page. |
-| **Needs curation** | 1 | Useful material, but not a coherent page that should be promoted as-is. |
+| **Discussion fragments** | 13 | Short records with useful details that still need an editorial placement or policy decision. |
+| **Redundancy decision deferred** | 1 | `our-aspiration` remains public until its overlap with other organizational copy is discussed. |
+| **Needs curation** | 1 | `media-library` remains public while its 40 preserved files are reviewed and placed contextually. |
 
-The hidden `friends-of-sailor-bar` source is an additional Markdown candidate, bringing the source-data total to 72 records.
+The 26 already-incorporated records, 15 empty/placeholder records, and 15 newly promoted clear-destination records have been removed from the public archive. They remain unchanged in `data/archive.json` for source comparison and migration verification. Including the intentionally hidden `friends-of-sailor-bar` record, the internal snapshot still contains all **72 records**; 57 are now internal-only.
 
-## Recommended next moves
+`friends-of-sailor-bar` remains intentionally hidden and does not appear in the archive index or resolve at `/archive/friends-of-sailor-bar`.
 
-1. Add a `/partners` section. The archive has one strong directory source and enough substantial profiles to justify a hub plus selected detail pages.
-2. Add the strongest self-contained pages:
-   - `/wildlife/elderberry`
-   - `/history/river-changes`
-   - `/history/chinese-diggings`
-   - `/history/camp-sabadaca`
-   - `/wildlife/great-horned-owls`
-   - `/about/aerojet-groundwater-pumps`
-3. Add `/about/our-work`, combining `our-aspiration` with the unique organizational material in the intentionally hidden `friends-of-sailor-bar` record.
-4. Fold the 13 short useful fragments into existing pages rather than creating thin detail pages.
-5. Leave the 15 empty/placeholder records in the faithful archive only.
-6. Curate the media library while promoting its associated articles; do not recreate it as a primary-site download directory.
+## Public archive allowlist
 
-## Already incorporated
+These are the only records that should appear at `/archive` or resolve below `/archive/[slug]`:
 
-These 26 records have their substantive information represented outside `/archive`.
+1. `get-involved`
+2. `sailor-bar-history`
+3. `the-ghost-of-sailor-bar`
+4. `grinding-rocks`
+5. `heron-rookeries`
+6. `flag-pole`
+7. `american-river-parkway-equestrian-patrol`
+8. `friends-of-lakes-folsom-and-natoma-folfan`
+9. `project-pick-up-fishing-line`
+10. `sacramento-bird-alliance`
+11. `event-calendar`
+12. `real-wildlife-encounters`
+13. `photo-gallery`
+14. `our-aspiration`
+15. `media-library`
 
-| Archive record | Current destination | Audit note |
+## Discussion notes for the 13 fragments
+
+These records remain public because their useful details have not yet received a final editorial disposition.
+
+| Archive record | Likely destination | Discussion needed before removal |
 | --- | --- | --- |
-| `your-donations-support-sailor-bar-activities` | `/donate` | Donation link, fund instructions, check details, address, nonprofit status, and tax statement are present. |
-| `contact` | `/contact` | Complete contact information is present. |
-| `about-sailor-bar` | `/about` | Complete substantive article; source navigation links are represented by the section structure. |
-| `amenities` | `/about` | Complete list, including the legacy photo placeholder. |
-| `friends-of-sailor-bar-brochure-and-map` | `/about` | Brochure PDF is linked. |
-| `recreation` | `/about` | Directions, activities, hours, fees, payment, and picnic information are present. |
-| `birding-at-sailor-bar` | `/wildlife/birding` | Complete guide, image, external resources, seasons, and species details are present. |
-| `plant-life` | `/wildlife/plant-life` | Complete guide and links are present. |
-| `nature-study` | `/wildlife/salmon-and-steelhead` | Complete salmon and steelhead article is present. |
-| `wildlife` | `/wildlife` | Complete overview and safety guidance are present. |
-| `a-detailed-history-of-sailor-bar` | `/history` | Complete detailed history is present. |
-| `gold-dredging-industrial-mining-on-a-massive-scale` | `/history/mining-and-dredging` | Complete article, images, PDF, and film link are present. |
-| `native-american-history` | `/history/nisenan-history` | Complete article and image are present. |
-| `boat-launch` | `/about/boat-launch` | Complete article and image are present. |
-| `olive-avenue-river-overlook` | `/about/olive-avenue-overlook` | Complete article is present. |
-| `side-channel` | `/stories/restoring-room-young-salmon` | Complete article, links, and video are present. |
-| `turtle-pond` | `/about/turtle-pond` and `/stories/welcoming-path-turtle-pond` | Complete article is present; the two promoted copies are substantially duplicative. |
-| `celebrating-american-river-parkway-heroes` | Event and story detail pages | Complete text and video appear in both promoted records. |
-| `earth-day-april-2026` | `/events/earth-day-at-sailor-bar-2026` | Complete short source is present. |
-| `friends-of-sailor-bar-rock-off-on-october-3rd-2025` | Event and story detail pages | Complete text and video are present. |
-| `sailor-bar-bench-and-table-dedication-ceremony` | Event and story detail pages | Complete text and video are present. |
-| `sailor-bar-bench-dedication` | `/events/bench-and-table-dedication` | Its distinct bench/table count is retained, although it conflicts with another source. |
-| `bald-eagles-and-birdhouses` | `/events/real-wildlife-encounters` | Date, time, and source flyer are present; transcribing the flyer would improve the promoted page. |
-| `something-fishy-is-going-on-here-the-remarkable-spawning-journey` | `/events/salmon-spawning-journey` | Complete title/date fragment is represented. |
-| `the-ghost-of-sailor-bar-how-sailor-bar-got-its-name-legends-and-historical-facts` | `/events/ghost-of-sailor-bar` | Complete title/date fragment and substantive source PDF are represented. |
-| `the-wild-and-scenic-american-river` | `/events/wild-and-scenic-american-river-2026` | Complete title/date fragment is represented. |
+| `get-involved` | `/volunteer` | Decide whether to retain the volunteer-led organizational introduction. Verify or remove the dated statements that there are no ongoing roles yet and that a docent program is planned, and reconcile the legacy `protectsailorbar@yahoo.com` address with the site's current contact path. |
+| `sailor-bar-history` | `/history/mining-and-dredging` | Retain the long-tom reference, trench description, hydraulic-mining sequence, and dredge-tailings explanation. Verify the $125 million historical production figure and $15 billion modern-value comparison before presenting them as current editorial fact. |
+| `the-ghost-of-sailor-bar` | `/history` | Decide how to incorporate the 1908 newspaper-story reference, the September 28, 1977 *San Juan Record* republication, the newspaper's 1933–1980 context, and the later cairn folklore without confusing this fragment with the separate event record and source PDF. |
+| `grinding-rocks` | `/history/nisenan-history` | Preserve the bedrock-mortar/milling-slick terminology, hardpan setting, and food-processing description, but review the cultural interpretation and terminology with appropriate Nisenan guidance before promotion. |
+| `heron-rookeries` | `/wildlife/birding` | Retain the colonial-nesting explanation, breeding-season observations, calls, prey, binocular guidance, and disturbance precautions. Decide whether even general rookery-location language should be reduced to protect active nesting areas. |
+| `flag-pole` | `/about/olive-avenue-overlook` | Retain the Lt. Stephen Douglas Moore memorial, plaque, Eagle Scout background, August 22, 1969 date, and community/scout maintenance tradition after checking the memorial details and whether the maintenance statement is still current. |
+| `american-river-parkway-equestrian-patrol` | `/partners` | Retain the 1995 founding, patrol area, safety/public-assistance purpose, participation expectations, logo, and external link. Verify the organization's current name, nonprofit status, service area, and relationship with Regional Parks. |
+| `friends-of-lakes-folsom-and-natoma-folfan` | `/partners` | Retain the park scope, cooperating-association role, program list, events, and recreation figures. Verify current organization status and programs, especially the time-sensitive statement about an animal-rescue festival beginning in May 2026. |
+| `project-pick-up-fishing-line` | Partner or conservation-project coverage | Decide whether this is a partner profile, a general visitor action, or part of the waterbird-habitat material. Retain collection/recycling instructions, the entangled-wildlife response, rescue number, and PVC-bin idea only after ownership, safety guidance, and contact details are verified. |
+| `sacramento-bird-alliance` | `/partners`, with a link from `/wildlife/birding` | Retain the partner description, inclusion statement, outings, Pacific Flyway/geographic context, species claim, image, and Larry Hickey credit. Verify the current organizational naming, programs, species count, and reuse permission/credit requirements. |
+| `event-calendar` | `/events` | Retain the Friends/Regional Parks educational-series context and its wildlife, history, and stewardship scope. Treat the third-Saturday schedule and 2026 event list as dated material; do not carry forward malformed links, superseded dates, directions without review, or obsolete “link on the title” instructions. |
+| `real-wildlife-encounters` | `/events/real-wildlife-encounters` | The fragment contributes only an alternate legacy title and September 19 date. Decide how to display that title alongside the different flyer title so neither source is silently overwritten. |
+| `photo-gallery` | `/contact` or a future submission policy | Decide whether the site still accepts public photo submissions and where consent, credit, accessibility, and reuse expectations should live. Reconcile the legacy `sailorbar@yahoo.com` address with current contact information before promoting the invitation. |
 
-## Archive-only placeholders and shells
+## Suggested decision batches for the 13 fragments
 
-These 15 records should remain faithful archive artifacts, but they do not provide useful primary-site content in their current form.
+- **Straightforward contextual additions:** `the-ghost-of-sailor-bar`, `heron-rookeries`, `flag-pole`, `american-river-parkway-equestrian-patrol`, `friends-of-lakes-folsom-and-natoma-folfan`, `sacramento-bird-alliance`, `event-calendar`, and `real-wildlife-encounters`. These mainly need placement, light date labeling, and link checks.
+- **Owner policy decisions:** `get-involved` depends on the current volunteer model; `project-pick-up-fishing-line` depends on whether Friends of Sailor Bar endorses the instructions and contact number; `photo-gallery` depends on whether public photo submissions are still accepted.
+- **Higher-review historical material:** `sailor-bar-history` contains large historical-dollar comparisons that should be sourced or clearly dated; `grinding-rocks` should receive Nisenan cultural review before its added interpretation is promoted.
 
-| Archive record | Words | Reason |
-| --- | ---: | --- |
-| `accomplishments` | 21 | Announces that recognition and accomplishments will be added later. |
-| `donate` | 3 | “Page in progress”; the separate substantive donation record already powers `/donate`. |
-| `friends-of-sailor-bar-leaders` | 0 | Empty. |
-| `friends-of-sailor-bar-stewardship` | 0 | Empty. |
-| `mission-vision-values` | 3 | “Page in progress.” |
-| `volunteer-sign-up` | 3 | “Page in progress”; superseded by the working form. |
-| `activities-amenities` | 11 | Incomplete lead-in with no actual list. |
-| `scenic-river-views` | 13 | Promises content or views but supplies none. |
-| `interactive-birding-at-sailor-bar` | 5 | Promises photos but contains no account or useful event detail. |
-| `sailor-bar-history-2` | 0 | Empty duplicate history shell. |
-| `key-points-of-interest` | 0 | Empty directory shell. |
-| `partners` | 0 | Empty page with a misleading legacy title, “Events & Activities.” |
-| `health-wellness-day` | 9 | Placeholder promising future photos and description. |
-| `events` | 32 | Generated event-plugin listing/navigation shell duplicating the real event record. |
-| `blog-posts` | 3 | “Blog Main Page” placeholder; `/stories` is the functional replacement. |
+## Deferred redundancy discussion: `our-aspiration`
 
-## Short, useful information to fold into existing pages
+Keep `our-aspiration` public for now. Before removing it, compare its complete organizational purpose, values, steering-committee description, and six “Compassion in Action” priorities against the promoted About, project, volunteer, events, and partner material.
 
-These 13 records contain worthwhile details, but not enough distinct material to justify their own promoted pages.
+The key question is whether a dedicated `/about/our-work` page would preserve meaningful organization-level context that is otherwise scattered or absent, or whether it would mostly duplicate existing public pages. The intentionally hidden `friends-of-sailor-bar` source overlaps at a high level but also contains different operational details: installed benches and tables, interpretive programs, the abandoned deeper-vehicle-access plan, and acknowledgments. That hidden source may inform the comparison, but it must not regain a public archive route.
 
-| Archive record | Words | Recommended destination | Unique information to retain |
-| --- | ---: | --- | --- |
-| `get-involved` | 54 | `/volunteer` | Introductory invitation and organizational context; verify the dated claim about volunteer roles and a planned docent program. |
-| `sailor-bar-history` | 162 | `/history/mining-and-dredging` | Long-toms, trench wording, and historical production/value figures, after verification. |
-| `the-ghost-of-sailor-bar` | 129 | `/history` | 1908 article, September 28, 1977 republication, newspaper context, and cairn folklore. |
-| `grinding-rocks` | 133 | `/history/nisenan-history` | Milling-slick terminology, hardpan explanation, foods processed, and place interpretation; review cultural claims. |
-| `heron-rookeries` | 282 | `/wildlife/birding` | Colonial nesting, breeding season, calls, prey, and disturbance guidance. |
-| `flag-pole` | 105 | `/about/olive-avenue-overlook` | Lt. Stephen D. Moore memorial, plaque, Eagle Scout background, and maintenance tradition. |
-| `american-river-parkway-equestrian-patrol` | 98 | `/partners` | Founding, patrol area, purpose, participation, logo, and external link. |
-| `friends-of-lakes-folsom-and-natoma-folfan` | 148 | `/partners` | Park scope, programs, events, organization status, and link. |
-| `project-pick-up-fishing-line` | 121 | `/partners/waterbird-habitat-project` | Disposal/recycling instructions, rescue phone number, and PVC-bin suggestion. |
-| `sacramento-bird-alliance` | 161 | `/partners`, linked from `/wildlife/birding` | Partner profile, inclusion statement, outings, geography, species claim, image, and credit. |
-| `event-calendar` | 179 | `/events` | Event-series partnership with Regional Parks and its wildlife/history educational scope; do not copy malformed links or obsolete interface instructions. |
-| `real-wildlife-encounters` | 5 | `/events/real-wildlife-encounters` | Preserve its alternate legacy title visibly because the flyer uses a different title. |
-| `photo-gallery` | 21 | `/contact` | Invitation to submit photos; first resolve the conflicting legacy and current email addresses. |
+Any promotion should separately review time-sensitive claims such as the ten-person steering committee, monthly events, named partnerships, and planned accessibility/habitat work. Remove `our-aspiration` from the public allowlist only after the redundancy question and coverage check are resolved.
 
-## Substantial Markdown candidates with clear homes
+## Media-library curation
 
-These 16 public records are useful, largely self-contained, and have a reasonable promoted destination. “Markdown candidate” means the source can be converted faithfully; time-sensitive claims, safety issues, and contradictions still need editorial review before publication.
+`media-library` is a synthetic reference page linking to **40 preserved files**: **32 images and 8 PDFs**. It is not a coherent article.
 
-| Priority | Archive record | Words | Recommended destination | Audit note |
-| ---: | --- | ---: | --- | --- |
-| 1 | `partners-affiliates` | 685 | `/partners` | Natural foundation for a partner directory; preserve all organizations, links, and Parkway Plan PDF. |
-| 2 | `the-elderberry` | 1,178 | `/wildlife/elderberry` | Strong self-contained nature article with Nisenan use, beetle ecology, habitat history, visitor guidance, and three images. |
-| 3 | `859-2` | 851 | `/history/river-changes` | Substantial explanation of channel migration, sediment, dams, incision, armoring, and projected bank failure. |
-| 4 | `chinese-diggings-across-from-sailor-bar` | 599 | `/history/chinese-diggings` | Distinct history and interpretation not covered by the current general history page. |
-| 5 | `remembering-camp-sabadaca` | 318 | `/history/camp-sabadaca` | Complete local-history story with program details, memories, and image. |
-| 6 | `great-horned-owl-nest-east-of-sailor-bar` | 757 | `/wildlife/great-horned-owls` | Strong wildlife article; review or generalize sensitive nest-location information. |
-| 7 | `aerojet-groundwater-pumps` | 319 | `/about/aerojet-groundwater-pumps` | Explains visible infrastructure, contamination history, treatment, agencies, links, and source PDF. |
-| 8 | `our-aspiration` | 425 | `/about/our-work` | Organization purpose, values, steering committee, priorities, partnerships, stewardship work, and educational goals. Verify dated plans. |
-| 9 | `home` | 110 | `/` | Distinctive photo-led introduction, river/greenbelt figures, invocation, and photo credit; avoid duplicating `/about`. |
-| 10 | `american-river-parway-bike-patrol` | 377 | `/partners/american-river-bike-patrol` | Substantial chronology, mission, training, awards, mileage, first aid, repair, and reporting details. |
-| 11 | `fair-oaks-historical-society` | 323 | `/partners/fair-oaks-historical-society` | Founding, museum, publications, local background, mission, and objectives. |
-| 12 | `river-city-waterway-alliance` | 208 | `/partners/river-city-waterway-alliance` | Founding, cleanup work, partnerships, advocacy, outreach, and social links. |
-| 13 | `sacramento-county-regional-parks` | 268 | `/partners/sacramento-county-regional-parks` | Department history, acreage, staffing, programs, purpose, and goals. |
-| 14 | `sacramento-water-forum` | 538 | `/stories/water-forum-2050-agreement`, summarized from `/partners` | Better as a dated organizational development than a timeless partner biography. |
-| 15 | `save-the-american-river-association-sara` | 359 | `/partners/save-the-american-river-association` | Founding, mission, Parkway scope, advocacy, Water Forum role, boards, and litigation. |
-| 16 | `waterbird-habitat` | 299 | `/partners/waterbird-habitat-project` | Complete project origin and work areas; merge the fishing-line fragment. Only place under `/projects` if Friends of Sailor Bar ownership is confirmed. |
+### Files already serving clear public content
 
-### Intentionally hidden source record
+Six PDFs are already linked from promoted pages:
 
-`friends-of-sailor-bar` (228 words) remains in `data/archive.json` but was removed from the public archive at the owner's request. Its unique organizational framing, abandoned-vehicle-plan outcome, and acknowledgments fit `/about/our-work` alongside `our-aspiration`. Promoting those facts elsewhere would not require restoring the excluded archive route.
+- `Ghost-of-Sailor-Bar.pdf`
+- `Sailor-Bar-Brochure-v12a.pdf`
+- `Sailor_Bar_Gold_Dredge_Article.pdf`
+- `sb-sep-19-event-flyer.pdf`
+- `Aerojet-NPDES-Order-R5-2020-0051-002.pdf`
+- `American-River-Parkway-Plan-2008.pdf`
 
-## Material that still needs curation rather than a single home
+Several original images have resized variants used by the homepage or promoted Camp Sabadaca, Chinese Diggings, Nisenan history, birding, owl, boat-launch, and dredging pages. Keep the best-quality originals internally even when the public page uses a smaller derivative.
 
-### `media-library`
+### Images with a likely editorial home
 
-The synthetic media-library record contains links to **40 preserved files**. It is a reference collection, not a coherent article. Only a small subset is currently referenced outside `/archive`.
+- **General Sailor Bar and wildlife photography:** `Day-At-AmerRiverFO-copy-scaled.jpg`, `8-ST-mamababies-scaled.jpg`, `bike-trail-still-water-copy-scaled.jpg`, `deer.jpg`, `glittering-stars.jpg`, `riverwalk3.jpg`, `ST8-woodpecker-scaled.jpg`, `ST9my-salmon.jpg`, and `view-scaled.jpg`. These could selectively support the homepage, About, wildlife, birding, salmon, or Turtle Pond pages; they should not all be added merely to empty the archive.
+- **American River Parkway Heroes/event material:** `eagle-speaker.jpg`, `eagle-speaker2crowd.jpg`, `eagle-speaker3-closeup.jpg`, `john-chart.jpg`, `kathy-k-text.png`, and the two July 8 event screenshots. The photographs and chart could enrich the existing Heroes event/story; the screenshots are probably redundant once their text is represented accessibly.
+- **History:** `San_Juan_Record_1958_02_06_211_copy_2421x1887.jpg` belongs with the remaining Ghost/history decision if its relevance and readable context are confirmed.
+- **Equestrian patrol:** `American-River-Equestrian-Trail-Patrol.png` belongs with the remaining partner fragment if it is still the correct organization graphic.
+- **Bench:** `bench-photo1.jpg` can be compared with the existing bench image and retained only if it adds a distinct useful view.
 
-Recommended treatment:
+### Likely internal-only or redundant files
 
-- Move article-specific images alongside the promoted Elderberry, Chinese Diggings, Camp Sabadaca, owl, partner, and event content.
-- Review the eagle-event flyer and related images when improving `/events/real-wildlife-encounters`.
-- Keep logos, duplicate brochure versions, screenshots, and unexplained variants as archive assets unless a promoted page needs them.
-- Do not expose a general primary-site media dump merely because the files exist.
+- Two alternate brochure versions, `Sailor-Bar-Brochure-v12.pdf` and `Sailor-Bar-Brochure-v14.pdf`, should remain internal until the owner identifies the authoritative public edition. Version `v12a` is currently linked.
+- Five logo/sidebar variants are near-duplicates or legacy presentation assets: `cropped-cropped-Sailor-bar-logo-1.jpg`, `cropped-Sailor-bar-logo-1.jpg`, `cropped-Sailor-bar-logo.jpg`, `Sailor-bar-logo.jpg`, and `Sidebar-Color-SailorBar.png`. Choose at most one if the current text brand is ever replaced; otherwise keep them internal.
+- Low-value screenshots and duplicate generated sizes do not need public pages or links.
 
-## Editorial cautions before promotion
+Do not create a general primary-site download directory solely because the files were preserved. Remove `media-library` from the public allowlist after useful images are placed, authoritative document versions are chosen, and internal-only files are documented.
 
-- Add visible editorial notes for contradictory bench counts and dates rather than silently choosing one source.
-- Verify current organization names, staffing, statistics, programs, plans, contact details, and external links on partner pages.
-- Review Indigenous history and plant-use interpretation with appropriate Nisenan representatives where possible.
-- Avoid publishing precise active nest locations when doing so could increase disturbance.
-- Treat legacy scientific projections, historical dollar conversions, park fees, fishing rules, and regulatory claims as dated source statements until verified.
-- Transcribe the useful information from the Real Wildlife Encounters flyer so visitors do not have to open a PDF to understand the event.
+## Internal preservation and completed promotion
+
+`data/archive.json`, `data/archive-assets.json`, and `data/archive-manifest.json` remain the migration source of truth and should not be pruned with the public routes. Removed archive pages remain available to verification scripts and editors through those internal files, but they neither appear in the public archive index nor resolve as public archive detail pages.
+
+The 15 actionable clear-destination records are now represented by the homepage, six new About/History/Wildlife pages, the new Partners section and its detail pages, and the Water Forum update. `our-aspiration` was deliberately deferred rather than promoted to a possibly redundant `/about/our-work` page.

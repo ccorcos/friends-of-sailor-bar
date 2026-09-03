@@ -78,9 +78,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 /* Home */
 .home {
-  block-size: 100%;
+  block-size: auto;
   padding-block: var(--space);
-  overflow: hidden;
+  overflow: visible;
 }
 h1, h2, p { margin-block-start: 0; }
 .page-intro h1, .updates-intro h1 {
@@ -671,7 +671,12 @@ fieldset { margin: 0; padding: 0; border: 0; }
     overflow: visible;
     padding: 0.75rem 1rem;
   }
-  .about-directory-list > li + li { margin-block-start: 0.2rem; }
+  .about-directory-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 1rem;
+  }
+  .about-directory-list > li + li { margin-block-start: 0; }
   .about-directory a { padding-block: 0.35rem; font-size: 0.875rem; }
   .about-directory li ul {
     margin: 0 0 0.2rem 0.4rem;

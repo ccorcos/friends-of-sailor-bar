@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getPageByPath, getPageNavigation, type PageNavigationItem } from "@/lib/content";
 
-const SECTIONS = ["about", "wildlife", "history"] as const;
+const SECTIONS = ["about", "wildlife", "history", "partners"] as const;
 
 type DirectoryLink = { href: string; label: string };
 type DirectorySection = DirectoryLink & { children: DirectoryLink[] };

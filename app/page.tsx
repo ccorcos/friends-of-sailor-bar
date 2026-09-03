@@ -15,6 +15,36 @@ export default function Home() {
 
   return (
     <div className="home container">
+      <section className="updates-intro" aria-labelledby="home-title">
+        <article className="essay-card">
+          <h1 id="home-title">Friends of Sailor Bar</h1>
+          <div className="feature-image">
+            <Image
+              src="/files/firstrainat-sunrise-scaled-700x300.jpg"
+              alt="The American River at sunrise"
+              fill
+              priority
+              sizes="(max-width: 650px) calc(100vw - 4rem), 40rem"
+            />
+          </div>
+          <p className="meta">Photos courtesy of Janice Kelley</p>
+          <div className="essay-body">
+            <p className="lead">
+              <strong>
+                Rest in my Beauty<br />
+                Walk in my Energy<br />
+                Rejoice in my Being<br />
+                The Way of the River is our Life Force<br />
+                Keep her Wild Forever
+              </strong>
+            </p>
+            <p>
+              The Lower American River flows 23 miles through the Sacramento area within the American River Parkway, a 30-mile protected greenbelt. <strong>This is the only federal- and state-designated wild and scenic river running through an urban area in the US.</strong>
+            </p>
+          </div>
+        </article>
+      </section>
+
       <div className="home-grid">
         <section className="panel">
           <h2>Projects</h2>

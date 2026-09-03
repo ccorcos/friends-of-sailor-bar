@@ -1,4 +1,5 @@
 import archiveData from "@/data/archive.json";
+import publicArchiveSlugs from "@/data/public-archive-slugs.json";
 
 export type ArchiveItem = {
   slug: string;
@@ -10,12 +11,13 @@ export type ArchiveItem = {
   contentHtml: string;
 };
 
-// The source snapshot keeps every imported page. The site owner explicitly
-// removed this one page from the public archive on September 3, 2026.
-const HIDDEN_ARCHIVE_SLUGS = new Set(["friends-of-sailor-bar"]);
+// Keep the complete legacy snapshot in data/archive.json for migration verification.
+// Public archive access is limited to records that still need editorial resolution.
+const PUBLIC_ARCHIVE_SLUGS = new Set<string>(publicArchiveSlugs);
+
 const rawArchiveItems = archiveData as ArchiveItem[];
-export const archiveItems = rawArchiveItems.filter((item) => !HIDDEN_ARCHIVE_SLUGS.has(item.slug));
-export const mediaLibraryItem = rawArchiveItems.find((item) => item.slug === "media-library");
+export const archiveItems = rawArchiveItems.filter((item) => PUBLIC_ARCHIVE_SLUGS.has(item.slug));
+export const mediaLibraryItem = archiveItems.find((item) => item.slug === "media-library");
 
 export const archiveCategories = Array.from(new Set(archiveItems.map((item) => item.category)));
 

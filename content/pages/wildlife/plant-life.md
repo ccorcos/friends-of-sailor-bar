@@ -22,7 +22,7 @@ Here are the key plant species you can find across these habitats:
 
 - **Valley Oak (*Quercus lobata*) & Blue Oak (*Quercus douglasii*)**: Found slightly further back from the water where the soil improves, these long-lived oaks anchor the park’s woodlands.
 - **Coyote Brush (*Baccharis pilularis*)**: A resilient, evergreen native shrub that dominates the transitions between the woodlands and open grasslands.
-- [**Blue Elderberry (*Sambucus cerulea*)**: A large, deciduous shrub that can grow to 6 metres (20 ft) in height and width.](/archive/the-elderberry)
+- [**Blue Elderberry (*Sambucus cerulea*)**: A large, deciduous shrub that can grow to 6 metres (20 ft) in height and width.](/wildlife/elderberry)
 
 ### Wildflowers and Ground Cover
 

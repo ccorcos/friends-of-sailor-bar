@@ -29,6 +29,6 @@ The side channel just east of the boat launch at Sailor Bar Park in Fair Oaks is
 ### Restoration and Community Stewardship
 
 - **Maintenance Challenges:** Occasionally, unauthorized rock barriers are placed across the channel entrance, blocking water flow and trapping juvenile fish.
-- **Volunteer Action:** Local groups like the [Friends of Sailor Bar](/archive/home), working alongside agencies like [Sacramento County Regional Parks](https://regionalparks.saccounty.gov/) and the [Water Forum](https://waterforum.org/), regularly organize community “Rock Off” volunteer events to clear these obstructions and restore natural river flow just in time for the fall salmon runs.
+- **Volunteer Action:** Local groups like the [Friends of Sailor Bar](/), working alongside agencies like [Sacramento County Regional Parks](https://regionalparks.saccounty.gov/) and the [Water Forum](https://waterforum.org/), regularly organize community “Rock Off” volunteer events to clear these obstructions and restore natural river flow just in time for the fall salmon runs.
 
 [Friends of Sailor Bar Rock Off on October 3rd, 2025](https://www.youtube.com/embed/GrdJAOh8QwQ?autoplay=1&mute=1)

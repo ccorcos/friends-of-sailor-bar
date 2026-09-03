@@ -19,13 +19,26 @@ const expectedNav = {
   "about/turtle-pond.md": "Turtle Pond",
   "about/boat-launch.md": "Boat launch",
   "about/olive-avenue-overlook.md": "Olive Avenue overlook",
+  "about/aerojet-groundwater-pumps.md": "Aerojet groundwater pumps",
   "wildlife/index.md": "Wildlife",
   "wildlife/birding.md": "Birding",
   "wildlife/plant-life.md": "Plant life",
   "wildlife/salmon-and-steelhead.md": "Salmon and steelhead",
+  "wildlife/elderberry.md": "Elderberry",
+  "wildlife/great-horned-owls.md": "Great Horned Owls",
   "history/index.md": "History",
   "history/nisenan-history.md": "Nisenan history",
   "history/mining-and-dredging.md": "Mining and dredging",
+  "history/chinese-diggings.md": "Chinese diggings",
+  "history/river-changes.md": "River changes",
+  "history/camp-sabadaca.md": "Camp Sabadaca",
+  "partners/index.md": "Partners",
+  "partners/american-river-bike-patrol.md": "American River Bike Patrol",
+  "partners/fair-oaks-historical-society.md": "Fair Oaks Historical Society",
+  "partners/river-city-waterway-alliance.md": "River City Waterway Alliance",
+  "partners/sacramento-county-regional-parks.md": "Sacramento County Regional Parks",
+  "partners/save-the-american-river-association.md": "Save the American River Association",
+  "partners/waterbird-habitat-project.md": "Waterbird Habitat Project",
 };
 
 const intentionallyOmittedSourceBlocks = {
@@ -40,6 +53,10 @@ const intentionallyOmittedSourceBlocks = {
       "Sailor Bar Gold Rush Legacy",
       "Sailor Bar Native American History",
     ]),
+  },
+  "wildlife/elderberry.md": {
+    // A stray gallery overlay number in the WordPress source is presentation noise.
+    "the-elderberry": new Set(["6"]),
   },
 };
 

@@ -1,11 +1,7 @@
 ---
 title: "How the American River has Changed over Time"
-description: "The current channel of the lower American River is narrower, deeper, and artificially constrained by levees and dams compared to its channel prior to the Gold Rush. Prior to the Gold Rush, the American River frequently changed its course across the valley floor and once flowed through sections of present-day East Sacramento before being artificially redirected toward Sutter’s Landing."
-navTitle: "River changes"
-navOrder: 50
-legacySources:
-  - "859-2"
-draft: false
+image: ""
+order: 50
 ---
 
 The current channel of the lower American River is narrower, deeper, and artificially constrained by levees and dams compared to its channel prior to the Gold Rush. Prior to the Gold Rush, the American River frequently changed its course across the valley floor and once flowed through sections of present-day East Sacramento before being artificially redirected toward Sutter’s Landing.

@@ -1,11 +1,7 @@
 ---
 title: "The Elderberry: An Ancient Plant with an Important Story"
-description: "Along the American River at Sailor Bar, among the willows, oaks and other native plants, grow shrubs that can easily be overlooked. They are blue elderberries—plants with a remarkable connection to the people, wildlife and natural history of the American River."
-navTitle: "Elderberry"
-navOrder: 50
-legacySources:
-  - "the-elderberry"
-draft: false
+image: ""
+order: 50
 ---
 
 Along the American River at Sailor Bar, among the willows, oaks and other native plants, grow shrubs that can easily be overlooked. They are **blue elderberries**—plants with a remarkable connection to the people, wildlife and natural history of the American River.

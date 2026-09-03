@@ -1,14 +1,7 @@
 ---
 title: "Celebrate American River Parkway Heroes"
-publishedAt: "2026-08-20"
-excerpt: "On Saturday morning, July 18th, the Friends of Sailor Bar got together to show our appreciation for the American River Parkway Heroes who keep the ONLY State and Federally…"
 image: "/images/river-sunrise.jpg"
-category: "Community news"
-relatedEvent: "american-river-parkway-heroes-2026"
-relatedProject: ""
-legacySources:
-  - "celebrating-american-river-parkway-heroes"
-draft: false
+publishedAt: "2026-08-20"
 ---
 
 On Saturday morning, July 18th, the Friends of Sailor Bar got together to show our appreciation for the American River Parkway Heroes who keep the ONLY State and Federally designated Wild and Scenic River running through an urban environment safe, clean and wild and scenic!

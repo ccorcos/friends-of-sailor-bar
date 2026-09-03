@@ -21,7 +21,6 @@ type CacheEntry = {
 };
 
 const markdownCache = new Map<string, CacheEntry>();
-const draftCache = new Map<string, { fingerprint: string; draft: boolean }>();
 const SAFE_PART = /^[A-Za-z0-9][A-Za-z0-9_-]*$/;
 
 export class ContentError extends Error {
@@ -58,27 +57,6 @@ function canonicalContainedFile(filePath: string): { canonicalPath: string; stat
   const stat = fs.statSync(canonicalPath);
   if (!stat.isFile()) throw new ContentError("Content path is not a file", filePath);
   return { canonicalPath, stat };
-}
-
-export function markdownFileIsDraft(filePath: string): boolean {
-  let canonicalPath: string;
-  let stat: fs.Stats;
-  try {
-    ({ canonicalPath, stat } = canonicalContainedFile(filePath));
-  } catch (error) {
-    if (error instanceof ContentError) throw error;
-    throw new ContentError("Unable to inspect content file", filePath, { cause: error });
-  }
-
-  const fingerprint = `${canonicalPath}:${stat.mtimeMs}:${stat.ctimeMs}:${stat.size}`;
-  const cached = draftCache.get(filePath);
-  if (cached?.fingerprint === fingerprint) return cached.draft;
-
-  const raw = fs.readFileSync(canonicalPath, "utf8");
-  const frontmatter = raw.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)?.[1] ?? "";
-  const draft = /^draft:\s*true\s*(?:#.*)?$/im.test(frontmatter);
-  draftCache.set(filePath, { fingerprint, draft });
-  return draft;
 }
 
 export function readMarkdownSource(filePath: string): MarkdownSource {
@@ -173,5 +151,4 @@ export function markdownFileExists(filePath: string): boolean {
 
 export function clearContentCache(): void {
   markdownCache.clear();
-  draftCache.clear();
 }

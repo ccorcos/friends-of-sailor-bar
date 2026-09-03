@@ -67,7 +67,7 @@ Content currently comes from four different mechanisms:
 
 Markdown would give these content types one editing model, one renderer, and one validation path. It also removes editorial content from database migrations and TypeScript bundles.
 
-The faithful `/archive` snapshot should remain independent during this migration. It is the permanent source record required by the migration policy. Promoted Markdown pages can carry `legacySources` metadata and be checked for coverage without weakening or replacing the archive.
+The faithful `/archive` snapshot should remain independent during this migration. It is the permanent source record required by the migration policy. Verification scripts keep promoted-page source mappings outside the author-facing Markdown frontmatter.
 
 ## Proposed content contracts
 
@@ -93,13 +93,8 @@ Upcoming versus past remains computed from the ISO date in the `America/Los_Ange
 ```md
 ---
 title: "Butterfly Sanctuary"
-shortTitle: "Butterfly Sanctuary"
-summary: "Creating habitat for monarchs and California pipevine swallowtails."
 image: "/media/projects/butterfly-sanctuary/hero.jpg"
-status: "planning"
 order: 20
-featured: true
-draft: false
 ---
 
 Full project detail goes here.
@@ -110,14 +105,8 @@ Full project detail goes here.
 ```md
 ---
 title: "A more welcoming path to Turtle Pond"
-publishedAt: "2026-08-24"
-excerpt: "Our vision for a gentler, more accessible nature walk."
-category: "Project update"
 image: "/media/updates/welcoming-path-turtle-pond/hero.jpg"
-relatedEvent: ""
-relatedProject: "accessible-turtle-pond-walk"
-legacySources: []
-draft: false
+publishedAt: "2026-08-24"
 ---
 
 Full update goes here.
@@ -125,23 +114,19 @@ Full update goes here.
 
 The content directory can be named `updates` while the existing public route remains `/stories`. Alternatively, `/updates` can become canonical with permanent redirects from `/stories` and `/stories/[slug]`. That URL decision is independent of the storage migration.
 
-### About, wildlife, and history pages
+### About, wildlife, history, and partner pages
 
 ```md
 ---
 title: "Boat Launch"
-description: "Boat launch information for Sailor Bar."
-navTitle: "Boat launch"
-navOrder: 50
-legacySources:
-  - "boat-launch"
-draft: false
+image: ""
+order: 50
 ---
 
 Page body goes here.
 ```
 
-`index.md` maps to the section root. Other filenames map to child routes. The about-directory navigation can be assembled from `navTitle` and `navOrder`, removing its current hardcoded link list.
+`index.md` maps to the section root. Other filenames map to child routes. The about-directory navigation is assembled from each page's `title` and `order`.
 
 ## Runtime loading and caching
 
@@ -251,12 +236,12 @@ Events provide the highest-value first migration because their data is currently
 
 - Convert `lib/projects.ts` to project files.
 - Switch project indexes, detail pages, and homepage selection to collection queries.
-- Replace the current hardcoded homepage project slugs with `featured` plus `order`, or retain an explicit homepage order in frontmatter.
+- Render the first five projects by `order` on the homepage.
 
 ### Phase 4: Updates
 
 - Convert native SQLite posts first.
-- Convert promoted legacy updates carefully, retaining complete source content and `legacySources` references.
+- Convert promoted legacy updates carefully, retaining complete source content and verification mappings outside frontmatter.
 - Keep `/archive/[slug]` untouched and verify promoted-page coverage against it.
 
 ### Phase 5: About, wildlife, and history
@@ -279,12 +264,12 @@ Migrating `data/archive.json` itself should be a separate, optional project. The
 | --- | --- |
 | Next.js prerenders a content route | Explicitly make every dependent route dynamic and verify response cache headers after production build. |
 | New media is invisible without restart | Serve `content/media` through a dynamic Route Handler rather than `public`. |
-| Invalid YAML takes down a page | Strict schemas, actionable errors, `content:validate`, and draft/template exclusion. |
+| Invalid YAML takes down a page | Strict schemas, actionable errors, `content:validate`, and template/underscore-prefixed file exclusion. |
 | An edit is read halfway through a write | Encourage atomic saves/renames; retain the last valid cached document if a transient parse fails and log the error. |
-| Legacy details are lost during conversion | Keep `/archive`, retain `legacySources`, and extend migration verification before removing old sources. |
+| Legacy details are lost during conversion | Keep `/archive` and external source mappings, and extend migration verification before removing old sources. |
 | Route and filename disagree | Derive slug exclusively from the relative filename. |
 | Runtime deployment cannot see the files | Keep the current working-tree deployment or mount `content/` in future immutable deployments. |
-| Links or relationships point nowhere | Validate local links, related slugs, and media paths across all collections. |
+| Links point nowhere | Validate local links and media paths across all collections. |
 
 ## Scope assessment
 

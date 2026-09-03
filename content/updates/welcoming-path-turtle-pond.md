@@ -1,14 +1,7 @@
 ---
 title: "Turtle Pond"
-publishedAt: "2026-08-30"
-excerpt: "Discover Turtle Pond at Sailor Bar: A Peaceful Haven in Fair Oaks Tucked away at the northern end of Sailor Bar Park along the American River Parkway, Turtle Pond offers…"
 image: "/images/river-overlook.jpg"
-category: "Project update"
-relatedEvent: ""
-relatedProject: "accessible-turtle-pond-walk"
-legacySources:
-  - "turtle-pond"
-draft: false
+publishedAt: "2026-08-30"
 ---
 
 **Discover Turtle Pond at Sailor Bar: A Peaceful Haven in Fair Oaks**

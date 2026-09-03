@@ -10,8 +10,8 @@ export type ContentPageProps = {
 };
 
 /**
- * Loads a Markdown page at request time. Missing and draft paths resolve to
- * `undefined`; malformed published files remain visible as authoring errors.
+ * Loads a Markdown page at request time. Missing paths resolve to `undefined`;
+ * malformed files remain visible as authoring errors.
  */
 export function findContentPage(section: string, segments: readonly string[] = []): PageDocument | undefined {
   // Keep one canonical URL per document: `index.md` is only reachable as the
@@ -25,7 +25,6 @@ export function contentPageMetadata(section: string, segments: readonly string[]
   if (!page) return { title: "Page not found" };
   return {
     title: page.title,
-    description: page.description,
     // Next normalizes an optional catch-all's `/section/index` request onto the
     // section root, so point every page at its one canonical URL.
     alternates: { canonical: page.href },

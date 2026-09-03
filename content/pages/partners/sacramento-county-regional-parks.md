@@ -1,11 +1,7 @@
 ---
 title: "Sacramento County Regional Parks"
-description: "Sacramento County’s Department of Regional Parks maintains and operates more than 15,000 acres of parks throughout the County."
-navTitle: "Sacramento County Regional Parks"
-navOrder: 40
-legacySources:
-  - "sacramento-county-regional-parks"
-draft: false
+image: ""
+order: 40
 ---
 
 Sacramento County’s [Department of Regional Parks](https://regionalparks.saccounty.gov/us/en.html#gsc.tab=0) maintains and operates more than 15,000 acres of parks throughout the County. Our open spaces, multi-use trails, sports facilities, golf courses, river access and picnic areas offer outdoor adventure for every taste. We have developed strong partnerships with our volunteer and non-profit partners, with steady support from our elected officials. The heart and soul of our operations is our people – more than​ one hundred employees who keep our parks safe, vibrant and inviting.

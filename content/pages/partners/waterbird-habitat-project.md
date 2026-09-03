@@ -1,11 +1,7 @@
 ---
 title: "The Waterbird Habitat Project"
-description: "Wherever angling overlaps with wildlife habitats, fishing gear injuries and deaths occur."
-navTitle: "Waterbird Habitat Project"
-navOrder: 60
-legacySources:
-  - "waterbird-habitat"
-draft: false
+image: ""
+order: 60
 ---
 
 Wherever angling overlaps with wildlife habitats, fishing gear injuries and deaths occur. Waterbirds such as herons, egrets, cormorants, ducks, and geese mistake discarded fishing line and hooks for food, leading to fatal entanglement or internal injuries. Other wildlife, including beavers, otters, and river mammals, can also become trapped, suffering exhaustion and eventual death.

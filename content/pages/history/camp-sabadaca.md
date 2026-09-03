@@ -1,11 +1,7 @@
 ---
 title: "Remembering Camp Sabadaca"
-description: "Camp Sabadaca is the name for the Sailor Bar Day Camp which was operated at Sailor Bar in the 1980’s by the Fair Oaks Recreation and Park District (FORPD). Camp Sabadaca emphasized nature and outdoor activities, catering to children and families in the Fair Oaks area."
-navTitle: "Camp Sabadaca"
-navOrder: 60
-legacySources:
-  - "remembering-camp-sabadaca"
-draft: false
+image: ""
+order: 60
 ---
 
 Camp Sabadaca is the name for the Sailor Bar Day Camp which was operated at Sailor Bar in the 1980’s by the Fair Oaks Recreation and Park District (FORPD). Camp Sabadaca emphasized nature and outdoor activities, catering to children and families in the Fair Oaks area.

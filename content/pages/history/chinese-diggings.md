@@ -1,11 +1,7 @@
 ---
 title: "Chinese Diggings Across from Sailor Bar"
-description: "Look across the American River from Sailor Bar toward the steep bluff on the opposite bank. Among the trees and vegetation, you can see a series of narrow cuts and deep, vertical openings in the face of the bluff."
-navTitle: "Chinese diggings"
-navOrder: 40
-legacySources:
-  - "chinese-diggings-across-from-sailor-bar"
-draft: false
+image: ""
+order: 40
 ---
 
 ## A Gold Rush Legacy Visible from Sailor Bar

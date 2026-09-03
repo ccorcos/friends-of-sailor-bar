@@ -1,11 +1,7 @@
 ---
 title: "Gold Dredging along the Lower American River"
-description: "By the late 1800s and early 1900s, easily accessible gold had largely been depleted. Mining companies turned to a new method: gold dredging, which dramatically reshaped areas like Sailor Bar."
-navTitle: "Mining and dredging"
-navOrder: 30
-legacySources:
-  - "gold-dredging-industrial-mining-on-a-massive-scale"
-draft: false
+image: ""
+order: 30
 ---
 
 By the late 1800s and early 1900s, easily accessible gold had largely been depleted. Mining companies turned to a new method: **gold dredging**, which dramatically reshaped areas like Sailor Bar.

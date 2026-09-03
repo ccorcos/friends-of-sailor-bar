@@ -23,16 +23,22 @@ ${options.body ?? "**Safe Markdown** [Details](/details) <script>alert('unsafe')
 function projectMarkdown(title: string): string {
   return `---
 title: ${JSON.stringify(title)}
-shortTitle: ${JSON.stringify(title)}
-summary: "A test project."
 image: "/media/project.jpg"
-status: "planning"
 order: 1
-featured: true
-draft: false
 ---
 
 Project body.
+`;
+}
+
+function updateMarkdown(title: string, extra = ""): string {
+  return `---
+title: ${JSON.stringify(title)}
+image: ""
+publishedAt: "2099-01-01"
+${extra}---
+
+Update body.
 `;
 }
 
@@ -52,9 +58,10 @@ test("runtime content loading, caching, validation, and media serving", async ()
     fs.writeFileSync(path.join(temporaryRoot, "content", "events", "index.md"), "---\ntitle: Events\n---\n\nIndex body.\n");
     fs.writeFileSync(path.join(temporaryRoot, "content", "events", "__template.md"), eventMarkdown("Template"));
     fs.writeFileSync(path.join(temporaryRoot, "content", "projects", "project.md"), projectMarkdown("Project"));
-    fs.writeFileSync(path.join(temporaryRoot, "content", "projects", "index.md"), "---\ntitle: Projects\ndraft: false\n---\n");
-    fs.writeFileSync(path.join(temporaryRoot, "content", "pages", "about", "index.md"), "---\ntitle: About\ndescription: About page\nnavTitle: About\nnavOrder: 1\ndraft: false\n---\n\nAbout body.\n");
-    fs.writeFileSync(path.join(temporaryRoot, "content", "pages", "about", "visit.md"), "---\ntitle: Visit\ndescription: Visit page\nnavTitle: Visit\nnavOrder: 2\ndraft: false\n---\n\nVisit body.\n");
+    fs.writeFileSync(path.join(temporaryRoot, "content", "projects", "index.md"), "---\ntitle: Projects\n---\n");
+    fs.writeFileSync(path.join(temporaryRoot, "content", "updates", "update.md"), updateMarkdown("Update"));
+    fs.writeFileSync(path.join(temporaryRoot, "content", "pages", "about", "index.md"), "---\ntitle: About\nimage: \"\"\norder: 1\n---\n\nAbout body.\n");
+    fs.writeFileSync(path.join(temporaryRoot, "content", "pages", "about", "visit.md"), "---\ntitle: Visit\nimage: \"\"\norder: 2\n---\n\nVisit body.\n");
 
     process.chdir(temporaryRoot);
     const loaderUrl = pathToFileURL(path.join(repositoryRoot, "lib", "content", "index.ts")).href;
@@ -120,9 +127,16 @@ test("runtime content loading, caching, validation, and media serving", async ()
     assert.throws(() => content.getEventBySlug("link"), /escapes the content root/);
 
     assert.equal(content.getProjects()[0].title, "Project");
+    assert.equal(content.getUpdates()[0].title, "Update");
     assert.equal(content.getCollectionIndex("projects")?.title, "Projects");
     assert.equal(content.getPageByPath("about")?.href, "/about");
     assert.deepEqual(content.getPageNavigation("about").map((item: { href: string }) => item.href), ["/about/visit"]);
+
+    fs.writeFileSync(path.join(temporaryRoot, "content", "projects", "removed-field.md"), projectMarkdown("Removed field").replace("order: 1\n", "order: 1\nsummary: \"Removed\"\n"));
+    assert.throws(() => content.getProjectBySlug("removed-field"), /Invalid frontmatter/);
+    fs.writeFileSync(path.join(temporaryRoot, "content", "updates", "removed-field.md"), updateMarkdown("Removed field", "excerpt: \"Removed\"\n"));
+    assert.throws(() => content.getUpdateBySlug("removed-field"), /Invalid frontmatter/);
+
     assert.equal(content.getSailorBarDate(new Date("2026-09-03T12:00:00Z")), "2026-09-03");
 
     const mediaPath = path.join(temporaryRoot, "content", "media", "events", "test.png");

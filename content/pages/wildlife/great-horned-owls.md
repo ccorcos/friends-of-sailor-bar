@@ -1,11 +1,7 @@
 ---
 title: "Great Horned Owl Nest East of Sailor Bar"
-description: "The steep bluffs above the river just to the east of the Sailor Bar Boat Launch are home to a remarkable sight—a nesting cavity used by a Great Horned Owl."
-navTitle: "Great Horned Owls"
-navOrder: 60
-legacySources:
-  - "great-horned-owl-nest-east-of-sailor-bar"
-draft: false
+image: ""
+order: 60
 ---
 
 > **Editorial note:** This page preserves a legacy report about a nesting site; it is not a claim that a nest is currently occupied. Never approach, climb toward, call to, shine lights on, or otherwise disturb nesting wildlife. Observe wildlife from a respectful distance and follow all posted closures and guidance.

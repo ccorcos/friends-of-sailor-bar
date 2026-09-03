@@ -1,11 +1,7 @@
 ---
 title: "Aerojet Groundwater Pumps"
-description: "Beneath the peaceful trails and riverbanks of Sailor Bar Park in Fair Oaks lies a vital, hidden environmental safeguarding effort: the Sailor Bar groundwater extraction and treatment infrastructure operated by Aerojet Rocketdyne. While visitors come to Sailor Bar to hike, raft, and fish, parts of the park play an active role in the multi-decade cleanup of the neighboring Aerojet Superfund Site."
-navTitle: "Aerojet groundwater pumps"
-navOrder: 80
-legacySources:
-  - "aerojet-groundwater-pumps"
-draft: false
+image: ""
+order: 80
 ---
 
 ## Protecting the American River: The Aerojet Groundwater Pumping Systems at Sailor Bar

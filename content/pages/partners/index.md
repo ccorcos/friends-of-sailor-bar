@@ -1,11 +1,7 @@
 ---
 title: "Our Partners"
-description: "We are proud to work with and be supported by our community partners and affiliate groups as we all promote the value of the natural world in our communities."
-navTitle: "Partners"
-navOrder: 40
-legacySources:
-  - "partners-affiliates"
-draft: false
+image: ""
+order: 40
 ---
 
 We are proud to work with and be supported by our community partners and affiliate groups as we all promote the value of the natural world in our communities.

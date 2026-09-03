@@ -9,9 +9,7 @@ import { formatDate } from "@/lib/format";
 export default function Home() {
   const events = getUpcomingEvents(3);
   const updates = getUpdates(3);
-  const featuredProjects = getProjects()
-    .filter((project) => project.featured)
-    .sort((a, b) => (a.featuredOrder ?? a.order) - (b.featuredOrder ?? b.order));
+  const featuredProjects = getProjects().slice(0, 5);
 
   return (
     <div className="home container">
@@ -30,10 +28,10 @@ export default function Home() {
                     <span className="thumbnail">
                       <Image src={project.image} alt="" fill unoptimized={project.image.startsWith("/media/")} sizes="(max-width: 900px) 25vw, 10vw" />
                     </span>
-                    <span><strong>{project.title}</strong><small>{project.summary}</small></span>
+                    <span><strong>{project.title}</strong></span>
                   </>
                 ) : (
-                  <><strong>{project.title}</strong><span>{project.summary}</span></>
+                  <strong>{project.title}</strong>
                 )}
               </Link>
             ))}
@@ -82,7 +80,6 @@ export default function Home() {
               >
                 <small>{formatDate(update.publishedAt, { month: "short", day: "numeric", year: "numeric" })}</small>
                 <strong>{update.title}</strong>
-                <span>{update.excerpt}</span>
               </Link>
             ))}
           </div>

@@ -33,7 +33,7 @@ export default function StoriesPage() {
           {updates.map((update) => {
             const href = `/stories/${update.slug}`;
             const dateLabel = formatDate(update.publishedAt, { month: "long", day: "numeric", year: "numeric" });
-            const showImage = update.legacySources.length === 0 && Boolean(update.image);
+            const showImage = Boolean(update.image);
 
             return (
               <article className={`image-card${showImage ? "" : " legacy-text-card"}`} key={update.slug}>
@@ -49,7 +49,6 @@ export default function StoriesPage() {
                 <div className="card-copy">
                   <p className="meta">{dateLabel}</p>
                   <h2><Link href={href}>{update.title}</Link></h2>
-                  <p>{update.excerpt}</p>
                   <Link className="detail-link" href={href} aria-label={`Read ${update.title}`}>
                     Read update <ArrowRight aria-hidden="true" />
                   </Link>

@@ -1,11 +1,7 @@
 ---
 title: "Salmon and Steelhead Runs at Sailor Bar"
-description: "Each fall, Chinook salmon return from the Pacific Ocean to the American River to spawn, typically from September through November. Steelhead trout make a similar journey during winter months."
-navTitle: "Salmon and steelhead"
-navOrder: 40
-legacySources:
-  - "nature-study"
-draft: false
+image: ""
+order: 40
 ---
 
 Each fall, Chinook salmon return from the Pacific Ocean to the American River to spawn, typically from September through November. Steelhead trout make a similar journey during winter months. **Sailor Bar is one of the best locations on the river to watch the Chinook and Steelhead runs.**

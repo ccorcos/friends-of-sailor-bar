@@ -1,11 +1,7 @@
 ---
 title: "Plant Life"
-description: "The diverse plant life documented on the Sailor Bar Biodiversity Project on iNaturalist spans several distinct ecological zones, from moist riverbanks to dry upland gravel tailings."
-navTitle: "Plant life"
-navOrder: 30
-legacySources:
-  - "plant-life"
-draft: false
+image: ""
+order: 30
 ---
 
 The diverse plant life documented on the [Sailor Bar Biodiversity Project on iNaturalist](https://www.inaturalist.org/projects/sailor-bar-biodiversity) spans several distinct ecological zones, from moist riverbanks to dry upland gravel tailings.

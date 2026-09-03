@@ -1,11 +1,7 @@
 ---
 title: "Native American History"
-description: "For thousands of years, the lower American River was home to the Nisenan people — village-based communities whose lives were woven into the rhythms of the river."
-navTitle: "Nisenan history"
-navOrder: 20
-legacySources:
-  - "native-american-history"
-draft: false
+image: ""
+order: 20
 ---
 
 ![bedrock mortars on the shoreline of Sailor Bar](/files/Grinding-Rocks-at-Sailor-Bar.jpg)

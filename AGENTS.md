@@ -123,7 +123,7 @@ Do not replace dedicated routes with `/#volunteer`, `/#updates`, or generic link
 - `scripts/verify-legacy-content.mjs` — Checks archive page coverage, hashes, and local media
 - `scripts/verify-event-content.mjs` — Checks complete event Markdown, source mappings, links, and structured details
 - `scripts/verify-promoted-markdown.mjs` — Checks promoted page coverage against the faithful archive
-- `scripts/verify-update-content.mjs` — Checks complete update Markdown, source mappings, media, links, and published title/date/excerpt choices
+- `scripts/verify-update-content.mjs` — Checks complete update Markdown, external source mappings, media, links, and published title/date/image choices
 - `data/sailorbar.db` — Runtime SQLite database; intentionally ignored by Git
 - `sailorbar.service` — Production systemd service
 
@@ -140,8 +140,8 @@ Editorial content lives in Markdown under `content/`. Events are classified as u
 
 - Slugs must be lowercase, stable, and hyphen-separated.
 - Link cards directly to their detail route.
-- Use concise excerpts on indexes for navigation and complete, faithful legacy copy on migrated detail pages.
-- Verify dates, times, locations, spelling, and project status before publishing.
+- Keep index cards concise and preserve complete, faithful legacy copy on migrated detail pages.
+- Verify dates, times, locations, spelling, and project details before publishing.
 - Do not invent confirmed partners, funding, schedules, or project approvals.
 - Current project themes are accessibility, butterfly habitat, visitor water/native planting, oak planting, and a riverside native meadow.
 
@@ -149,10 +149,10 @@ Editorial content lives in Markdown under `content/`. Events are classified as u
 
 - Store events, projects, and updates in `content/events`, `content/projects`, and `content/updates`; store promoted section pages in `content/pages/<section>`.
 - The filename is the canonical lowercase, hyphen-separated slug. Do not add a frontmatter `slug` field.
-- Copy the collection's `__template.md` and fill in the schema-required frontmatter. Event files publish immediately, so keep work-in-progress event filenames underscore-prefixed until ready. Projects and updates use `draft: true` during review. Templates and underscore-prefixed notes are ignored by public item loaders.
+- Copy the collection's `__template.md` and fill in the schema-required frontmatter. Event, project, update, and promoted page files publish immediately, so keep work-in-progress filenames underscore-prefixed until ready. Templates and underscore-prefixed notes are ignored by public loaders.
 - Put the page title in frontmatter; Markdown bodies must not contain a level-one heading. Use standard Markdown; raw HTML is not part of the supported content contract.
 - To embed a YouTube video, put a normal Markdown link to its `youtube.com/watch`, `youtu.be`, `youtube.com/embed`, Shorts, or Live URL in its own paragraph. Use descriptive link text because it becomes the iframe title. The renderer converts only standalone YouTube links into responsive, privacy-enhanced embeds; YouTube links within a sentence remain ordinary links. Do not paste raw `<iframe>` HTML into Markdown.
-- Use `relatedEvent` and `relatedProject` only for existing public slugs. Put event links, PDFs, venue details, and related records directly in the event Markdown body. Run `npm run content:validate` after content, frontmatter, relationship, or media changes.
+- Put event links, PDFs, venue details, and related records directly in the Markdown body. Run `npm run content:validate` after content, frontmatter, or media changes.
 - Keep immutable existing assets in `public/images` and `public/files`. New editable assets belong in `content/media` and are referenced as `/media/...`; the runtime media route serves them without exposing Markdown or directory listings.
 
 The Markdown loader reads files at request time and caches each parsed file by modification metadata. Content-dependent routes must stay dynamic and must not use `generateStaticParams`. The current systemd deployment runs from the working tree; future immutable deployments must mount `content/` as runtime storage.

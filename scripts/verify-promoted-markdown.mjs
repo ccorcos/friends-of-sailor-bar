@@ -14,31 +14,31 @@ const pagesRoot = join(root, "content", "pages");
 const archive = JSON.parse(readFileSync(join(root, "data", "archive.json"), "utf8"));
 const bySlug = new Map(archive.map((item) => [item.slug, item]));
 
-const expectedNav = {
-  "about/index.md": "About Sailor Bar",
-  "about/turtle-pond.md": "Turtle Pond",
-  "about/boat-launch.md": "Boat launch",
-  "about/olive-avenue-overlook.md": "Olive Avenue overlook",
-  "about/aerojet-groundwater-pumps.md": "Aerojet groundwater pumps",
-  "wildlife/index.md": "Wildlife",
-  "wildlife/birding.md": "Birding",
-  "wildlife/plant-life.md": "Plant life",
-  "wildlife/salmon-and-steelhead.md": "Salmon and steelhead",
-  "wildlife/elderberry.md": "Elderberry",
-  "wildlife/great-horned-owls.md": "Great Horned Owls",
-  "history/index.md": "History",
-  "history/nisenan-history.md": "Nisenan history",
-  "history/mining-and-dredging.md": "Mining and dredging",
-  "history/chinese-diggings.md": "Chinese diggings",
-  "history/river-changes.md": "River changes",
-  "history/camp-sabadaca.md": "Camp Sabadaca",
-  "partners/index.md": "Partners",
-  "partners/american-river-bike-patrol.md": "American River Bike Patrol",
-  "partners/fair-oaks-historical-society.md": "Fair Oaks Historical Society",
-  "partners/river-city-waterway-alliance.md": "River City Waterway Alliance",
-  "partners/sacramento-county-regional-parks.md": "Sacramento County Regional Parks",
-  "partners/save-the-american-river-association.md": "Save the American River Association",
-  "partners/waterbird-habitat-project.md": "Waterbird Habitat Project",
+const knownPages = {
+  "about/index.md": ["about-sailor-bar", "recreation", "amenities", "friends-of-sailor-bar-brochure-and-map"],
+  "about/turtle-pond.md": ["turtle-pond"],
+  "about/boat-launch.md": ["boat-launch"],
+  "about/olive-avenue-overlook.md": ["olive-avenue-river-overlook"],
+  "about/aerojet-groundwater-pumps.md": ["aerojet-groundwater-pumps"],
+  "wildlife/index.md": ["wildlife"],
+  "wildlife/birding.md": ["birding-at-sailor-bar"],
+  "wildlife/plant-life.md": ["plant-life"],
+  "wildlife/salmon-and-steelhead.md": ["nature-study"],
+  "wildlife/elderberry.md": ["the-elderberry"],
+  "wildlife/great-horned-owls.md": ["great-horned-owl-nest-east-of-sailor-bar"],
+  "history/index.md": ["a-detailed-history-of-sailor-bar"],
+  "history/nisenan-history.md": ["native-american-history"],
+  "history/mining-and-dredging.md": ["gold-dredging-industrial-mining-on-a-massive-scale"],
+  "history/chinese-diggings.md": ["chinese-diggings-across-from-sailor-bar"],
+  "history/river-changes.md": ["859-2"],
+  "history/camp-sabadaca.md": ["remembering-camp-sabadaca"],
+  "partners/index.md": ["partners-affiliates"],
+  "partners/american-river-bike-patrol.md": ["american-river-parway-bike-patrol"],
+  "partners/fair-oaks-historical-society.md": ["fair-oaks-historical-society"],
+  "partners/river-city-waterway-alliance.md": ["river-city-waterway-alliance"],
+  "partners/sacramento-county-regional-parks.md": ["sacramento-county-regional-parks"],
+  "partners/save-the-american-river-association.md": ["save-the-american-river-association-sara"],
+  "partners/waterbird-habitat-project.md": ["waterbird-habitat"],
 };
 
 const intentionallyOmittedSourceBlocks = {
@@ -190,7 +190,7 @@ if (!existsSync(pagesRoot)) {
 }
 
 const files = walk(pagesRoot);
-for (const expected of Object.keys(expectedNav)) {
+for (const expected of Object.keys(knownPages)) {
   if (!existsSync(join(pagesRoot, expected))) errors.push(`Expected page file is missing: content/pages/${expected}`);
 }
 
@@ -204,21 +204,20 @@ for (const file of files) {
     continue;
   }
 
-  for (const key of ["title", "navTitle", "navOrder", "legacySources", "draft"]) {
+  for (const key of ["title", "image", "order"]) {
     if (!(key in data)) errors.push(`${label}: frontmatter is missing "${key}"`);
   }
-  if ("slug" in data) errors.push(`${label}: frontmatter must not define "slug" (filename is canonical)`);
-  if (data.draft !== false) errors.push(`${label}: expected draft: false`);
-  if (typeof data.navOrder !== "number") errors.push(`${label}: navOrder must be a number`);
-  if (expectedNav[rel] && data.navTitle !== expectedNav[rel]) {
-    errors.push(`${label}: navTitle "${data.navTitle}" does not match current navigation label "${expectedNav[rel]}"`);
+  for (const key of Object.keys(data)) {
+    if (!["title", "image", "order"].includes(key)) errors.push(`${label}: unknown frontmatter field "${key}"`);
   }
+  if ("slug" in data) errors.push(`${label}: frontmatter must not define "slug" (filename is canonical)`);
+  if (typeof data.order !== "number") errors.push(`${label}: order must be a number`);
   if (/^\s{0,3}#\s/m.test(body)) errors.push(`${label}: body contains a level-one heading; the title comes from frontmatter`);
   if (/<[a-z][^>]*>/i.test(body.replace(/`[^`]*`/g, ""))) warnings.push(`${label}: body contains raw HTML`);
 
-  const sources = Array.isArray(data.legacySources) ? data.legacySources : [];
-  if (sources.length === 0) {
-    warnings.push(`${label}: no legacySources; coverage not checked`);
+  const sources = knownPages[rel];
+  if (!sources) {
+    errors.push(`${label}: page is missing from the promoted source map`);
     continue;
   }
 

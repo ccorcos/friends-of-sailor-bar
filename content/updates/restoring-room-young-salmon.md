@@ -1,15 +1,7 @@
 ---
 title: "Friends of Sailor Bar Rock Off on October 3rd, 2025"
-publishedAt: "2026-08-20"
-excerpt: "In September of 2019, a 1,400-foot side channel was carved into the north bank of the American River immediately below the Nimbus Dam by Water Forum, U.S. Bureau of…"
 image: "/images/geese.jpg"
-category: "Stewardship"
-relatedEvent: "friends-of-sailor-bar-rock-off"
-relatedProject: ""
-legacySources:
-  - "friends-of-sailor-bar-rock-off-on-october-3rd-2025"
-  - "side-channel"
-draft: false
+publishedAt: "2026-08-20"
 ---
 
 In September of 2019, a 1,400-foot side channel was carved into the north bank of the American River immediately below the Nimbus Dam by Water Forum, U.S. Bureau of Reclamation, and U.S. Fish and Wildlife Service, in cooperation with California Dept of Fish and Wildlife and SAFCA. The channel was designed to provide much needed cover for young Salmon as well as some spawning areas. In 2025, Friends of Sailor Bar discovered that unknown visitors had piled large numbers of rocks within the channel, creating physical barriers to the flow of water and hindering or preventing fish from swimming through, and rendering the channel nearly unusable by juvenile salmon. Working together with Sacramento County Parks, the Water Forum, and the California Department of Fish and Wildlife, Friends of Sailor Bar, together with volunteers from several organizations dedicated to preserving and protecting the river, undertook the removal of the rock barriers. On October 3rd, 2025, some 2 dozen volunteers worked together joyously, hand to hand, dispersing the rocks and eventually restoring the flow of the channel. This cooperative undertaking demonstrates how the broader community can work together to accomplish important restoration.

@@ -6,14 +6,14 @@ const SECTIONS = ["about", "wildlife", "history", "partners"] as const;
 type DirectoryLink = { href: string; label: string };
 type DirectorySection = DirectoryLink & { children: DirectoryLink[] };
 
-function toLink(item: Pick<PageNavigationItem, "href" | "title" | "navTitle">): DirectoryLink {
-  return { href: item.href, label: item.navTitle ?? item.title };
+function toLink(item: Pick<PageNavigationItem, "href" | "title">): DirectoryLink {
+  return { href: item.href, label: item.title };
 }
 
 /**
- * Builds the directory from Markdown frontmatter at request time so a new file
- * with `navTitle` appears without a rebuild. Section roots live in `index.md`,
- * which `getPageNavigation` deliberately omits, so they are loaded directly.
+ * Builds the directory from Markdown frontmatter at request time so new pages
+ * appear without a rebuild. Section roots live in `index.md`, which
+ * `getPageNavigation` deliberately omits, so they are loaded directly.
  */
 function buildSections(): DirectorySection[] {
   return SECTIONS.flatMap((section): DirectorySection[] => {

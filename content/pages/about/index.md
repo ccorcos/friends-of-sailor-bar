@@ -1,14 +1,7 @@
 ---
 title: "About Sailor Bar"
-description: "Come Discover the Wildlife, Hiking Trails, Scenic Views, History and Wonders of the Outdoor World at Sailor Bar!"
-navTitle: "About Sailor Bar"
-navOrder: 10
-legacySources:
-  - "about-sailor-bar"
-  - "recreation"
-  - "amenities"
-  - "friends-of-sailor-bar-brochure-and-map"
-draft: false
+image: ""
+order: 10
 ---
 
 ### Come Discover the Wildlife, Hiking Trails, Scenic Views, History and Wonders of the Outdoor World at Sailor Bar!

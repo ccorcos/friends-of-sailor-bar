@@ -1,11 +1,7 @@
 ---
 title: "A Detailed History of Sailor Bar"
-description: "Sailor Bar, on the American River in Fair Oaks, is a landscape where several chapters of Sacramento County history can still be seen today."
-navTitle: "History"
-navOrder: 10
-legacySources:
-  - "a-detailed-history-of-sailor-bar"
-draft: false
+image: ""
+order: 10
 ---
 
 Sailor Bar, on the American River in Fair Oaks, is a landscape where several chapters of Sacramento County history can still be seen today. Long before gold miners arrived, the American River was home to Nisenan people. During the Gold Rush, Sailor Bar became a center of placer mining. Later, powerful hydraulic mining equipment and enormous bucket-line dredges radically reshaped the land. Today, the rocky tailings, steep bluffs, river channel, and surviving native vegetation provide visible reminders of that history.

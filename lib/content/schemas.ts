@@ -7,17 +7,10 @@ const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Expected an ISO date (Y
 }, "Expected a valid calendar date");
 
 const optionalText = z.string().trim().optional();
-const optionalAssetPath = z.string().trim().refine(
+const assetPath = z.string().trim().refine(
   (value) => value === "" || /^\/(?:images|files|media)\//.test(value),
   "Assets must use /images, /files, or /media",
-).optional();
-
-const editorialFields = {
-  draft: z.boolean().default(false),
-  legacySources: z.array(z.string().trim().min(1)).default([]),
-  editorialNote: optionalText,
-};
-
+);
 export const eventFrontmatterSchema = z.object({
   title: z.string().trim().min(1),
   date: isoDate,
@@ -27,45 +20,25 @@ export const eventFrontmatterSchema = z.object({
 
 export const projectFrontmatterSchema = z.object({
   title: z.string().trim().min(1),
-  shortTitle: z.string().trim().min(1),
-  summary: z.string().trim().min(1),
-  image: optionalAssetPath,
-  status: z.string().trim().min(1),
-  order: z.number().int().default(0),
-  featured: z.boolean().default(false),
-  featuredOrder: z.number().int().optional(),
-  ...editorialFields,
+  image: assetPath,
+  order: z.number().int(),
 }).strict();
 
 export const updateFrontmatterSchema = z.object({
   title: z.string().trim().min(1),
+  image: assetPath,
   publishedAt: isoDate,
-  excerpt: z.string().trim().min(1),
-  category: z.string().trim().min(1),
-  image: optionalAssetPath,
-  relatedEvent: optionalText,
-  relatedProject: optionalText,
-  ...editorialFields,
 }).strict();
 
 export const pageFrontmatterSchema = z.object({
   title: z.string().trim().min(1),
-  description: z.string().trim().min(1),
-  navTitle: optionalText,
-  navOrder: z.number().int().default(0),
-  image: optionalAssetPath,
-  ...editorialFields,
+  image: assetPath,
+  order: z.number().int(),
 }).strict();
 
 export const collectionIndexFrontmatterSchema = z.object({
   title: z.string().trim().min(1),
   description: optionalText,
-  summary: optionalText,
-  eyebrow: optionalText,
-  image: optionalAssetPath,
-  navTitle: optionalText,
-  navOrder: z.number().int().default(0),
-  ...editorialFields,
 }).strict();
 
 export type EventFrontmatter = z.infer<typeof eventFrontmatterSchema>;

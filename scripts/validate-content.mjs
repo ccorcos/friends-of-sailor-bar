@@ -39,9 +39,9 @@ const errors = [];
 const errorSet = new Set();
 const assetReferences = new Map();
 const collections = [
-  { name: "events", schema: eventFrontmatterSchema, indexSchema: collectionIndexFrontmatterSchema, templateUsesDraft: false },
-  { name: "projects", schema: projectFrontmatterSchema, indexSchema: collectionIndexFrontmatterSchema, templateUsesDraft: true },
-  { name: "updates", schema: updateFrontmatterSchema, indexSchema: collectionIndexFrontmatterSchema, templateUsesDraft: true },
+  { name: "events", schema: eventFrontmatterSchema, indexSchema: collectionIndexFrontmatterSchema },
+  { name: "projects", schema: projectFrontmatterSchema, indexSchema: collectionIndexFrontmatterSchema },
+  { name: "updates", schema: updateFrontmatterSchema, indexSchema: collectionIndexFrontmatterSchema },
 ];
 const itemDocuments = new Map(collections.map(({ name }) => [name, new Map()]));
 const pageDocuments = new Map();
@@ -104,7 +104,7 @@ function directoriesWithMarkdown(root) {
   return directories.sort();
 }
 
-function validateTemplate(filePath, schema, draftRequirement) {
+function validateTemplate(filePath, schema) {
   if (!fs.existsSync(filePath)) {
     addError(`${labelFor(filePath)} is missing`);
     return;
@@ -125,12 +125,6 @@ function validateTemplate(filePath, schema, draftRequirement) {
     }
 
     parseFile(filePath, schema);
-    if (draftRequirement === true && frontmatter.draft !== true) {
-      addError(`${labelFor(filePath)}: template must set draft: true`);
-    }
-    if (draftRequirement === false && "draft" in frontmatter) {
-      addError(`${labelFor(filePath)}: template must not define draft`);
-    }
     validatedTemplateCount += 1;
   } catch (error) {
     addError(`${labelFor(filePath)}: ${error instanceof Error ? error.message : String(error)}`);
@@ -201,13 +195,12 @@ function validateTemplates() {
     validateTemplate(
       resolveContentPath(collection.name, "__template.md"),
       collection.schema,
-      collection.templateUsesDraft,
     );
   }
 
   const pagesRoot = resolveContentPath("pages");
   for (const directory of directoriesWithMarkdown(pagesRoot)) {
-    validateTemplate(path.join(directory, "__template.md"), pageFrontmatterSchema, true);
+    validateTemplate(path.join(directory, "__template.md"), pageFrontmatterSchema);
   }
 }
 
@@ -282,34 +275,9 @@ function validatePages() {
   }
 }
 
-function validateRelatedSlugs() {
-  const publicSlugs = (collectionName) => new Set(
-    [...itemDocuments.get(collectionName).entries()]
-      .filter(([, document]) => document.data.draft !== true)
-      .map(([slug]) => slug),
-  );
-  const events = publicSlugs("events");
-  const projects = publicSlugs("projects");
-
-  const check = (source, field, targetCollection, targetSlugs) => {
-    const value = source.data[field];
-    if (typeof value !== "string" || value.trim() === "") return;
-    const slug = value.trim();
-    if (!targetSlugs.has(slug)) {
-      addError(`${labelFor(source.filePath)}: ${field} references missing or draft ${targetCollection} slug "${slug}"`);
-    }
-  };
-
-  for (const source of itemDocuments.get("updates").values()) {
-    check(source, "relatedEvent", "event", events);
-    check(source, "relatedProject", "project", projects);
-  }
-}
-
 function exerciseLoaders() {
-  // The per-file parsing above is needed to validate drafts too. These calls
-  // additionally exercise the public item/index/page loader paths, including
-  // their intentional draft/template filtering.
+  // The per-file parsing above additionally validates templates and hidden
+  // authoring files. These calls exercise the public loader paths.
   try {
     getUpcomingEvents();
     getPastEvents();
@@ -332,8 +300,8 @@ function exerciseLoaders() {
     for (const [slug, document] of documents) {
       try {
         const loaded = load(slug);
-        if (document.data.draft === true ? loaded !== undefined : loaded === undefined) {
-          addError(`${labelFor(document.filePath)}: item loader returned an unexpected public result for ${slug}`);
+        if (loaded === undefined) {
+          addError(`${labelFor(document.filePath)}: item loader returned no public result for ${slug}`);
         }
       } catch (error) {
         addError(`${labelFor(document.filePath)}: item loader failed: ${error instanceof Error ? error.message : String(error)}`);
@@ -342,7 +310,6 @@ function exerciseLoaders() {
   }
 
   for (const page of pageDocuments.values()) {
-    if (page.data.draft === true) continue;
     try {
       if (!getPageByPath(page.section, page.segments)) {
         addError(`${labelFor(page.filePath)}: page loader returned no public document for ${page.section}/${page.segments.join("/") || "index"}`);
@@ -356,7 +323,6 @@ function exerciseLoaders() {
 validateTemplates();
 validateCollections();
 validatePages();
-validateRelatedSlugs();
 checkAssets();
 if (errors.length === 0) exerciseLoaders();
 

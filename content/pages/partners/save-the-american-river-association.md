@@ -1,11 +1,7 @@
 ---
 title: "Save the American River Association (SARA)"
-description: "Save the American River Association, (SARA) is a grass roots organization established in 1961 to spearhead the establishment of the American River Parkway and adoption of the American River Parkway Plan 2008."
-navTitle: "Save the American River Association"
-navOrder: 50
-legacySources:
-  - "save-the-american-river-association-sara"
-draft: false
+image: ""
+order: 50
 ---
 
 [Save the American River Association](https://www.sarariverwatch.org/), (SARA) is a grass roots organization established in 1961 to spearhead the establishment of the American River Parkway (the “crown jewel” of the Sacramento County Park System) and adoption of the American River Parkway Plan 2008. Its mission is to protect and enhance the wildlife habitat, fishery, and recreational resources of the American River Parkway. Its volunteer, non-profit group of members and Board of Directors work to ensure that the American River Parkway will survive and prosper for the benefit of future generations.

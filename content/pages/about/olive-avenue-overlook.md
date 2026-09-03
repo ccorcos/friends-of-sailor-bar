@@ -1,11 +1,7 @@
 ---
 title: "Olive Avenue River Overlook"
-description: "Just beyond the Olive Avenue entrance to Sailor Bar, a beautiful open meadow offers one of the park’s most peaceful and memorable places to pause and take in the landscape."
-navTitle: "Olive Avenue overlook"
-navOrder: 70
-legacySources:
-  - "olive-avenue-river-overlook"
-draft: false
+image: ""
+order: 70
 ---
 
 Just beyond the Olive Avenue entrance to Sailor Bar, a beautiful open meadow offers one of the park’s most peaceful and memorable places to pause and take in the landscape.

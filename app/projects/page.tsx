@@ -39,7 +39,6 @@ export default function ProjectsPage() {
               )}
               <div className="card-copy">
                 <h2><Link href={`/projects/${project.slug}`}>{project.title}</Link></h2>
-                <p>{project.summary}</p>
                 <Link className="detail-link" href={`/projects/${project.slug}`}>Project details <ArrowRight aria-hidden="true" /></Link>
               </div>
             </article>

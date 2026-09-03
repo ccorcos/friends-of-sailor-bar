@@ -13,7 +13,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const project = getProjectBySlug((await params).slug);
   return {
     title: project?.title ?? "Project",
-    description: project?.summary,
   };
 }
 
@@ -33,7 +32,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </div>
           )}
           <div className="essay-body">
-            <p className="lead">{project.summary}</p>
             {project.html && <MarkdownContent html={project.html} />}
             <Link className="button button-primary" href="/volunteer">Help with this work <ArrowRight aria-hidden="true" /></Link>
           </div>

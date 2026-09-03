@@ -1,4 +1,3 @@
 ---
 title: "Updates"
-draft: false
 ---

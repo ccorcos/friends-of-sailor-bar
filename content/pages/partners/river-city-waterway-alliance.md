@@ -1,11 +1,7 @@
 ---
 title: "River City Waterway Alliance"
-description: "The River City Waterway Alliance is committed to cleaning,restoring, and protecting sacramento area waterways"
-navTitle: "River City Waterway Alliance"
-navOrder: 30
-legacySources:
-  - "river-city-waterway-alliance"
-draft: false
+image: ""
+order: 30
 ---
 
 [The River City Waterway Alliance](https://rivercitywaterwayalliance.org/) is committed to cleaning,restoring, and protecting sacramento area waterways

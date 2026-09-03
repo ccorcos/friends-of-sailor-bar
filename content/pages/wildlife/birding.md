@@ -1,11 +1,7 @@
 ---
 title: "Birding at Sailor Bar"
-description: "Discover 218 Species of Birds Along the American River. If you love birds—or have ever wanted to learn more about them—Sailor Bar on the American River is a wonderful place to begin."
-navTitle: "Birding"
-navOrder: 20
-legacySources:
-  - "birding-at-sailor-bar"
-draft: false
+image: ""
+order: 20
 ---
 
 ## Discover 218 Species of Birds Along the American River

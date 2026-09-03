@@ -1,14 +1,7 @@
 ---
 title: "Sacramento Water Forum"
-publishedAt: "2026-08-20"
-excerpt: "The Sacramento Water Forum is a voluntary organization started by the City and County of Sacramento in 1993 in recognition that the lower American River requires diligent…"
 image: "/images/river-sunrise.jpg"
-category: "Community news"
-relatedEvent: ""
-relatedProject: ""
-legacySources:
-  - "sacramento-water-forum"
-draft: false
+publishedAt: "2026-08-20"
 ---
 
 [The Sacramento Water Forum](https://waterforum.org/) is a voluntary organization started by the City and County of Sacramento in 1993 in recognition that the lower American River requires diligent management to protect valuable municipal water supplies and the rich habitat that thrives in this corridor. The lower American River is that stretch from Nimbus Dam to the confluence of the Sacramento River. It is designated as a Wild and Scenic River under both state and federal law. In 1990 the State Water Board warned that the then flow standards were not adequate to protect the lower American River.

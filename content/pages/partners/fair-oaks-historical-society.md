@@ -1,11 +1,7 @@
 ---
 title: "Fair Oaks Historical Society"
-description: "The Fair Oaks Historical Society was formed in 1975 to preserve the history and heritage of Fair Oaks."
-navTitle: "Fair Oaks Historical Society"
-navOrder: 20
-legacySources:
-  - "fair-oaks-historical-society"
-draft: false
+image: ""
+order: 20
 ---
 
 [The Fair Oaks Historical Society](https://fairoakshistory.org/) was formed in 1975 to preserve the history and heritage of Fair Oaks. The Historical Society conducts research, records oral histories, has published a booklet: The Early Years of Fair Oaks, and has reproduced a 1900 map of Fair Oaks. Located at 10340 Fair Oaks Blvd., our History Center was established as a repository and museum of Fair Oaks artifacts.

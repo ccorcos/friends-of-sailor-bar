@@ -1,11 +1,7 @@
 ---
 title: "American River Parway Bike Patrol"
-description: "In 2020, the American River Bike Patrol began providing volunteer trail safety support to Sacramento County Parks and its park rangers along the American River Parkway."
-navTitle: "American River Bike Patrol"
-navOrder: 10
-legacySources:
-  - "american-river-parway-bike-patrol"
-draft: false
+image: ""
+order: 10
 ---
 
 ## Our Story

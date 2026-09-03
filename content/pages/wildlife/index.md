@@ -1,11 +1,7 @@
 ---
 title: "Wildlife"
-description: "Nestled along the rugged banks of the American River in Fair Oaks, California, Sailor Bar Park is a premier natural haven for a diverse mix of native California wildlife."
-navTitle: "Wildlife"
-navOrder: 10
-legacySources:
-  - "wildlife"
-draft: false
+image: ""
+order: 10
 ---
 
 ### Discover the Vibrant Wildlife of Sailor Bar

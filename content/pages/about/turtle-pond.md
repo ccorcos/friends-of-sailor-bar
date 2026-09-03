@@ -1,11 +1,7 @@
 ---
 title: "Turtle Pond"
-description: "Tucked away at the northern end of Sailor Bar Park along the American River Parkway, Turtle Pond offers visitors a serene and scenic escape from the busier stretches of the river."
-navTitle: "Turtle Pond"
-navOrder: 50
-legacySources:
-  - "turtle-pond"
-draft: false
+image: ""
+order: 50
 ---
 
 ## Discover Turtle Pond at Sailor Bar: A Peaceful Haven in Fair Oaks

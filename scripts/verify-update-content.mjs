@@ -24,67 +24,42 @@ const summaries = [];
 /* ------------------------------------------------------------------ *
  * Expected collection
  *
- * The published updates, the legacy pages each one was promoted from
- * (in order; the first entry is the primary source), and the currently
- * visible title, published date, and index excerpt choices.
+ * The published updates, the legacy pages each one was promoted from,
+ * and the current title, date, and image choices.
  * ------------------------------------------------------------------ */
 
 const knownUpdates = {
   "celebrating-parkway-heroes": {
     title: "Celebrate American River Parkway Heroes",
-    publishedAt: "2026-08-20",
-    excerpt:
-      "On Saturday morning, July 18th, the Friends of Sailor Bar got together to show our appreciation for the American River Parkway Heroes who keep the ONLY State and Federally\u2026",
-    category: "Community news",
     image: "/images/river-sunrise.jpg",
-    relatedEvent: "american-river-parkway-heroes-2026",
-    relatedProject: "",
-    legacySources: ["celebrating-american-river-parkway-heroes"],
+    publishedAt: "2026-08-20",
+    sources: ["celebrating-american-river-parkway-heroes"],
   },
   "restoring-room-young-salmon": {
     title: "Friends of Sailor Bar Rock Off on October 3rd, 2025",
-    publishedAt: "2026-08-20",
-    excerpt:
-      "In September of 2019, a 1,400-foot side channel was carved into the north bank of the American River immediately below the Nimbus Dam by Water Forum, U.S. Bureau of\u2026",
-    category: "Stewardship",
     image: "/images/geese.jpg",
-    relatedEvent: "friends-of-sailor-bar-rock-off",
-    relatedProject: "",
-    legacySources: ["friends-of-sailor-bar-rock-off-on-october-3rd-2025", "side-channel"],
+    publishedAt: "2026-08-20",
+    sources: ["friends-of-sailor-bar-rock-off-on-october-3rd-2025", "side-channel"],
   },
   "seventeen-places-to-pause": {
     title: "Seventeen new places to pause",
-    publishedAt: "2026-06-12",
-    excerpt: "New benches and tables now give visitors more places to rest, gather, and take in the river landscape.",
-    category: "Community news",
     image: "/images/bench.jpg",
-    relatedEvent: "bench-and-table-dedication",
-    relatedProject: "",
+    publishedAt: "2026-06-12",
     // Natively authored update: the faithful legacy bench dedication copy lives
     // on /events/bench-and-table-dedication and under /archive.
-    legacySources: [],
+    sources: [],
   },
   "water-forum-2050-agreement": {
     title: "Sacramento Water Forum",
-    publishedAt: "2026-08-20",
-    excerpt:
-      "The Sacramento Water Forum is a voluntary organization started by the City and County of Sacramento in 1993 in recognition that the lower American River requires diligent…",
-    category: "Community news",
     image: "/images/river-sunrise.jpg",
-    relatedEvent: "",
-    relatedProject: "",
-    legacySources: ["sacramento-water-forum"],
+    publishedAt: "2026-08-20",
+    sources: ["sacramento-water-forum"],
   },
   "welcoming-path-turtle-pond": {
     title: "Turtle Pond",
-    publishedAt: "2026-08-30",
-    excerpt:
-      "Discover Turtle Pond at Sailor Bar: A Peaceful Haven in Fair Oaks Tucked away at the northern end of Sailor Bar Park along the American River Parkway, Turtle Pond offers\u2026",
-    category: "Project update",
     image: "/images/river-overlook.jpg",
-    relatedEvent: "",
-    relatedProject: "accessible-turtle-pond-walk",
-    legacySources: ["turtle-pond"],
+    publishedAt: "2026-08-30",
+    sources: ["turtle-pond"],
   },
 };
 
@@ -92,19 +67,9 @@ const archiveLinkReplacements = {
   "/archive/home": "/",
 };
 
-const requiredFields = [
-  "title",
-  "publishedAt",
-  "excerpt",
-  "image",
-  "category",
-  "relatedEvent",
-  "relatedProject",
-  "legacySources",
-  "draft",
-];
-const quotedFields = ["title", "publishedAt", "excerpt", "image", "category", "relatedEvent", "relatedProject"];
-const allowedFields = new Set([...requiredFields, "editorialNote"]);
+const requiredFields = ["title", "image", "publishedAt"];
+const quotedFields = ["title", "image", "publishedAt"];
+const allowedFields = new Set(requiredFields);
 
 /* ------------------------------------------------------------------ *
  * Frontmatter
@@ -261,20 +226,6 @@ for (const slug of foundSlugs) {
   if (!(slug in knownUpdates)) errors.push(`Unexpected update file content/updates/${slug}.md is not a known update`);
 }
 
-function publicSlugsIn(collection) {
-  const dir = join(root, "content", collection);
-  if (!existsSync(dir)) return new Set();
-  return new Set(
-    readdirSync(dir)
-      .filter((name) => name.endsWith(".md") && name !== "index.md" && !name.startsWith("_"))
-      .filter((name) => !/^draft:\s*true\s*$/m.test(readFileSync(join(dir, name), "utf8")))
-      .map((name) => name.slice(0, -3)),
-  );
-}
-
-const eventSlugs = publicSlugsIn("events");
-const projectSlugs = publicSlugsIn("projects");
-
 /* ------------------------------------------------------------------ *
  * Collection index
  * ------------------------------------------------------------------ */
@@ -285,7 +236,9 @@ if (fileNames.includes("index.md")) {
   if (error) errors.push(`content/updates/index.md: ${error}`);
   else {
     if (typeof data.title !== "string" || !data.title.trim()) errors.push("content/updates/index.md is missing a title");
-    if (data.draft !== false) errors.push("content/updates/index.md must set draft: false");
+    for (const field of Object.keys(data)) {
+      if (field !== "title") errors.push(`content/updates/index.md: unknown frontmatter field ${field}`);
+    }
     if ("slug" in data) errors.push("content/updates/index.md must not define a slug field");
     if (/^\s{0,3}#\s/m.test(body)) errors.push("content/updates/index.md body contains a level-one heading");
   }
@@ -300,10 +253,12 @@ if (fileNames.includes("__template.md")) {
   const { data, error } = parseFrontmatter(raw);
   if (error) errors.push(`content/updates/__template.md: ${error}`);
   else {
-    if (data.draft !== true) errors.push("content/updates/__template.md must set draft: true");
     if ("slug" in data) errors.push("content/updates/__template.md must not define a slug field");
     for (const field of requiredFields) {
       if (!(field in data)) errors.push(`content/updates/__template.md is missing the ${field} field`);
+    }
+    for (const field of Object.keys(data)) {
+      if (!allowedFields.has(field)) errors.push(`content/updates/__template.md: unknown frontmatter field ${field}`);
     }
   }
 }
@@ -331,7 +286,6 @@ for (const name of updateFiles) {
     if (!allowedFields.has(field)) errors.push(`${label}: unknown frontmatter field ${field}`);
   }
   if ("slug" in data) errors.push(`${label} must not define a slug field; the filename is the slug`);
-  if (data.draft !== false) errors.push(`${label} must set draft: false`);
   for (const field of quotedFields) {
     const line = head.find((candidate) => candidate.startsWith(`${field}:`));
     if (line && !new RegExp(`^${field}: "`).test(line)) errors.push(`${label}: ${field} must be a quoted string`);
@@ -340,9 +294,7 @@ for (const name of updateFiles) {
   if (publishedLine && !/^publishedAt: "\d{4}-\d{2}-\d{2}"$/.test(publishedLine)) {
     errors.push(`${label}: publishedAt must be a quoted YYYY-MM-DD value`);
   }
-  for (const field of ["title", "excerpt", "category"]) {
-    if (typeof data[field] !== "string" || !data[field].trim()) errors.push(`${label} has an empty ${field}`);
-  }
+  if (typeof data.title !== "string" || !data.title.trim()) errors.push(`${label} has an empty title`);
   if (typeof data.image !== "string" || !data.image.trim()) {
     errors.push(`${label} has an empty image`);
   } else if (data.image.startsWith("/media/")) {
@@ -355,41 +307,23 @@ for (const name of updateFiles) {
     errors.push(`${label}: image ${data.image} must be a root-relative path`);
   }
 
-  // Relationships must point at existing public items.
-  if (typeof data.relatedEvent === "string" && data.relatedEvent && !eventSlugs.has(data.relatedEvent)) {
-    errors.push(`${label}: relatedEvent ${data.relatedEvent} is not a public event slug`);
-  }
-  if (typeof data.relatedProject === "string" && data.relatedProject && !projectSlugs.has(data.relatedProject)) {
-    errors.push(`${label}: relatedProject ${data.relatedProject} is not a public project slug`);
-  }
-
   // Body rules.
   if (!body.trim()) errors.push(`${label} has an empty body`);
   if (/^\s{0,3}#\s/m.test(body)) errors.push(`${label}: body contains a level-one heading; the title comes from frontmatter`);
   if (/<[a-z][^>]*>/i.test(body.replace(/`[^`]*`/g, ""))) warnings.push(`${label}: body contains raw HTML`);
   if (/\(Click for flyer\)/i.test(raw)) errors.push(`${label}: obsolete click-for-flyer text remains`);
 
-  // Currently published title, date, excerpt, category, image, and relations.
+  // Current title, date, and image.
   if (expected) {
-    for (const field of ["title", "publishedAt", "excerpt", "category", "image", "relatedEvent", "relatedProject"]) {
-      const actual = Array.isArray(data[field]) && data[field].length === 0 ? "" : data[field];
-      if (actual !== expected[field]) {
-        errors.push(`${label}: ${field} is ${JSON.stringify(actual)}; expected ${JSON.stringify(expected[field])}`);
+    for (const field of requiredFields) {
+      if (data[field] !== expected[field]) {
+        errors.push(`${label}: ${field} is ${JSON.stringify(data[field])}; expected ${JSON.stringify(expected[field])}`);
       }
     }
   }
 
-  // Legacy source references.
-  const sources = Array.isArray(data.legacySources) ? data.legacySources : null;
-  if (sources === null) {
-    errors.push(`${label}: legacySources must be a list`);
-    continue;
-  }
-  if (expected && (sources.length !== expected.legacySources.length || sources.some((s, i) => s !== expected.legacySources[i]))) {
-    errors.push(
-      `${label}: legacySources ${JSON.stringify(sources)} do not match the expected sources ${JSON.stringify(expected.legacySources)}`,
-    );
-  }
+  // Legacy source references live in this verification map rather than page frontmatter.
+  const sources = expected?.sources ?? [];
 
   const bodyText = markdownToText(body);
   const bodyMedia = markdownTargets(body, /\]\((\/files\/[^)\s]+)/g);
@@ -446,13 +380,10 @@ for (const name of updateFiles) {
       }
     }
 
-    // Title, date, and excerpt choices for the primary legacy source.
+    // Title and date choices for the primary legacy source.
     if (sourceSlug === sources[0]) {
       if (data.title !== item.title) {
         errors.push(`${label}: title "${data.title}" does not match primary legacy title "${item.title}"`);
-      }
-      if (data.excerpt !== item.excerpt) {
-        errors.push(`${label}: excerpt does not match the primary legacy excerpt from ${sourceSlug}`);
       }
       if (item.modified && data.publishedAt !== item.modified) {
         errors.push(`${label}: publishedAt ${data.publishedAt} does not match the primary legacy modified date ${item.modified}`);

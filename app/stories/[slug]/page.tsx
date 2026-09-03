@@ -12,15 +12,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const update = getUpdateBySlug((await params).slug);
   return {
     title: update?.title ?? "Update",
-    description: update?.excerpt,
   };
 }
 
 export default async function StoryDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const update = getUpdateBySlug((await params).slug);
   if (!update) notFound();
-
-  const showImage = update.legacySources.length === 0 && Boolean(update.image);
 
   return (
     <>
@@ -29,13 +26,12 @@ export default async function StoryDetailPage({ params }: { params: Promise<{ sl
         <article className="essay-card">
           <h1>{update.title}</h1>
           <p className="essay-date">{formatDate(update.publishedAt, { month: "long", day: "numeric", year: "numeric" })}</p>
-          {showImage && update.image && (
+          {update.image && (
             <div className="feature-image">
               <Image src={update.image} alt="" fill unoptimized={update.image.startsWith("/media/")} sizes="(max-width: 700px) 100vw, 48rem" priority />
             </div>
           )}
           <div className="essay-body">
-            <p className="lead">{update.excerpt}</p>
             {update.html && <MarkdownContent html={update.html} />}
           </div>
         </article>

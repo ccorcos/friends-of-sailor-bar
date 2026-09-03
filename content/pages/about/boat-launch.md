@@ -1,11 +1,7 @@
 ---
 title: "Boat Launch"
-description: "The Sailor Bar Park Boat Ramp, located off Illinois Avenue (4253 Illinois Ave, Fair Oaks, CA), serves as a prime, less-crowded public access point for small watercraft, rafts, kayaks, and paddleboards along the American River Parkway."
-navTitle: "Boat launch"
-navOrder: 60
-legacySources:
-  - "boat-launch"
-draft: false
+image: ""
+order: 60
 ---
 
 ## Launching on the American River: The Sailor Bar Boat Ramp in Fair Oaks

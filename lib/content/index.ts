@@ -5,7 +5,6 @@ import {
   assertSafePart,
   listMarkdownFiles,
   markdownFileExists,
-  markdownFileIsDraft,
   parseMarkdownFile,
   resolveContentPath,
 } from "./files";
@@ -42,7 +41,7 @@ export type CollectionIndexDocument = ContentDocument & CollectionIndexFrontmatt
 
 export type ContentCollection = "events" | "projects" | "updates";
 
-export type PageNavigationItem = Pick<PageDocument, "slug" | "section" | "title" | "navTitle" | "navOrder" | "href">;
+export type PageNavigationItem = Pick<PageDocument, "slug" | "section" | "title" | "order" | "href">;
 
 function documentFromFile<T extends object>(filePath: string, schema: Parameters<typeof parseMarkdownFile>[1]): ContentDocument & T {
   const parsed = parseMarkdownFile(filePath, schema);
@@ -106,9 +105,7 @@ export function getEventBySlug(slug: string): EventDocument | undefined {
 
 export function getProjects(): ProjectDocument[] {
   return itemFiles("projects")
-    .filter((file) => !markdownFileIsDraft(file))
     .map((file) => documentFromFile<ProjectFrontmatter>(file, projectFrontmatterSchema))
-    .filter((document) => !document.draft)
     .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
 }
 
@@ -116,17 +113,14 @@ export function getProjectBySlug(slug: string): ProjectDocument | undefined {
   assertSafePart(slug, "project slug");
   if (isHiddenItemSlug(slug)) return undefined;
   const file = resolveContentPath("projects", `${slug}.md`);
-  if (!markdownFileExists(file) || markdownFileIsDraft(file)) return undefined;
-  const project = documentFromFile<ProjectFrontmatter>(file, projectFrontmatterSchema);
-  return project.draft ? undefined : project;
+  if (!markdownFileExists(file)) return undefined;
+  return documentFromFile<ProjectFrontmatter>(file, projectFrontmatterSchema);
 }
 
 export function getUpdates(limit?: number): UpdateDocument[] {
   const safeLimit = validateLimit(limit);
   const updates = itemFiles("updates")
-    .filter((file) => !markdownFileIsDraft(file))
     .map((file) => documentFromFile<UpdateFrontmatter>(file, updateFrontmatterSchema))
-    .filter((document) => !document.draft)
     .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
   return safeLimit === undefined ? updates : updates.slice(0, safeLimit);
 }
@@ -135,9 +129,8 @@ export function getUpdateBySlug(slug: string): UpdateDocument | undefined {
   assertSafePart(slug, "update slug");
   if (isHiddenItemSlug(slug)) return undefined;
   const file = resolveContentPath("updates", `${slug}.md`);
-  if (!markdownFileExists(file) || markdownFileIsDraft(file)) return undefined;
-  const update = documentFromFile<UpdateFrontmatter>(file, updateFrontmatterSchema);
-  return update.draft ? undefined : update;
+  if (!markdownFileExists(file)) return undefined;
+  return documentFromFile<UpdateFrontmatter>(file, updateFrontmatterSchema);
 }
 
 export function getPageByPath(section: string, segments: readonly string[] = []): PageDocument | undefined {
@@ -148,10 +141,9 @@ export function getPageByPath(section: string, segments: readonly string[] = [])
   const file = segments.length === 0
     ? resolveContentPath("pages", section, "index.md")
     : resolveContentPath("pages", section, ...segments.slice(0, -1), `${segments.at(-1)}.md`);
-  if (!markdownFileExists(file) || markdownFileIsDraft(file)) return undefined;
+  if (!markdownFileExists(file)) return undefined;
 
   const page = documentFromFile<PageFrontmatter>(file, pageFrontmatterSchema);
-  if (page.draft) return undefined;
   return {
     ...page,
     section,
@@ -171,24 +163,22 @@ export function getPageNavigation(section?: string): PageNavigationItem[] {
     if (section !== undefined && pageSection !== section) return [];
     const pageSegments = [...parts.slice(1, -1), path.basename(parts.at(-1)!, ".md")];
     const page = getPageByPath(pageSection, pageSegments);
-    if (!page || !page.navTitle) return [];
+    if (!page) return [];
     return [{
       slug: page.slug,
       section: page.section,
       title: page.title,
-      navTitle: page.navTitle,
-      navOrder: page.navOrder,
+      order: page.order,
       href: page.href,
     }];
   });
-  return navigation.sort((a, b) => a.section.localeCompare(b.section) || a.navOrder - b.navOrder || a.navTitle!.localeCompare(b.navTitle!));
+  return navigation.sort((a, b) => a.section.localeCompare(b.section) || a.order - b.order || a.title.localeCompare(b.title));
 }
 
 export function getCollectionIndex(collection: ContentCollection): CollectionIndexDocument | undefined {
   const file = resolveContentPath(collection, "index.md");
-  if (!markdownFileExists(file) || markdownFileIsDraft(file)) return undefined;
+  if (!markdownFileExists(file)) return undefined;
   const document = documentFromFile<CollectionIndexFrontmatter>(file, collectionIndexFrontmatterSchema);
-  if (document.draft) return undefined;
   return { ...document, collection };
 }
 

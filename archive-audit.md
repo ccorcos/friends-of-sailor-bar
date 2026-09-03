@@ -7,15 +7,14 @@ This is an editorial placement audit, not an external fact-check. The records wi
 
 ## Post-change summary
 
-The public archive now contains **exactly 15 items**:
+The public archive now contains **exactly 13 items**:
 
 | Disposition | Count | Meaning |
 | --- | ---: | --- |
-| **Discussion fragments** | 13 | Short records with useful details that still need an editorial placement or policy decision. |
-| **Redundancy decision deferred** | 1 | `our-aspiration` remains public until its overlap with other organizational copy is discussed. |
+| **Discussion fragments** | 12 | Short records with useful details that still need an editorial placement or policy decision. |
 | **Needs curation** | 1 | `media-library` remains public while its 40 preserved files are reviewed and placed contextually. |
 
-The 26 already-incorporated records, 15 empty/placeholder records, and 15 newly promoted clear-destination records have been removed from the public archive. They remain unchanged in `data/archive.json` for source comparison and migration verification. Including the intentionally hidden `friends-of-sailor-bar` record, the internal snapshot still contains all **72 records**; 57 are now internal-only.
+The resolved `get-involved` and `our-aspiration` records have now joined the other internal-only records. All source material remains unchanged in `data/archive.json` for migration verification. Including the intentionally hidden `friends-of-sailor-bar` record, the internal snapshot still contains all **72 records**; 59 are now internal-only.
 
 `friends-of-sailor-bar` remains intentionally hidden and does not appear in the archive index or resolve at `/archive/friends-of-sailor-bar`.
 
@@ -23,29 +22,26 @@ The 26 already-incorporated records, 15 empty/placeholder records, and 15 newly 
 
 These are the only records that should appear at `/archive` or resolve below `/archive/[slug]`:
 
-1. `get-involved`
-2. `sailor-bar-history`
-3. `the-ghost-of-sailor-bar`
-4. `grinding-rocks`
-5. `heron-rookeries`
-6. `flag-pole`
-7. `american-river-parkway-equestrian-patrol`
-8. `friends-of-lakes-folsom-and-natoma-folfan`
-9. `project-pick-up-fishing-line`
-10. `sacramento-bird-alliance`
-11. `event-calendar`
-12. `real-wildlife-encounters`
-13. `photo-gallery`
-14. `our-aspiration`
-15. `media-library`
+1. `sailor-bar-history`
+2. `the-ghost-of-sailor-bar`
+3. `grinding-rocks`
+4. `heron-rookeries`
+5. `flag-pole`
+6. `american-river-parkway-equestrian-patrol`
+7. `friends-of-lakes-folsom-and-natoma-folfan`
+8. `project-pick-up-fishing-line`
+9. `sacramento-bird-alliance`
+10. `event-calendar`
+11. `real-wildlife-encounters`
+12. `photo-gallery`
+13. `media-library`
 
-## Discussion notes for the 13 fragments
+## Discussion notes for the 12 fragments
 
 These records remain public because their useful details have not yet received a final editorial disposition.
 
 | Archive record | Likely destination | Discussion needed before removal |
 | --- | --- | --- |
-| `get-involved` | `/volunteer` | Decide whether to retain the volunteer-led organizational introduction. Verify or remove the dated statements that there are no ongoing roles yet and that a docent program is planned, and reconcile the legacy `protectsailorbar@yahoo.com` address with the site's current contact path. |
 | `sailor-bar-history` | `/history/mining-and-dredging` | Retain the long-tom reference, trench description, hydraulic-mining sequence, and dredge-tailings explanation. Verify the $125 million historical production figure and $15 billion modern-value comparison before presenting them as current editorial fact. |
 | `the-ghost-of-sailor-bar` | `/history` | Decide how to incorporate the 1908 newspaper-story reference, the September 28, 1977 *San Juan Record* republication, the newspaper's 1933–1980 context, and the later cairn folklore without confusing this fragment with the separate event record and source PDF. |
 | `grinding-rocks` | `/history/nisenan-history` | Preserve the bedrock-mortar/milling-slick terminology, hardpan setting, and food-processing description, but review the cultural interpretation and terminology with appropriate Nisenan guidance before promotion. |
@@ -59,19 +55,19 @@ These records remain public because their useful details have not yet received a
 | `real-wildlife-encounters` | `/events/real-wildlife-encounters` | The fragment contributes only an alternate legacy title and September 19 date. Decide how to display that title alongside the different flyer title so neither source is silently overwritten. |
 | `photo-gallery` | `/contact` or a future submission policy | Decide whether the site still accepts public photo submissions and where consent, credit, accessibility, and reuse expectations should live. Reconcile the legacy `sailorbar@yahoo.com` address with current contact information before promoting the invitation. |
 
-## Suggested decision batches for the 13 fragments
+## Suggested decision batches for the 12 fragments
 
 - **Straightforward contextual additions:** `the-ghost-of-sailor-bar`, `heron-rookeries`, `flag-pole`, `american-river-parkway-equestrian-patrol`, `friends-of-lakes-folsom-and-natoma-folfan`, `sacramento-bird-alliance`, `event-calendar`, and `real-wildlife-encounters`. These mainly need placement, light date labeling, and link checks.
-- **Owner policy decisions:** `get-involved` depends on the current volunteer model; `project-pick-up-fishing-line` depends on whether Friends of Sailor Bar endorses the instructions and contact number; `photo-gallery` depends on whether public photo submissions are still accepted.
+- **Owner policy decisions:** `project-pick-up-fishing-line` depends on whether Friends of Sailor Bar endorses the instructions and contact number; `photo-gallery` depends on whether public photo submissions are still accepted.
 - **Higher-review historical material:** `sailor-bar-history` contains large historical-dollar comparisons that should be sourced or clearly dated; `grinding-rocks` should receive Nisenan cultural review before its added interpretation is promoted.
 
-## Deferred redundancy discussion: `our-aspiration`
+## Resolved organization records
 
-Keep `our-aspiration` public for now. Before removing it, compare its complete organizational purpose, values, steering-committee description, and six “Compassion in Action” priorities against the promoted About, project, volunteer, events, and partner material.
+`our-aspiration` is now promoted at `/friends-of-sailor-bar` as the first section in the shared information directory. Its complete organizational purpose, values, steering-committee description, and six “Compassion in Action” priorities are preserved there under the requested “Friends of Sailor Bar” title. The faithful source remains in `data/archive.json`, but `/archive/our-aspiration` no longer resolves.
 
-The key question is whether a dedicated `/about/our-work` page would preserve meaningful organization-level context that is otherwise scattered or absent, or whether it would mostly duplicate existing public pages. The intentionally hidden `friends-of-sailor-bar` source overlaps at a high level but also contains different operational details: installed benches and tables, interpretive programs, the abandoned deeper-vehicle-access plan, and acknowledgments. That hidden source may inform the comparison, but it must not regain a public archive route.
+The promoted section also contains `/friends-of-sailor-bar/contact`, preserving the complete legacy contact page. `/contact` permanently redirects to that canonical page.
 
-Any promotion should separately review time-sensitive claims such as the ten-person steering committee, monthly events, named partnerships, and planned accessibility/habitat work. Remove `our-aspiration` from the public allowlist only after the redundancy question and coverage check are resolved.
+`get-involved` was removed from the public archive at the site owner’s request. Its source remains in `data/archive.json`, and the working volunteer form remains at `/volunteer`.
 
 ## Media-library curation
 
@@ -110,4 +106,4 @@ Do not create a general primary-site download directory solely because the files
 
 `data/archive.json`, `data/archive-assets.json`, and `data/archive-manifest.json` remain the migration source of truth and should not be pruned with the public routes. Removed archive pages remain available to verification scripts and editors through those internal files, but they neither appear in the public archive index nor resolve as public archive detail pages.
 
-The 15 actionable clear-destination records are now represented by the homepage, six new About/History/Wildlife pages, the new Partners section and its detail pages, and the Water Forum update. `our-aspiration` was deliberately deferred rather than promoted to a possibly redundant `/about/our-work` page.
+The clear-destination records are represented by the homepage, promoted About/Wildlife/History/Partners pages, the Friends of Sailor Bar section, event and update pages, and the working volunteer route.

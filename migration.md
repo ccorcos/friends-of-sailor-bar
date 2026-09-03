@@ -8,14 +8,14 @@
 
 Every public legacy page remains preserved internally in `data/archive.json` with the same published title, body words, headings, lists, links, captions, images, and downloads. Internal URLs and media paths are rewritten only so they work on the new site. The WordPress theme, navigation chrome, administration screens, and plugin controls are not part of the article copy.
 
-The public `/archive` is now a temporary migration queue rather than a permanent duplicate site. Once a legacy record is fully promoted, judged empty/useless, or otherwise resolved by the owner, its `/archive/[slug]` route is removed while the internal source snapshot remains available for verification. The owner's goal is to retire `/archive` entirely after the remaining fragments, `our-aspiration`, and media files are resolved.
+The public `/archive` is now a temporary migration queue rather than a permanent duplicate site. Once a legacy record is fully promoted, judged empty/useless, or otherwise resolved by the owner, its `/archive/[slug]` route is removed while the internal source snapshot remains available for verification. The owner's goal is to retire `/archive` entirely after the remaining fragments and media files are resolved.
 
 ## Verification summary
 
 - **71 of 71 public legacy URLs faithfully imported and checked off in the internal source snapshot.**
 - All **69 WordPress page bodies** match the imported source word-for-word after HTML is reduced to normalized visible text.
 - Both Tribe Events sitemap URLs are preserved internally, including the single-event record and the generated event listing visible on September 2, 2026.
-- The public archive now exposes only the **15 unresolved records** listed in `archive-audit.md`; resolved records no longer index or resolve under `/archive`.
+- The public archive now exposes only the **13 unresolved records** listed in `archive-audit.md`; resolved records no longer index or resolve under `/archive`.
 - All **59 discovered WordPress media URL variants** and **2 externally linked source PDFs** are mapped to local files; every imported `/files/...` reference exists.
 - `data/archive-manifest.json` records the title, word count, local media, and SHA-256 text hash for each public legacy page.
 
@@ -34,15 +34,15 @@ As of September 3, 2026, all eleven current event detail pages use the complete 
 ## Organization
 
 - [x] `/accomplishments/` — **Accomplishments** → `data/archive.json`. Full source title and body preserved.
-- [x] `/contact/` — **Contact Us** → `data/archive.json`, `/contact`. Full source title and body preserved.
+- [x] `/contact/` — **Contact Us** → `data/archive.json`, `/friends-of-sailor-bar/contact`; `/contact` permanently redirects to the promoted page. Full source title and body preserved.
 - [x] `/donate/` — **Donate** → `data/archive.json`. Full source title and body preserved. The original “page in progress” copy is preserved; the substantive donation page is separately promoted at `/donate`.
-- [x] `/friends-of-sailor-bar/` — **Friends of Sailor Bar** → Source retained in `data/archive.json`; removed from the public archive and sidebar at the site owner’s request on September 3, 2026.
+- [x] `/friends-of-sailor-bar/` — **Friends of Sailor Bar** → Its original source remains in `data/archive.json` and excluded from the public archive. The current `/friends-of-sailor-bar` page instead promotes the complete `our-aspiration` source under the requested title.
 - [x] `/friends-of-sailor-bar-leaders/` — **Friends of Sailor Bar Leadership** → `data/archive.json`. Full source title and body preserved. The source body is empty; that empty state is preserved rather than filled with invented copy.
 - [x] `/friends-of-sailor-bar-stewardship/` — **Friends of Sailor Bar Stewardship** → `data/archive.json`. Full source title and body preserved. The source body is empty; that empty state is preserved.
-- [x] `/get-involved/` — **Get Involved** → `/archive/get-involved`, `/volunteer`. Full source title and body preserved.
+- [x] `/get-involved/` — **Get Involved** → `data/archive.json`, `/volunteer`. Removed from the public archive at the site owner’s request on September 3, 2026.
 - [x] `/` — **Home** → `data/archive.json`, `/`. The useful introduction, river/greenbelt facts, photograph, and Janice Kelley credit are promoted on the current homepage; all 9 source media files remain local.
 - [x] `/mission-vision-values/` — **Mission, Vision & Values** → `data/archive.json`. Full source title and body preserved. The original “page in progress” copy is preserved.
-- [x] `/our-aspiration/` — **Our Aspiration** → `/archive/our-aspiration`. Full source title and body preserved.
+- [x] `/our-aspiration/` — **Our Aspiration** → `data/archive.json`, `/friends-of-sailor-bar`. Promoted as the top “Friends of Sailor Bar” information section with complete source body text; removed from the public archive on September 3, 2026.
 - [x] `/volunteer-sign-up/` — **Volunteer Sign Up** → `data/archive.json`. Full source title and body preserved. The original “page in progress” copy is preserved; the working form remains at `/volunteer`.
 - [x] `/your-donations-support-sailor-bar-activities/` — **Your Donations Support Sailor Bar Activities** → `data/archive.json`, `/donate`. Full source title and body preserved.
 

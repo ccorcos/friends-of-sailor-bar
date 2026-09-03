@@ -63,6 +63,8 @@ The site is in an active, page-by-page migration from the former WordPress websi
 - `/events` — Upcoming event calendar
 - `/events/past` — Past event archive
 - `/events/[slug]` — Individual event detail
+- `/friends-of-sailor-bar` — Faithful legacy Our Aspiration article, promoted under the Friends of Sailor Bar title
+- `/friends-of-sailor-bar/contact` — Faithful legacy contact page
 - `/about` — Faithful About Sailor Bar article with links to imported visitor guides and points of interest
 - `/about/aerojet-groundwater-pumps` — Legacy explanation of the groundwater extraction and treatment infrastructure
 - `/wildlife` — Faithful legacy wildlife article
@@ -85,8 +87,9 @@ The site is in an active, page-by-page migration from the former WordPress websi
 - `/archive/[slug]` — Complete unresolved legacy page body; resolved records return 404
 - `/volunteer` — Volunteer interest form
 
-### Compatibility route
+### Compatibility routes
 
+- `/contact` — Redirects to `/friends-of-sailor-bar/contact`
 - `/voluneer` — Redirects to `/volunteer` to accommodate the earlier misspelling
 
 ### Form endpoints

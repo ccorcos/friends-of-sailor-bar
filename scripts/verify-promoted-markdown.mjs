@@ -15,6 +15,8 @@ const archive = JSON.parse(readFileSync(join(root, "data", "archive.json"), "utf
 const bySlug = new Map(archive.map((item) => [item.slug, item]));
 
 const knownPages = {
+  "friends-of-sailor-bar/index.md": ["our-aspiration"],
+  "friends-of-sailor-bar/contact.md": ["contact"],
   "about/index.md": ["about-sailor-bar", "recreation", "amenities", "friends-of-sailor-bar-brochure-and-map"],
   "about/turtle-pond.md": ["turtle-pond"],
   "about/boat-launch.md": ["boat-launch"],
@@ -39,6 +41,10 @@ const knownPages = {
   "partners/sacramento-county-regional-parks.md": ["sacramento-county-regional-parks"],
   "partners/save-the-american-river-association.md": ["save-the-american-river-association-sara"],
   "partners/waterbird-habitat-project.md": ["waterbird-habitat"],
+};
+
+const promotedTitleOverrides = {
+  "friends-of-sailor-bar/index.md": "Friends of Sailor Bar",
 };
 
 const intentionallyOmittedSourceBlocks = {
@@ -97,7 +103,7 @@ function sourceBlocks(contentHtml) {
   const blockBoundary = /<\/?(?:p|div|h[1-6]|li|ul|ol|figure|figcaption|blockquote|tr|td|th|table|hr|iframe|section|article|header|footer)\b[^>]*>|<br\b[^>]*>/gi;
   return withoutNoise
     .split(blockBoundary)
-    .map((chunk) => normalizeText(decodeEntities(chunk.replace(/<[^>]+>/g, ""))))
+    .map((chunk) => normalizeText(decodeEntities(chunk.replace(/<[^>]+>/g, ""))).replace(/^·\s*/, ""))
     .filter((chunk) => chunk.length > 0);
 }
 
@@ -234,8 +240,9 @@ for (const file of files) {
       errors.push(`${label}: legacy source "${slug}" is not in data/archive.json`);
       continue;
     }
-    if (sources.length === 1 && data.title !== item.title) {
-      errors.push(`${label}: title "${data.title}" does not exactly match legacy title "${item.title}"`);
+    const expectedTitle = promotedTitleOverrides[rel] ?? item.title;
+    if (sources.length === 1 && data.title !== expectedTitle) {
+      errors.push(`${label}: title "${data.title}" does not match expected promoted title "${expectedTitle}"`);
     }
 
     const omittedBlocks = intentionallyOmittedSourceBlocks[rel]?.[slug] ?? new Set();

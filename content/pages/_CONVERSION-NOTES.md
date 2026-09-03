@@ -4,6 +4,8 @@ Generated September 3, 2026 from `data/archive.json`. Verify with `node scripts/
 
 | Markdown file | Legacy slug | Source blocks | Media |
 | --- | --- | --- | --- |
+| friends-of-sailor-bar/index.md | our-aspiration | 11/11 required | — |
+| friends-of-sailor-bar/contact.md | contact | 3/3 required | — |
 | about/index.md | about-sailor-bar, recreation, amenities, friends-of-sailor-bar-brochure-and-map | 31/31 required (8 presentation/navigation blocks intentionally changed or omitted) | /files/Sailor-Bar-Brochure-v12a.pdf |
 | about/turtle-pond.md | turtle-pond | 13/13 | — |
 | about/boat-launch.md | boat-launch | 8/8 | /files/sailor-bar-boat-launch-768x1024.webp |

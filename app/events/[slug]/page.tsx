@@ -13,7 +13,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const event = getEventBySlug((await params).slug);
   return {
     title: event?.title ?? "Event",
-    description: event?.summary,
   };
 }
 
@@ -22,8 +21,6 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
   if (!event) notFound();
 
   const isPast = event.date < getSailorBarDate();
-  const relatedStorySlug = event.storySlug || event.relatedUpdate;
-  const hasActions = Boolean(relatedStorySlug || event.flyer || (!isPast && !event.flyer));
 
   return (
     <>
@@ -36,31 +33,17 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
             {event.time !== "Time not recorded" && <div><dt>Time</dt><dd>{event.time}</dd></div>}
             <div>
               <dt>Meeting place</dt>
-              <dd>
-                {event.location}
-                {event.address && <><br />{event.mapHref ? <a href={event.mapHref}>{event.address}</a> : event.address}</>}
-              </dd>
+              <dd>{event.location}</dd>
             </div>
-            {event.organizer && <div><dt>Organizer</dt><dd>{event.organizer}</dd></div>}
           </dl>
-          {(event.html || event.relatedLinks.length > 0 || event.editorialNote) && (
+          {event.html && (
             <div className="essay-body event-body">
-              {event.html && <MarkdownContent html={event.html} />}
-              {event.relatedLinks.map((link) => <p key={link.href}><a href={link.href}>{link.label}</a></p>)}
-              {event.editorialNote && <p className="editorial-note">{event.editorialNote}</p>}
+              <MarkdownContent html={event.html} />
             </div>
           )}
-          {hasActions && (
+          {!isPast && (
             <div className="event-actions">
-              {relatedStorySlug && (
-                <Link className="button" href={`/stories/${relatedStorySlug}`}>Read the related update <ArrowRight aria-hidden="true" /></Link>
-              )}
-              {event.flyer && (
-                <Link className="button" href={event.flyer}>Event flyer (PDF) <ArrowRight aria-hidden="true" /></Link>
-              )}
-              {!isPast && !event.flyer && (
-                <Link className="button button-primary" href="/volunteer">Ask about helping <ArrowRight aria-hidden="true" /></Link>
-              )}
+              <Link className="button button-primary" href="/volunteer">Ask about helping <ArrowRight aria-hidden="true" /></Link>
             </div>
           )}
         </article>

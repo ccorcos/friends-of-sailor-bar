@@ -81,19 +81,12 @@ title: "New Year River Clean-up"
 date: "2027-01-16"
 time: "9:30 AM–12:00 PM"
 location: "Sailor Bar · Illinois Avenue entrance"
-summary: "Start the year outside with neighbors caring for Sailor Bar."
-category: "Volunteer day"
-featured: false
-flyer: "/media/events/new-year-river-cleanup/flyer.pdf"
-relatedUpdate: ""
-legacySources: []
-draft: true
 ---
 
-Event description goes here.
+Event description and [supporting links](/files/example.pdf) go here.
 ```
 
-Upcoming versus past remains computed from the ISO date in the `America/Los_Angeles` time zone. Templates and files with names beginning with `_` are excluded from public queries. `draft: true` gives a second safeguard while preparing a file.
+Upcoming versus past remains computed from the ISO date in the `America/Los_Angeles` time zone. Event files publish immediately. Templates and files with names beginning with `_` are excluded from public queries, so authors can use an underscore-prefixed filename while drafting.
 
 ### Project
 
@@ -242,7 +235,7 @@ Do not call `generateStaticParams` for editable content. Unknown dynamic slugs m
 ### Phase 1: Foundation
 
 - Add the parser, schemas, renderer, modification-time cache, validation command, and runtime media handler.
-- Add one temporary fixture collection and automated tests for create, edit, delete, malformed frontmatter, drafts, and traversal attempts.
+- Add one temporary fixture collection and automated tests for create, edit, delete, malformed frontmatter, hidden drafts, and traversal attempts.
 - Ensure every Markdown-dependent route and metadata function is request-time rendered.
 
 ### Phase 2: Events
@@ -250,7 +243,7 @@ Do not call `generateStaticParams` for editable content. Unknown dynamic slugs m
 Events provide the highest-value first migration because their data is currently split between SQLite and TypeScript.
 
 - Generate one file per event by combining the SQLite row with `lib/event-content.ts`.
-- Preserve every `sources`, related link, editorial note, flyer, and related-update relationship.
+- Preserve source material while moving event links, flyers, venue details, and related records into the Markdown body.
 - Switch event list, detail, past archive, and homepage queries to the new loader.
 - Run existing migration verification and add Markdown/source coverage checks.
 

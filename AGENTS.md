@@ -139,9 +139,9 @@ Editorial content lives in Markdown under `content/`. Events are classified as u
 
 - Store events, projects, and updates in `content/events`, `content/projects`, and `content/updates`; store promoted section pages in `content/pages/<section>`.
 - The filename is the canonical lowercase, hyphen-separated slug. Do not add a frontmatter `slug` field.
-- Copy the collection's `__template.md`, fill in the schema-required frontmatter, and leave `draft: true` until review is complete. Templates and underscore-prefixed notes are ignored by public item loaders.
+- Copy the collection's `__template.md` and fill in the schema-required frontmatter. Event files publish immediately, so keep work-in-progress event filenames underscore-prefixed until ready. Projects and updates use `draft: true` during review. Templates and underscore-prefixed notes are ignored by public item loaders.
 - Put the page title in frontmatter; Markdown bodies must not contain a level-one heading. Use standard Markdown; raw HTML is not part of the supported content contract.
-- Use `storySlug`/`relatedUpdate`, `relatedEvent`, and `relatedProject` only for existing public slugs. Run `npm run content:validate` after content, frontmatter, relationship, or media changes.
+- Use `relatedEvent` and `relatedProject` only for existing public slugs. Put event links, PDFs, venue details, and related records directly in the event Markdown body. Run `npm run content:validate` after content, frontmatter, relationship, or media changes.
 - Keep immutable existing assets in `public/images` and `public/files`. New editable assets belong in `content/media` and are referenced as `/media/...`; the runtime media route serves them without exposing Markdown or directory listings.
 
 The Markdown loader reads files at request time and caches each parsed file by modification metadata. Content-dependent routes must stay dynamic and must not use `generateStaticParams`. The current systemd deployment runs from the working tree; future immutable deployments must mount `content/` as runtime storage.

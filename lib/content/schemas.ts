@@ -7,20 +7,10 @@ const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Expected an ISO date (Y
 }, "Expected a valid calendar date");
 
 const optionalText = z.string().trim().optional();
-const safeHref = z.string().trim().min(1).refine(
-  (href) => href.startsWith("/") || /^(https?:|mailto:)/i.test(href),
-  "Links must be root-relative or use http, https, or mailto",
-);
-const optionalHref = z.union([z.literal(""), safeHref]).optional();
 const optionalAssetPath = z.string().trim().refine(
   (value) => value === "" || /^\/(?:images|files|media)\//.test(value),
   "Assets must use /images, /files, or /media",
 ).optional();
-
-export const relatedLinkSchema = z.object({
-  label: z.string().trim().min(1),
-  href: safeHref,
-}).strict();
 
 const editorialFields = {
   draft: z.boolean().default(false),
@@ -33,17 +23,6 @@ export const eventFrontmatterSchema = z.object({
   date: isoDate,
   time: z.string().trim().min(1),
   location: z.string().trim().min(1),
-  summary: z.string().trim().min(1),
-  category: z.string().trim().min(1),
-  featured: z.boolean().default(false),
-  flyer: optionalAssetPath,
-  storySlug: optionalText,
-  relatedUpdate: optionalText,
-  relatedLinks: z.array(relatedLinkSchema).default([]),
-  organizer: optionalText,
-  address: optionalText,
-  mapHref: optionalHref,
-  ...editorialFields,
 }).strict();
 
 export const projectFrontmatterSchema = z.object({
@@ -89,7 +68,6 @@ export const collectionIndexFrontmatterSchema = z.object({
   ...editorialFields,
 }).strict();
 
-export type RelatedLink = z.infer<typeof relatedLinkSchema>;
 export type EventFrontmatter = z.infer<typeof eventFrontmatterSchema>;
 export type ProjectFrontmatter = z.infer<typeof projectFrontmatterSchema>;
 export type UpdateFrontmatter = z.infer<typeof updateFrontmatterSchema>;

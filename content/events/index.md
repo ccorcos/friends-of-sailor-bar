@@ -1,10 +1,6 @@
 ---
 title: "Events"
 description: "Fun and educational activities every third Saturday at Sailor Bar."
-legacySources:
-  - "event-calendar"
-  - "events"
-draft: false
 ---
 
 *Fun & Educational Activities Every Third Saturday, 9:30–noon at Sailor Bar.*

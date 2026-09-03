@@ -8,25 +8,15 @@ import { NextRequest } from "next/server";
 
 const repositoryRoot = process.cwd();
 
-function eventMarkdown(title: string, options: { draft?: boolean; body?: string; extra?: string } = {}): string {
+function eventMarkdown(title: string, options: { body?: string; extra?: string } = {}): string {
   return `---
 title: ${JSON.stringify(title)}
 date: "2099-01-01"
 time: "9:00 AM"
 location: "Sailor Bar"
-summary: "A test event."
-category: "Test"
-featured: false
-storySlug: ""
-flyer: ""
-legacySources: []
-relatedLinks:
-  - label: "Details"
-    href: "/details"
-draft: ${options.draft ?? false}
 ${options.extra ?? ""}---
 
-${options.body ?? "**Safe Markdown** <script>alert('unsafe')</script>"}
+${options.body ?? "**Safe Markdown** [Details](/details) <script>alert('unsafe')</script>"}
 `;
 }
 
@@ -59,9 +49,8 @@ test("runtime content loading, caching, validation, and media serving", async ()
 
     const eventPath = path.join(temporaryRoot, "content", "events", "alpha.md");
     fs.writeFileSync(eventPath, eventMarkdown("Alpha"));
-    fs.writeFileSync(path.join(temporaryRoot, "content", "events", "index.md"), "---\ntitle: Events\ndraft: false\n---\n\nIndex body.\n");
+    fs.writeFileSync(path.join(temporaryRoot, "content", "events", "index.md"), "---\ntitle: Events\n---\n\nIndex body.\n");
     fs.writeFileSync(path.join(temporaryRoot, "content", "events", "__template.md"), eventMarkdown("Template"));
-    fs.writeFileSync(path.join(temporaryRoot, "content", "events", "draft.md"), eventMarkdown("Draft", { draft: true }));
     fs.writeFileSync(path.join(temporaryRoot, "content", "projects", "project.md"), projectMarkdown("Project"));
     fs.writeFileSync(path.join(temporaryRoot, "content", "projects", "index.md"), "---\ntitle: Projects\ndraft: false\n---\n");
     fs.writeFileSync(path.join(temporaryRoot, "content", "pages", "about", "index.md"), "---\ntitle: About\ndescription: About page\nnavTitle: About\nnavOrder: 1\ndraft: false\n---\n\nAbout body.\n");
@@ -73,7 +62,7 @@ test("runtime content loading, caching, validation, and media serving", async ()
 
     const initial = content.getUpcomingEvents();
     assert.deepEqual(initial.map((event: { slug: string }) => event.slug), ["alpha"]);
-    assert.equal(initial[0].relatedLinks[0].href, "/details");
+    assert.match(initial[0].html, /href="\/details"/);
     assert.match(initial[0].html, /<strong>Safe Markdown<\/strong>/);
     assert.doesNotMatch(initial[0].html, /<\/?script(?:\s|>)/i);
 
@@ -86,16 +75,10 @@ test("runtime content loading, caching, validation, and media serving", async ()
     assert.doesNotMatch(unsafeLink.html, /javascript:/i);
     fs.unlinkSync(path.join(temporaryRoot, "content", "events", "unsafe-link.md"));
 
-    fs.writeFileSync(
-      path.join(temporaryRoot, "content", "events", "incomplete-draft.md"),
-      "---\ndraft: true\ninvalid: [\n---\n\n# Incomplete draft\n",
-    );
-    assert.equal(content.getEventBySlug("incomplete-draft"), undefined);
-    fs.writeFileSync(
-      path.join(temporaryRoot, "content", "events", "uppercase-draft.md"),
-      eventMarkdown("Uppercase draft").replace("draft: false", "draft: TRUE"),
-    );
-    assert.equal(content.getEventBySlug("uppercase-draft"), undefined);
+    const removedDraftFieldPath = path.join(temporaryRoot, "content", "events", "draft.md");
+    fs.writeFileSync(removedDraftFieldPath, eventMarkdown("Draft", { extra: "draft: true\n" }));
+    assert.throws(() => content.getEventBySlug("draft"), /Invalid frontmatter/);
+    fs.unlinkSync(removedDraftFieldPath);
     assert.doesNotThrow(() => content.getUpcomingEvents());
     assert.equal(content.getEventBySlug("index"), undefined);
 

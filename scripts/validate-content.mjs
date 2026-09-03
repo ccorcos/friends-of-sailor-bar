@@ -39,9 +39,9 @@ const errors = [];
 const errorSet = new Set();
 const assetReferences = new Map();
 const collections = [
-  { name: "events", schema: eventFrontmatterSchema, indexSchema: collectionIndexFrontmatterSchema },
-  { name: "projects", schema: projectFrontmatterSchema, indexSchema: collectionIndexFrontmatterSchema },
-  { name: "updates", schema: updateFrontmatterSchema, indexSchema: collectionIndexFrontmatterSchema },
+  { name: "events", schema: eventFrontmatterSchema, indexSchema: collectionIndexFrontmatterSchema, templateUsesDraft: false },
+  { name: "projects", schema: projectFrontmatterSchema, indexSchema: collectionIndexFrontmatterSchema, templateUsesDraft: true },
+  { name: "updates", schema: updateFrontmatterSchema, indexSchema: collectionIndexFrontmatterSchema, templateUsesDraft: true },
 ];
 const itemDocuments = new Map(collections.map(({ name }) => [name, new Map()]));
 const pageDocuments = new Map();
@@ -153,8 +153,17 @@ function validateTemplates() {
     }
     try {
       const source = readMarkdownSource(filePath);
-      if (!source.frontmatter || typeof source.frontmatter !== "object" || source.frontmatter.draft !== true) {
+      const frontmatter = source.frontmatter;
+      if (!frontmatter || typeof frontmatter !== "object") {
+        addError(`${labelFor(filePath)}: template must have frontmatter`);
+        continue;
+      }
+      parseFile(filePath, collection.schema);
+      if (collection.templateUsesDraft && frontmatter.draft !== true) {
         addError(`${labelFor(filePath)}: template must set draft: true`);
+      }
+      if (!collection.templateUsesDraft && "draft" in frontmatter) {
+        addError(`${labelFor(filePath)}: event templates must not define draft`);
       }
     } catch (error) {
       addError(`${labelFor(filePath)}: ${error instanceof Error ? error.message : String(error)}`);
@@ -241,7 +250,6 @@ function validateRelatedSlugs() {
   );
   const events = publicSlugs("events");
   const projects = publicSlugs("projects");
-  const updates = publicSlugs("updates");
 
   const check = (source, field, targetCollection, targetSlugs) => {
     const value = source.data[field];
@@ -252,10 +260,6 @@ function validateRelatedSlugs() {
     }
   };
 
-  for (const source of itemDocuments.get("events").values()) {
-    check(source, "storySlug", "update", updates);
-    check(source, "relatedUpdate", "update", updates);
-  }
   for (const source of itemDocuments.get("updates").values()) {
     check(source, "relatedEvent", "event", events);
     check(source, "relatedProject", "project", projects);

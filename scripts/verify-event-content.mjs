@@ -200,24 +200,23 @@ const knownEvents = {
   },
 };
 
-// Facts that must survive anywhere in the file, including frontmatter.
+// Facts and rendered Markdown links that must survive in each event file.
 const structuredRequirements = {
-  "friends-of-sailor-bar-rock-off": ["Friends of Sailor Bar Rock Off", "2025-10-03", "restoring-room-young-salmon", "GrdJAOh8QwQ"],
-  "bench-and-table-dedication": ["Sailor Bar Bench and Table Dedication", "2026-03-18", "Olive Avenue", "seventeen-places-to-pause", "q45O4qZyGTQ", "March 21", "12 new benches and 7 tables"],
+  "friends-of-sailor-bar-rock-off": ["Friends of Sailor Bar Rock Off", "2025-10-03", "GrdJAOh8QwQ"],
+  "bench-and-table-dedication": ["Sailor Bar Bench and Table Dedication", "2026-03-18", "Olive Avenue", "q45O4qZyGTQ", "12 new benches and 7 tables"],
   "earth-day-at-sailor-bar-2026": ["Earth Day at Sailor Bar: Walk on the Wildlife Side", "2026-04-18", "9:30 AM–12:00 PM"],
   "interactive-birding-2026": ["Interactive Birding at Sailor Bar", "2026-05-16"],
-  "family-health-and-wellness-day-2026": ["Family Health & Wellness Day", "2026-06-13", "Family Health & Fitness Day"],
-  "american-river-parkway-heroes-2026": ["Celebrate American River Parkway Heroes", "2026-07-18", "celebrating-parkway-heroes", "JtPuMxViJvc"],
+  "family-health-and-wellness-day-2026": ["Family Health & Wellness Day", "2026-06-13"],
+  "american-river-parkway-heroes-2026": ["Celebrate American River Parkway Heroes", "2026-07-18", "JtPuMxViJvc"],
   "wild-and-scenic-american-river-2026": ["The Wild and Scenic American River", "2026-08-15"],
-  "real-wildlife-encounters": ["Sailor Bar Has Gone to the Birds!", "Real Wildlife Encounters", "Friends of Sailor Bar", "4253 Illinois Avenue", "2026-09-19", "sb-sep-19-event-flyer.pdf"],
+  "real-wildlife-encounters": ["Sailor Bar Has Gone to the Birds!", "2026-09-19", "sb-sep-19-event-flyer.pdf"],
   "ghost-of-sailor-bar": ["The Ghost of Sailor Bar: How Sailor Bar Got its Name, Legends and Historical Facts", "2026-10-17", "Ghost-of-Sailor-Bar.pdf"],
   "salmon-spawning-journey": ["Something Fishy is Going on Here! The Remarkable Spawning Journey", "2026-11-21"],
   "new-year-river-cleanup": ["New Year River Clean-up", "2027-01-16", "trails, shoreline, and wildlife habitat"],
 };
 
-const requiredStringFields = ["title", "date", "time", "location", "summary", "category", "storySlug", "flyer"];
-const optionalStringFields = ["organizer", "address", "mapHref", "editorialNote"];
-const allowedFields = new Set([...requiredStringFields, ...optionalStringFields, "featured", "draft", "legacySources", "relatedLinks"]);
+const requiredStringFields = ["title", "date", "time", "location"];
+const allowedFields = new Set(requiredStringFields);
 
 /* ------------------------------------------------------------------ *
  * Read the collection
@@ -251,7 +250,7 @@ if (fileNames.includes("index.md")) {
   const raw = readFileSync(new URL("index.md", contentDir), "utf8");
   const { data, body } = parseFrontmatter(raw, "content/events/index.md");
   if (!data.title) errors.push("content/events/index.md is missing a title");
-  if (data.draft !== false) errors.push("content/events/index.md must set draft: false");
+  if ("draft" in data || "legacySources" in data) errors.push("content/events/index.md contains removed event frontmatter fields");
   if (/^#{1,6}\s/m.test(body)) errors.push("Markdown heading found in content/events/index.md");
 
   const seriesRequirements = [
@@ -277,9 +276,11 @@ if (fileNames.includes("index.md")) {
 if (fileNames.includes("__template.md")) {
   const raw = readFileSync(new URL("__template.md", contentDir), "utf8");
   const { data } = parseFrontmatter(raw, "content/events/__template.md");
-  if (data.draft !== true) errors.push("content/events/__template.md must set draft: true");
-  for (const field of [...requiredStringFields, "featured", "legacySources", "relatedLinks"]) {
+  for (const field of requiredStringFields) {
     if (!(field in data)) errors.push(`content/events/__template.md is missing the ${field} field`);
+  }
+  for (const field of Object.keys(data)) {
+    if (!allowedFields.has(field)) errors.push(`content/events/__template.md: unknown frontmatter field ${field}`);
   }
   if ("slug" in data) errors.push("content/events/__template.md must not define a slug field; the filename is the slug");
 }
@@ -300,12 +301,6 @@ for (const name of eventFiles) {
     if (!(field in data)) errors.push(`${file} is missing the ${field} field`);
     else if (typeof data[field] !== "string") errors.push(`${file}: ${field} must be a string`);
   }
-  for (const field of optionalStringFields) {
-    if (field in data && typeof data[field] !== "string") errors.push(`${file}: ${field} must be a string`);
-  }
-  if (typeof data.featured !== "boolean") errors.push(`${file}: featured must be true or false`);
-  if (data.draft !== false) errors.push(`${file} must set draft: false`);
-  if ("slug" in data) errors.push(`${file} must not define a slug field; the filename is the slug`);
   for (const field of Object.keys(data)) {
     if (!allowedFields.has(field)) errors.push(`${file}: unknown frontmatter field ${field}`);
   }
@@ -315,8 +310,6 @@ for (const name of eventFiles) {
   }
 
   if (!data.title) errors.push(`${file} has an empty title`);
-  if (!data.summary) errors.push(`${file} has an empty summary`);
-  if (!data.category) errors.push(`${file} has an empty category`);
   if (!data.location) errors.push(`${file} has an empty location`);
   if (!data.time) errors.push(`${file} has an empty time`);
 
@@ -334,19 +327,7 @@ for (const name of eventFiles) {
   if (/^#{1,6}\s/m.test(body)) errors.push(`Markdown heading found in ${file}`);
   if (/\(Click for flyer\)/i.test(raw)) errors.push(`Obsolete click-for-flyer text remains in ${file}`);
 
-  // Legacy source references.
-  const sources = Array.isArray(data.legacySources) ? data.legacySources : [];
-  if (!Array.isArray(data.legacySources)) errors.push(`${file}: legacySources must be a list`);
-  for (const sourceSlug of sources) {
-    if (!archivePage(sourceSlug)) errors.push(`Unknown event source ${sourceSlug} for ${file}`);
-  }
-  if (expected) {
-    for (const sourceSlug of expected.sources) {
-      if (!sources.includes(sourceSlug)) errors.push(`${file} no longer references legacy source ${sourceSlug}`);
-    }
-  }
-
-  // Complete promoted text for the rich legacy sources.
+  // Complete promoted text for the rich source pages.
   const normalizedBody = normalize(body);
   for (const sourceSlug of expected?.verbatim ?? []) {
     const sourceText = normalize(archivePage(sourceSlug)?.contentHtml ?? "");
@@ -355,30 +336,22 @@ for (const name of eventFiles) {
     }
   }
 
-  // Related links.
-  const relatedLinks = Array.isArray(data.relatedLinks) ? data.relatedLinks : [];
-  if (!Array.isArray(data.relatedLinks)) errors.push(`${file}: relatedLinks must be a list`);
-  for (const link of relatedLinks) {
-    if (!link || typeof link !== "object" || !link.label || !link.href) {
-      errors.push(`${file}: every relatedLinks entry needs a label and an href`);
-    }
-  }
-  const relatedUrls = relatedLinks.map((link) => link?.href ?? "").join(" ");
+  // Links formerly stored in frontmatter must remain reachable in Markdown.
+  const bodyUrls = [...body.matchAll(/\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g)].map((match) => match[1]).join(" ");
 
-  // Every embedded legacy video must still be reachable from the event page.
-  for (const sourceSlug of sources) {
+  // Every embedded source video must still be reachable from the event page.
+  for (const sourceSlug of expected?.sources ?? []) {
     const html = archivePage(sourceSlug)?.contentHtml ?? "";
     for (const match of html.matchAll(/youtube\.com\/embed\/([\w-]+)/g)) {
-      if (!relatedUrls.includes(match[1])) errors.push(`Video ${match[1]} from ${sourceSlug} is missing on ${file}`);
+      if (!bodyUrls.includes(match[1])) errors.push(`Video ${match[1]} from ${sourceSlug} is missing on ${file}`);
     }
   }
 
-  // Every legacy PDF must still be reachable from the event page.
-  const pdfTargets = `${relatedUrls} ${data.flyer ?? ""}`;
-  for (const sourceSlug of sources) {
+  // Every source PDF must still be reachable from the event page.
+  for (const sourceSlug of expected?.sources ?? []) {
     const html = archivePage(sourceSlug)?.contentHtml ?? "";
     for (const match of html.matchAll(/href="(\/files\/[^"]+\.pdf)"/gi)) {
-      if (!pdfTargets.includes(match[1])) errors.push(`Document ${match[1]} from ${sourceSlug} is missing on ${file}`);
+      if (!bodyUrls.includes(match[1])) errors.push(`Document ${match[1]} from ${sourceSlug} is missing on ${file}`);
     }
   }
 
@@ -397,4 +370,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Verified complete, heading-free Markdown content for ${eventFiles.length} event pages, the event series introduction, and the event template.`);
+console.log(`Verified complete, heading-free Markdown content and rendered links for ${eventFiles.length} event pages, the event series introduction, and the event template.`);

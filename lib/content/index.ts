@@ -70,9 +70,7 @@ function isHiddenItemSlug(slug: string): boolean {
 
 function loadEvents(): EventDocument[] {
   return itemFiles("events")
-    .filter((file) => !markdownFileIsDraft(file))
-    .map((file) => documentFromFile<EventFrontmatter>(file, eventFrontmatterSchema))
-    .filter((document) => !document.draft);
+    .map((file) => documentFromFile<EventFrontmatter>(file, eventFrontmatterSchema));
 }
 
 export function getSailorBarDate(date = new Date()): string {
@@ -102,9 +100,8 @@ export function getEventBySlug(slug: string): EventDocument | undefined {
   assertSafePart(slug, "event slug");
   if (isHiddenItemSlug(slug)) return undefined;
   const file = resolveContentPath("events", `${slug}.md`);
-  if (!markdownFileExists(file) || markdownFileIsDraft(file)) return undefined;
-  const event = documentFromFile<EventFrontmatter>(file, eventFrontmatterSchema);
-  return event.draft ? undefined : event;
+  if (!markdownFileExists(file)) return undefined;
+  return documentFromFile<EventFrontmatter>(file, eventFrontmatterSchema);
 }
 
 export function getProjects(): ProjectDocument[] {
@@ -200,7 +197,6 @@ export type {
   EventFrontmatter,
   PageFrontmatter,
   ProjectFrontmatter,
-  RelatedLink,
   UpdateFrontmatter,
 } from "./schemas";
 export { ContentError } from "./files";

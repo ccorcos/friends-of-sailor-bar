@@ -4,9 +4,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageIntro } from "@/components/page-structure";
+import { SimpleMarkdown } from "@/components/simple-markdown";
 import { getUpcomingEvents } from "@/lib/db";
+import { eventSeriesIntroduction, getEventPageContent } from "@/lib/event-content";
 import { formatDate } from "@/lib/format";
-import { getEventLegacyItems } from "@/lib/legacy-mappings";
 
 export const metadata: Metadata = { title: "Events" };
 
@@ -18,10 +19,11 @@ export default function EventsPage() {
       <PageIntro title="Events" />
       <section className="page-content container" aria-label="Upcoming events">
         <div className="content-list">
+          <div className="essay-body">
+            <SimpleMarkdown source={eventSeriesIntroduction} />
+          </div>
           {events.map((event) => {
-            const legacyItem = getEventLegacyItems(event.slug)[0];
-            const title = legacyItem?.title ?? event.title;
-            const excerpt = legacyItem?.excerpt ?? event.summary;
+            const title = getEventPageContent(event.slug)?.title ?? event.title;
 
             return (
               <article className="event-card" key={event.id}>
@@ -41,7 +43,6 @@ export default function EventsPage() {
                   </p>
                   <p className="event-location">{event.location}</p>
                   <h2><Link href={`/events/${event.slug}`}>{title}</Link></h2>
-                  <p>{excerpt}</p>
                   <Link className="detail-link" href={`/events/${event.slug}`}>Event details <ArrowRight aria-hidden="true" /></Link>
                 </div>
               </article>

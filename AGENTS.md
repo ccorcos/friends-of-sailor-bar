@@ -22,10 +22,11 @@ The site is in an active, page-by-page migration from the former WordPress websi
 - Faithful migration means preserving the complete published title, body text, headings, lists, captions, links, images, and downloadable files. Do not paraphrase, condense, modernize, silently correct, or replace source copy with a summary.
 - Index cards may use short excerpts for navigation, but every migrated detail page must expose the complete legacy source content.
 - Keep a permanent faithful copy under `/archive` even when the content is also promoted into `/about`, `/history`, `/wildlife`, `/events`, `/stories`, or another primary section.
-- Preserve empty pages, placeholders, duplicates, contradictions, misspellings, and outdated claims as historical source material. If clarification is needed, add a visibly separate editorial note; never alter the imported words.
+- Promoted pages may clean up legacy formatting, remove duplicated facts, and omit obsolete interface instructions such as “click for flyer,” but they must retain every unique factual detail and remain complete rather than becoming summaries. Keep links to source flyers, videos, PDFs, and related records when they carry information.
+- Preserve empty pages, placeholders, duplicates, contradictions, misspellings, and outdated claims in the faithful archive. On promoted pages, identify contradictions in a visibly separate editorial note rather than silently choosing one version.
 - Copy legacy images and files into `public/files` rather than hotlinking them. Preserve every media item referenced by imported content.
 - Do not mark a migration complete until its full text and referenced local media have been checked against the legacy source.
-- Newly authored summaries or reorganized guides are supplemental editorial content, not substitutes for a faithful migration.
+- Newly authored summaries or reorganized guides are supplemental editorial content, not substitutes for a faithful migration. Cleaned promoted pages must be checked for information coverage against their archived sources.
 
 ## Technology
 
@@ -94,7 +95,9 @@ Do not replace dedicated routes with `/#volunteer`, `/#updates`, or generic link
 - `app/**/page.tsx` — Route pages
 - `app/api/**/route.ts` — Form handlers
 - `components/forms.tsx` — Subscription and volunteer client forms
+- `components/simple-markdown.tsx` — Heading-free Markdown subset used by cleaned event pages
 - `lib/db.ts` — SQLite setup, schema, seed content, and event/story queries
+- `lib/event-content.ts` — Complete, nonredundant event-page copy and source mapping
 - `lib/projects.ts` — Project content and project lookup by slug
 - `public/images` — Primary site photography
 - `public/files` — Imported documents, historical images, and other supporting files served under `/files`
@@ -103,7 +106,7 @@ Do not replace dedicated routes with `/#volunteer`, `/#updates`, or generic link
 - `data/archive-manifest.json` — Per-page word counts, media references, and text hashes
 - `migration.md` — Authoritative legacy page checklist and destination map
 - `scripts/import-legacy-content.mjs` — Rebuilds the faithful snapshot from the legacy APIs
-- `scripts/verify-legacy-content.mjs` — Checks page coverage, hashes, and local media
+- `scripts/verify-legacy-content.mjs` — Checks page coverage, hashes, local media, and complete heading-free event content
 - `data/sailorbar.db` — Runtime SQLite database; intentionally ignored by Git
 - `sailorbar.service` — Production systemd service
 

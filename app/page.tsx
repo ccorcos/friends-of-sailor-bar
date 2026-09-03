@@ -4,8 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getPosts, getUpcomingEvents } from "@/lib/db";
+import { getEventPageContent } from "@/lib/event-content";
 import { formatDate } from "@/lib/format";
-import { getEventLegacyItems, getStoryLegacyItems } from "@/lib/legacy-mappings";
+import { getStoryLegacyItems } from "@/lib/legacy-mappings";
 import { projects } from "@/lib/projects";
 
 const featuredProjectSlugs = [
@@ -45,8 +46,7 @@ export default function Home() {
           <h2>Events</h2>
           <div className="panel-list">
             {events.map((event) => {
-              const legacyItem = getEventLegacyItems(event.slug)[0];
-              const title = legacyItem?.title ?? event.title;
+              const title = getEventPageContent(event.slug)?.title ?? event.title;
 
               return (
                 <Link
@@ -63,7 +63,6 @@ export default function Home() {
                     <small>{formatDate(event.date, { month: "long", day: "numeric", year: "numeric" })} · {event.time}</small>
                     <strong>{title}</strong>
                     <span>{event.location}</span>
-                    {legacyItem && <span>{legacyItem.excerpt}</span>}
                   </span>
                 </Link>
               );

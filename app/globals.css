@@ -343,6 +343,16 @@ dd { margin: 0.3rem 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1
 }
 .essay-body .button { margin-block-start: 0.5rem; }
 .event-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.event-body { margin-block-end: 2rem; }
+.event-body p { margin-block-end: 1.25rem; }
+.event-body .editorial-note {
+  padding-inline-start: 1rem;
+  border-inline-start: 2px solid var(--line);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
 .essay-body a:not(.button) { text-decoration: underline; text-underline-offset: 0.2em; }
 
 .standalone-detail { padding-block-start: clamp(2rem, 6vw, 4.5rem); }

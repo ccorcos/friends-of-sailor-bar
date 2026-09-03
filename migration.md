@@ -18,6 +18,18 @@ A short excerpt may appear on an index card, but it never replaces the full impo
 - All **59 discovered WordPress media URL variants** and **2 externally linked source PDFs** are mapped to local files; every imported `/files/...` reference exists.
 - `data/archive-manifest.json` records the title, word count, local media, and SHA-256 text hash for each public legacy page.
 
+## Cleaned event presentation
+
+As of September 3, 2026, all eleven current event detail pages use the complete event information without rendering the raw WordPress formatting:
+
+- the permanent `/archive` copies remain verbatim;
+- dates, times, and meeting places appear once in the structured facts;
+- event bodies render as heading-free Markdown-style paragraphs;
+- “(Click for flyer),” WordPress plugin labels, and duplicated facts are omitted;
+- conflicting source details are retained in separate editorial notes;
+- source flyers, videos, PDFs, and related updates remain linked;
+- `scripts/verify-event-content.mjs` checks every event, its source mapping, full rich source bodies, videos, and required structured details.
+
 ## Organization
 
 - [x] `/accomplishments/` — **Accomplishments** → `/archive/accomplishments`. Full source title and body preserved.

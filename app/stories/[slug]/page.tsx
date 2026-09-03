@@ -28,7 +28,7 @@ export default async function StoryDetailPage({ params }: { params: Promise<{ sl
           <p className="essay-date">{formatDate(update.publishedAt, { month: "long", day: "numeric", year: "numeric" })}</p>
           {update.image && (
             <div className="feature-image">
-              <Image src={update.image} alt="" fill unoptimized={update.image.startsWith("/media/")} sizes="(max-width: 700px) 100vw, 48rem" priority />
+              <Image src={update.image} alt="" fill sizes="(max-width: 700px) 100vw, 48rem" priority />
             </div>
           )}
           <div className="essay-body">

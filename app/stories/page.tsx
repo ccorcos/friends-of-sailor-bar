@@ -43,7 +43,7 @@ export default function StoriesPage() {
                     href={href}
                     aria-label={`Read ${update.title}`}
                   >
-                    <Image src={update.image} alt="" fill unoptimized={update.image.startsWith("/media/")} sizes="(max-width: 700px) 100vw, 10rem" />
+                    <Image src={update.image} alt="" fill sizes="(max-width: 700px) 100vw, 10rem" />
                   </Link>
                 )}
                 <div className="card-copy">

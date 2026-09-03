@@ -34,7 +34,7 @@ export default function ProjectsPage() {
                   href={`/projects/${project.slug}`}
                   aria-label={`View ${project.title}`}
                 >
-                  <Image src={project.image} fill unoptimized={project.image.startsWith("/media/")} alt="" sizes="(max-width: 700px) 100vw, 10rem" />
+                  <Image src={project.image} fill alt="" sizes="(max-width: 700px) 100vw, 10rem" />
                 </Link>
               )}
               <div className="card-copy">

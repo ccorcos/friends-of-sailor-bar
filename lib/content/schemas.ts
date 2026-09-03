@@ -8,8 +8,8 @@ const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Expected an ISO date (Y
 
 const optionalText = z.string().trim().optional();
 const assetPath = z.string().trim().refine(
-  (value) => value === "" || /^\/(?:images|files|media)\//.test(value),
-  "Assets must use /images, /files, or /media",
+  (value) => value === "" || /^\/(?:images|files)\//.test(value),
+  "Assets must use /images or /files",
 );
 export const eventFrontmatterSchema = z.object({
   title: z.string().trim().min(1),

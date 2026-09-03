@@ -297,10 +297,6 @@ for (const name of updateFiles) {
   if (typeof data.title !== "string" || !data.title.trim()) errors.push(`${label} has an empty title`);
   if (typeof data.image !== "string" || !data.image.trim()) {
     errors.push(`${label} has an empty image`);
-  } else if (data.image.startsWith("/media/")) {
-    if (!existsSync(join(root, "content", "media", data.image.slice("/media/".length)))) {
-      errors.push(`${label}: image ${data.image} does not exist under content/media`);
-    }
   } else if (data.image.startsWith("/")) {
     if (!existsSync(join(root, "public", data.image))) errors.push(`${label}: image ${data.image} does not exist under public/`);
   } else {

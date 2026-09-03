@@ -26,7 +26,7 @@ export default function Home() {
                 {project.image ? (
                   <>
                     <span className="thumbnail">
-                      <Image src={project.image} alt="" fill unoptimized={project.image.startsWith("/media/")} sizes="(max-width: 900px) 25vw, 10vw" />
+                      <Image src={project.image} alt="" fill sizes="(max-width: 900px) 25vw, 10vw" />
                     </span>
                     <span><strong>{project.title}</strong></span>
                   </>
@@ -81,7 +81,7 @@ export default function Home() {
                 {update.image ? (
                   <>
                     <span className="thumbnail">
-                      <Image src={update.image} alt="" fill unoptimized={update.image.startsWith("/media/")} sizes="(max-width: 900px) 25vw, 10vw" />
+                      <Image src={update.image} alt="" fill sizes="(max-width: 900px) 25vw, 10vw" />
                     </span>
                     <span>
                       <small>{formatDate(update.publishedAt, { month: "short", day: "numeric", year: "numeric" })}</small>

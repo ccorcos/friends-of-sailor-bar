@@ -134,7 +134,7 @@ function validateTemplate(filePath, schema) {
 function cleanAssetPath(value) {
   if (!value.startsWith("/")) return undefined;
   const withoutQuery = value.split(/[?#]/, 1)[0];
-  const match = withoutQuery.match(/^\/(images|files|media)\/(.+)$/);
+  const match = withoutQuery.match(/^\/(images|files)\/(.+)$/);
   if (!match) return undefined;
   try {
     return { root: match[1], relativePath: decodeURIComponent(match[2]) };
@@ -145,7 +145,12 @@ function cleanAssetPath(value) {
 
 function recordAsset(value, filePath) {
   if (typeof value !== "string") return;
-  const cleaned = cleanAssetPath(value.trim());
+  const normalized = value.trim();
+  if (normalized.startsWith("/media/")) {
+    addError(`${labelFor(filePath)}: local assets must use /images or /files, not /media`);
+    return;
+  }
+  const cleaned = cleanAssetPath(normalized);
   if (!cleaned) return;
   const key = `${cleaned.root}/${cleaned.relativePath}`;
   const references = assetReferences.get(key) ?? [];
@@ -170,7 +175,7 @@ function scanAssets(filePath, data, body) {
 
 function assetFilePath(root, relativePath) {
   if (!relativePath || path.isAbsolute(relativePath)) return undefined;
-  const base = root === "media" ? path.join(CONTENT_ROOT, "media") : path.join(publicRoot, root);
+  const base = path.join(publicRoot, root);
   const candidate = path.resolve(base, relativePath);
   if (candidate !== base && !candidate.startsWith(`${base}${path.sep}`)) return undefined;
   return candidate;

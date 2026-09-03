@@ -28,7 +28,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <h1>{project.title}</h1>
           {project.image && (
             <div className="feature-image">
-              <Image src={project.image} alt="" fill unoptimized={project.image.startsWith("/media/")} sizes="(max-width: 700px) 100vw, 48rem" priority />
+              <Image src={project.image} alt="" fill sizes="(max-width: 700px) 100vw, 48rem" priority />
             </div>
           )}
           <div className="essay-body">

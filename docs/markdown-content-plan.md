@@ -8,7 +8,6 @@ The runtime Markdown foundation and initial content conversion are implemented i
 
 - [x] Server-only file discovery, modification-time caching, frontmatter schemas, Markdown compilation, and loader tests.
 - [x] Event, project, update, and promoted About/wildlife/history Markdown files, with collection templates.
-- [x] Dynamic `/media/...` serving from `content/media` with path and MIME safeguards.
 - [x] `npm run content:validate` for schemas, malformed Markdown, relationships, templates, and local assets.
 - [x] Promoted-page coverage verification in `migration:verify`.
 - [x] Route-by-route Markdown cutover for the homepage, collections, and promoted About/wildlife/history pages, with request-time rendering.
@@ -47,11 +46,6 @@ content/
       index.md
       nisenan-history.md
       mining-and-dredging.md
-  media/
-    events/
-    projects/
-    updates/
-    pages/
 ```
 
 The same loader would work with top-level `events/`, `projects/`, and similar directories if that layout is preferred. The extra `content/` level simply makes the boundary between application code and editable material clearer.
@@ -93,7 +87,7 @@ Upcoming versus past remains computed from the ISO date in the `America/Los_Ange
 ```md
 ---
 title: "Butterfly Sanctuary"
-image: "/media/projects/butterfly-sanctuary/hero.jpg"
+image: "/images/projects/butterfly-sanctuary.jpg"
 order: 20
 ---
 
@@ -105,7 +99,7 @@ Full project detail goes here.
 ```md
 ---
 title: "A more welcoming path to Turtle Pond"
-image: "/media/updates/welcoming-path-turtle-pond/hero.jpg"
+image: "/images/updates/welcoming-path-turtle-pond.jpg"
 publishedAt: "2026-08-24"
 ---
 
@@ -182,25 +176,11 @@ Add commands such as:
 
 The first command validates all files, duplicate routes, dates, references, and media. The second is optional convenience around copying `__template.md`; manual copying remains fully supported.
 
-## Runtime media is the main complication
+## Public assets
 
-Markdown files can be discovered at request time, but new files placed in `public/` are not reliably available to an already-running production Next.js process. A direct probe against the current server returned 404 for a file added to `public/` after startup.
+Store site images under `public/images/` and downloadable documents under `public/files/`. Reference them from Markdown with root-relative paths such as `/images/projects/butterfly-sanctuary.jpg` or `/files/event-flyer.pdf`.
 
-To preserve the no-rebuild/no-restart workflow for flyers and images, store editable assets under `content/media/` and add a dynamic route handler such as:
-
-```text
-app/media/[...path]/route.ts
-```
-
-That handler should:
-
-- constrain resolved paths to `content/media/`, including protection from symlink traversal;
-- serve only an allowlist of image/document MIME types;
-- emit `ETag`, `Last-Modified`, and `Cache-Control: public, max-age=0, must-revalidate`;
-- answer conditional requests with 304;
-- avoid exposing Markdown or directory listings.
-
-Existing immutable assets in `public/images` and `public/files` do not need to move immediately. Newly editable assets should use `/media/...`. Prefer new filenames when replacing images; this also avoids stale transformed-image caches.
+The content validator checks these local references against `public/`. Adding or replacing public assets may require rebuilding and restarting the production Next.js service before they are available.
 
 ## Route design
 
@@ -219,7 +199,7 @@ Do not call `generateStaticParams` for editable content. Unknown dynamic slugs m
 
 ### Phase 1: Foundation
 
-- Add the parser, schemas, renderer, modification-time cache, validation command, and runtime media handler.
+- Add the parser, schemas, renderer, modification-time cache, and validation command.
 - Add one temporary fixture collection and automated tests for create, edit, delete, malformed frontmatter, hidden drafts, and traversal attempts.
 - Ensure every Markdown-dependent route and metadata function is request-time rendered.
 
@@ -263,7 +243,7 @@ Migrating `data/archive.json` itself should be a separate, optional project. The
 | Risk | Mitigation |
 | --- | --- |
 | Next.js prerenders a content route | Explicitly make every dependent route dynamic and verify response cache headers after production build. |
-| New media is invisible without restart | Serve `content/media` through a dynamic Route Handler rather than `public`. |
+| New public assets are invisible without restart | Rebuild and restart the production service after adding or replacing files under `public`. |
 | Invalid YAML takes down a page | Strict schemas, actionable errors, `content:validate`, and template/underscore-prefixed file exclusion. |
 | An edit is read halfway through a write | Encourage atomic saves/renames; retain the last valid cached document if a transient parse fails and log the error. |
 | Legacy details are lost during conversion | Keep `/archive` and external source mappings, and extend migration verification before removing old sources. |
@@ -273,6 +253,6 @@ Migrating `data/archive.json` itself should be a separate, optional project. The
 
 ## Scope assessment
 
-The architecture is straightforward. The loader, cache, renderer, schemas, and media route are a contained piece of work. Most effort is not technical infrastructure; it is careful content conversion and verification, especially for legacy updates and the informational pages.
+The architecture is straightforward. The loader, cache, renderer, and schemas are a contained piece of work. Most effort is not technical infrastructure; it is careful content conversion and verification, especially for legacy updates and the informational pages.
 
 The foundation, content conversion, route cutover, and obsolete-source cleanup are now in place. Future work can expand the same Markdown model to additional promoted pages while `/archive` remains the permanent faithful source record.

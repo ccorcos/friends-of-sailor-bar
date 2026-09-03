@@ -4,7 +4,6 @@ import os from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import test from "node:test";
-import { NextRequest } from "next/server";
 
 const repositoryRoot = process.cwd();
 
@@ -23,7 +22,7 @@ ${options.body ?? "**Safe Markdown** [Details](/details) <script>alert('unsafe')
 function projectMarkdown(title: string): string {
   return `---
 title: ${JSON.stringify(title)}
-image: "/media/project.jpg"
+image: "/images/project.jpg"
 order: 1
 ---
 
@@ -42,7 +41,7 @@ Update body.
 `;
 }
 
-test("runtime content loading, caching, validation, and media serving", async () => {
+test("runtime content loading, caching, and validation", async () => {
   const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), "sailor-content-test-"));
   const originalCwd = process.cwd();
 
@@ -51,7 +50,6 @@ test("runtime content loading, caching, validation, and media serving", async ()
     fs.mkdirSync(path.join(temporaryRoot, "content", "projects"), { recursive: true });
     fs.mkdirSync(path.join(temporaryRoot, "content", "updates"), { recursive: true });
     fs.mkdirSync(path.join(temporaryRoot, "content", "pages", "about"), { recursive: true });
-    fs.mkdirSync(path.join(temporaryRoot, "content", "media", "events"), { recursive: true });
 
     const eventPath = path.join(temporaryRoot, "content", "events", "alpha.md");
     fs.writeFileSync(eventPath, eventMarkdown("Alpha"));
@@ -127,6 +125,11 @@ test("runtime content loading, caching, validation, and media serving", async ()
     assert.throws(() => content.getEventBySlug("link"), /escapes the content root/);
 
     assert.equal(content.getProjects()[0].title, "Project");
+    fs.writeFileSync(
+      path.join(temporaryRoot, "content", "projects", "removed-media-path.md"),
+      projectMarkdown("Removed media path").replace("/images/project.jpg", "/media/project.jpg"),
+    );
+    assert.throws(() => content.getProjectBySlug("removed-media-path"), /Assets must use \/images or \/files/);
     assert.equal(content.getUpdates()[0].title, "Update");
     assert.equal(content.getCollectionIndex("projects")?.title, "Projects");
     assert.equal(content.getPageByPath("about")?.href, "/about");
@@ -138,48 +141,6 @@ test("runtime content loading, caching, validation, and media serving", async ()
     assert.throws(() => content.getUpdateBySlug("removed-field"), /Invalid frontmatter/);
 
     assert.equal(content.getSailorBarDate(new Date("2026-09-03T12:00:00Z")), "2026-09-03");
-
-    const mediaPath = path.join(temporaryRoot, "content", "media", "events", "test.png");
-    fs.writeFileSync(mediaPath, Buffer.from([0x89, 0x50, 0x4e, 0x47]));
-    const routeUrl = pathToFileURL(path.join(repositoryRoot, "app", "media", "[...path]", "route.ts")).href;
-    const route = await import(routeUrl);
-    const context = { params: Promise.resolve({ path: ["events", "test.png"] }) };
-    const response = await route.GET(new NextRequest("http://localhost/media/events/test.png"), context);
-    assert.equal(response.status, 200);
-    assert.equal(response.headers.get("content-type"), "image/png");
-    assert.equal((await response.arrayBuffer()).byteLength, 4);
-
-    const etag = response.headers.get("etag");
-    assert.ok(etag);
-    const notModified = await route.GET(
-      new NextRequest("http://localhost/media/events/test.png", { headers: { "if-none-match": etag } }),
-      context,
-    );
-    assert.equal(notModified.status, 304);
-
-    fs.writeFileSync(path.join(temporaryRoot, "content", "media", "events", "new.pdf"), "new file");
-    const newFile = await route.GET(
-      new NextRequest("http://localhost/media/events/new.pdf"),
-      { params: Promise.resolve({ path: ["events", "new.pdf"] }) },
-    );
-    assert.equal(newFile.status, 200);
-    assert.equal(newFile.headers.get("content-type"), "application/pdf");
-
-    fs.writeFileSync(path.join(temporaryRoot, "content", "media", "secret.md"), "secret");
-    const disallowed = await route.GET(
-      new NextRequest("http://localhost/media/secret.md"),
-      { params: Promise.resolve({ path: ["secret.md"] }) },
-    );
-    assert.equal(disallowed.status, 404);
-
-    const outsidePdf = path.join(temporaryRoot, "outside.pdf");
-    fs.writeFileSync(outsidePdf, "outside");
-    fs.symlinkSync(outsidePdf, path.join(temporaryRoot, "content", "media", "outside.pdf"));
-    const escapedMedia = await route.GET(
-      new NextRequest("http://localhost/media/outside.pdf"),
-      { params: Promise.resolve({ path: ["outside.pdf"] }) },
-    );
-    assert.equal(escapedMedia.status, 404);
   } finally {
     process.chdir(originalCwd);
     fs.rmSync(temporaryRoot, { recursive: true, force: true });

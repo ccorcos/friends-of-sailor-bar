@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { EventDocument } from "@/lib/content";
-import { formatDate } from "@/lib/format";
+import { formatDate, formatEventDateTime } from "@/lib/format";
 
 type EventCardProps = {
   event: EventDocument;
@@ -31,10 +31,7 @@ export function EventCard({ event, past = false }: EventCardProps) {
       </Link>
       <div className="event-copy">
         <h2><Link href={`/events/${event.slug}`}>{event.title}</Link></h2>
-        <p className="event-time">
-          {formattedDate}
-          {event.time !== "Time not recorded" && ` · ${event.time}`}
-        </p>
+        <p className="event-time">{formatEventDateTime(event.date, event.time)}</p>
         <p className="event-location">{event.location}</p>
         <Link className="detail-link" href={`/events/${event.slug}`}>
           Event details <ArrowRight aria-hidden="true" />

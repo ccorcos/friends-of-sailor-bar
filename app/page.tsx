@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getProjects, getUpcomingEvents, getUpdates } from "@/lib/content";
-import { formatDate } from "@/lib/format";
+import { formatDate, formatEventDateTime } from "@/lib/format";
 
 export default function Home() {
   const events = getUpcomingEvents(4);
@@ -55,7 +55,7 @@ export default function Home() {
                 </time>
                 <span className="home-event-copy">
                   <strong>{event.title}</strong>
-                  <small>{formatDate(event.date, { month: "long", day: "numeric", year: "numeric" })} · {event.time}</small>
+                  <small>{formatEventDateTime(event.date, event.time)}</small>
                   <span>{event.location}</span>
                 </span>
               </Link>

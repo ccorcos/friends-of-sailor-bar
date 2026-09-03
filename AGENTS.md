@@ -94,44 +94,37 @@ Do not replace dedicated routes with `/#volunteer`, `/#updates`, or generic link
 - `app/globals.css` — Global design system and responsive styles
 - `app/**/page.tsx` — Route pages
 - `app/api/**/route.ts` — Form handlers
+- `app/media/[...path]/route.ts` — Runtime media handler for `content/media`
 - `components/forms.tsx` — Subscription and volunteer client forms
-- `components/simple-markdown.tsx` — Heading-free Markdown subset used by cleaned event pages
-- `lib/db.ts` — SQLite setup, schema, seed content, and event/story queries
-- `lib/event-content.ts` — Complete, nonredundant event-page copy and source mapping
-- `lib/projects.ts` — Project content and project lookup by slug
+- `components/markdown-content.tsx` — Server-rendered Markdown content view
+- `components/content-page.tsx` — Shared request-time About, Wildlife, and History page renderer
+- `lib/db.ts` — SQLite setup for subscriber and volunteer form submissions
+- `lib/content/` — Server-only Markdown file discovery, caching, schemas, loading, and compilation
 - `public/images` — Primary site photography
 - `public/files` — Imported documents, historical images, and other supporting files served under `/files`
+- `content/` — Runtime-editable events, projects, updates, and promoted section pages
+- `content/media` — Runtime-editable Markdown-referenced media served through `/media`
 - `data/archive.json` — Complete imported legacy page bodies with local URLs
 - `data/archive-assets.json` — Legacy media source-to-local-file mappings
 - `data/archive-manifest.json` — Per-page word counts, media references, and text hashes
 - `migration.md` — Authoritative legacy page checklist and destination map
 - `scripts/import-legacy-content.mjs` — Rebuilds the faithful snapshot from the legacy APIs
-- `scripts/verify-legacy-content.mjs` — Checks page coverage, hashes, local media, and complete heading-free event content
+- `scripts/validate-content.mjs` — Validates Markdown schemas, relationships, and local assets
+- `scripts/verify-legacy-content.mjs` — Checks archive page coverage, hashes, and local media
+- `scripts/verify-event-content.mjs` — Checks complete event Markdown, source mappings, links, and structured details
+- `scripts/verify-promoted-markdown.mjs` — Checks promoted page coverage against the faithful archive
+- `scripts/verify-update-content.mjs` — Checks complete update Markdown, source mappings, media, links, and published title/date/excerpt choices
 - `data/sailorbar.db` — Runtime SQLite database; intentionally ignored by Git
 - `sailorbar.service` — Production systemd service
 
 ## Data model
 
-SQLite stores:
+The application uses SQLite for mutable form submissions only:
 
-- `events`
-- `posts`
 - `subscribers`
 - `volunteers`
 
-Important query functions in `lib/db.ts`:
-
-- `getUpcomingEvents(limit?)`
-- `getEventBySlug(slug)`
-- `getPosts(limit?)`
-- `getPostBySlug(slug)`
-
-Project content currently lives in `lib/projects.ts`:
-
-- `projects`
-- `getProjectBySlug(slug)`
-
-Event listings compare dates in the `America/Los_Angeles` time zone so events move into the past archive at local midnight. Do not hardcode today's date into event queries.
+Editorial content lives in Markdown under `content/`. Events are classified as upcoming or past by comparing their ISO date in the `America/Los_Angeles` time zone, so they move into the past archive at local midnight. Do not hardcode today's date into event queries.
 
 ## Content conventions
 
@@ -142,6 +135,17 @@ Event listings compare dates in the `America/Los_Angeles` time zone so events mo
 - Do not invent confirmed partners, funding, schedules, or project approvals.
 - Current project themes are accessibility, butterfly habitat, visitor water/native planting, oak planting, and a riverside native meadow.
 
+## Markdown authoring workflow
+
+- Store events, projects, and updates in `content/events`, `content/projects`, and `content/updates`; store promoted section pages in `content/pages/<section>`.
+- The filename is the canonical lowercase, hyphen-separated slug. Do not add a frontmatter `slug` field.
+- Copy the collection's `__template.md`, fill in the schema-required frontmatter, and leave `draft: true` until review is complete. Templates and underscore-prefixed notes are ignored by public item loaders.
+- Put the page title in frontmatter; Markdown bodies must not contain a level-one heading. Use standard Markdown; raw HTML is not part of the supported content contract.
+- Use `storySlug`/`relatedUpdate`, `relatedEvent`, and `relatedProject` only for existing public slugs. Run `npm run content:validate` after content, frontmatter, relationship, or media changes.
+- Keep immutable existing assets in `public/images` and `public/files`. New editable assets belong in `content/media` and are referenced as `/media/...`; the runtime media route serves them without exposing Markdown or directory listings.
+
+The Markdown loader reads files at request time and caches each parsed file by modification metadata. Content-dependent routes must stay dynamic and must not use `generateStaticParams`. The current systemd deployment runs from the working tree; future immutable deployments must mount `content/` as runtime storage.
+
 ## Local commands
 
 ```bash
@@ -149,6 +153,8 @@ npm install
 npm run dev
 npm run lint
 npm run build
+npm run content:validate
+npm run test:content
 npm run migration:verify
 ```
 
@@ -179,13 +185,15 @@ Before considering a change complete:
 
 1. Run `npm run lint`.
 2. Run `npm run build`.
-3. Run `npm run migration:verify` when changing legacy content, mappings, or media.
-4. Confirm relevant routes return HTTP 200.
-5. Test desktop and mobile layouts for visual changes.
-6. Verify cards lead to the selected event, story, or project—not merely the index page.
-7. Test form submission when modifying forms, APIs, or the database.
-8. Restart `sailorbar` after rebuilding production.
+3. Run `npm run content:validate` when changing Markdown, content schemas/loaders, relationships, or referenced media.
+4. Run `npm run test:content` when changing the Markdown loader, renderer, or runtime media behavior.
+5. Run `npm run migration:verify` when changing legacy content, mappings, promoted pages, or media.
+6. Confirm relevant routes return HTTP 200.
+7. Test desktop and mobile layouts for visual changes.
+8. Verify cards lead to the selected event, story, or project—not merely the index page.
+9. Test form submission when modifying forms, APIs, or the database.
+10. Restart `sailorbar` after rebuilding production.
 
 ## Current status
 
-As of September 2, 2026, the site has working project, event, story, volunteer, and subscription routes; persistent SQLite form storage; responsive layouts; a systemd-managed production server; and faithful local copies of all 71 public legacy pages and their referenced media.
+As of September 3, 2026, the site has working project, event, update, volunteer, and subscription routes; persistent SQLite form storage; responsive layouts; a systemd-managed production server; and faithful local copies of all 71 public legacy pages and their referenced media. Events, projects, updates, and promoted About/Wildlife/History pages are runtime Markdown with modification-aware caching, dynamic media, validation, and archive coverage checks. Superseded TypeScript and SQLite editorial sources have been removed; `/archive` remains the permanent faithful record.

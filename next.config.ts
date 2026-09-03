@@ -3,6 +3,12 @@ import archiveManifest from "./data/archive-manifest.json";
 
 const promotedLegacyDestinations: Record<string, string> = {
   "/about-sailor-bar/": "/about",
+  "/recreation/": "/about/recreation",
+  "/amenities/": "/about/amenities",
+  "/friends-of-sailor-bar-brochure-and-map/": "/about/brochure-and-map",
+  "/turtle-pond/": "/about/turtle-pond",
+  "/boat-launch/": "/about/boat-launch",
+  "/olive-avenue-river-overlook/": "/about/olive-avenue-overlook",
   "/contact/": "/contact",
   "/get-involved/": "/volunteer",
   "/your-donations-support-sailor-bar-activities/": "/donate",

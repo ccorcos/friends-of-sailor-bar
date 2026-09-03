@@ -1,39 +1,36 @@
 import Link from "next/link";
+import { getPageByPath, getPageNavigation, type PageNavigationItem } from "@/lib/content";
 
-const sections = [
-  {
-    href: "/about",
-    label: "About Sailor Bar",
-    children: [
-      { href: "/archive/recreation", label: "Recreation" },
-      { href: "/archive/amenities", label: "Amenities" },
-      { href: "/archive/friends-of-sailor-bar-brochure-and-map", label: "Brochure and map" },
-      { href: "/archive/turtle-pond", label: "Turtle Pond" },
-      { href: "/archive/boat-launch", label: "Boat launch" },
-      { href: "/archive/olive-avenue-river-overlook", label: "Olive Avenue overlook" },
-    ],
-  },
-  {
-    href: "/wildlife",
-    label: "Wildlife",
-    children: [
-      { href: "/wildlife/birding", label: "Birding" },
-      { href: "/wildlife/plant-life", label: "Plant life" },
-      { href: "/wildlife/salmon-and-steelhead", label: "Salmon and steelhead" },
-    ],
-  },
-  {
-    href: "/history",
-    label: "History",
-    children: [
-      { href: "/history/nisenan-history", label: "Nisenan history" },
-      { href: "/history/mining-and-dredging", label: "Mining and dredging" },
-    ],
-  },
-  { href: "/archive/friends-of-sailor-bar", label: "Friends of Sailor Bar" },
-];
+const SECTIONS = ["about", "wildlife", "history"] as const;
+
+const ARCHIVE_LINK = { href: "/archive/friends-of-sailor-bar", label: "Friends of Sailor Bar" };
+
+type DirectoryLink = { href: string; label: string };
+type DirectorySection = DirectoryLink & { children: DirectoryLink[] };
+
+function toLink(item: Pick<PageNavigationItem, "href" | "title" | "navTitle">): DirectoryLink {
+  return { href: item.href, label: item.navTitle ?? item.title };
+}
+
+/**
+ * Builds the directory from Markdown frontmatter at request time so a new file
+ * with `navTitle` appears without a rebuild. Section roots live in `index.md`,
+ * which `getPageNavigation` deliberately omits, so they are loaded directly.
+ */
+function buildSections(): DirectorySection[] {
+  return SECTIONS.flatMap((section): DirectorySection[] => {
+    const root = getPageByPath(section);
+    if (!root) return [];
+    return [{
+      ...toLink(root),
+      children: getPageNavigation(section).map(toLink),
+    }];
+  });
+}
 
 export function AboutDirectory() {
+  const sections = buildSections();
+
   return (
     <aside className="about-directory">
       <nav aria-label="About Sailor Bar sections">
@@ -41,7 +38,7 @@ export function AboutDirectory() {
           {sections.map((section) => (
             <li key={section.href}>
               <Link href={section.href}>{section.label}</Link>
-              {section.children && (
+              {section.children.length > 0 && (
                 <ul>
                   {section.children.map((child) => (
                     <li key={child.href}><Link href={child.href}>{child.label}</Link></li>
@@ -50,6 +47,9 @@ export function AboutDirectory() {
               )}
             </li>
           ))}
+          <li>
+            <Link href={ARCHIVE_LINK.href}>{ARCHIVE_LINK.label}</Link>
+          </li>
         </ul>
       </nav>
     </aside>

@@ -2,7 +2,19 @@
 
 Date: September 3, 2026
 
-## Recommendation
+## Implementation status
+
+The runtime Markdown foundation and initial content conversion are implemented in the working tree:
+
+- [x] Server-only file discovery, modification-time caching, frontmatter schemas, Markdown compilation, and loader tests.
+- [x] Event, project, update, and promoted About/wildlife/history Markdown files, with collection templates.
+- [x] Dynamic `/media/...` serving from `content/media` with path and MIME safeguards.
+- [x] `npm run content:validate` for schemas, malformed Markdown, relationships, templates, and local assets.
+- [x] Promoted-page coverage verification in `migration:verify`.
+- [x] Route-by-route Markdown cutover for the homepage, collections, and promoted About/wildlife/history pages, with request-time rendering.
+- [x] Removal of superseded SQLite/TypeScript editorial sources after migration checks.
+
+The faithful `/archive` snapshot remains independent and is still the required source record during the remaining cutover.
 
 Move the editorial content to Markdown with validated frontmatter. Keep SQLite only for mutable form submissions (`subscribers` and `volunteers`). This is a good fit for the site and is technically straightforward.
 
@@ -285,4 +297,4 @@ Migrating `data/archive.json` itself should be a separate, optional project. The
 
 The architecture is straightforward. The loader, cache, renderer, schemas, and media route are a contained piece of work. Most effort is not technical infrastructure; it is careful content conversion and verification, especially for legacy updates and the informational pages.
 
-A sensible first implementation is Phase 1 plus Events. That establishes the complete authoring workflow—including adding a brand-new event without rebuild or restart—before converting the rest of the site.
+The foundation, content conversion, route cutover, and obsolete-source cleanup are now in place. Future work can expand the same Markdown model to additional promoted pages while `/archive` remains the permanent faithful source record.

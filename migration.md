@@ -49,9 +49,9 @@ As of September 3, 2026, all eleven current event detail pages use the complete 
 
 - [x] `/about-sailor-bar/` — **About Sailor Bar** → `/archive/about-sailor-bar`, `/about`. Full source title and body preserved.
 - [x] `/activities-amenities/` — **Activities & Amenities** → `/archive/activities-amenities`. Full source title and body preserved.
-- [x] `/amenities/` — **Amenities** → `/archive/amenities`. Full source title and body preserved.
-- [x] `/friends-of-sailor-bar-brochure-and-map/` — **Friends of Sailor Bar Brochure and Map** → `/archive/friends-of-sailor-bar-brochure-and-map`. Full source title and body preserved with 1 local media file.
-- [x] `/recreation/` — **Recreation** → `/archive/recreation`. Full source title and body preserved.
+- [x] `/amenities/` — **Amenities** → `/archive/amenities`, `/about/amenities`. Full source title and body preserved.
+- [x] `/friends-of-sailor-bar-brochure-and-map/` — **Friends of Sailor Bar Brochure and Map** → `/archive/friends-of-sailor-bar-brochure-and-map`, `/about/brochure-and-map`. Full source title and body preserved with 1 local media file.
+- [x] `/recreation/` — **Recreation** → `/archive/recreation`, `/about/recreation`. Full source title and body preserved.
 - [x] `/scenic-river-views/` — **Scenic River Views** → `/archive/scenic-river-views`. Full source title and body preserved.
 
 ## Nature
@@ -78,15 +78,15 @@ As of September 3, 2026, all eleven current event detail pages use the complete 
 ## Places
 
 - [x] `/aerojet-groundwater-pumps/` — **Aerojet Groundwater Pumps** → `/archive/aerojet-groundwater-pumps`. Full source title and body preserved with 1 local source document.
-- [x] `/boat-launch/` — **Boat Launch** → `/archive/boat-launch`. Full source title and body preserved with 1 local media file.
+- [x] `/boat-launch/` — **Boat Launch** → `/archive/boat-launch`, `/about/boat-launch`. Full source title and body preserved with 1 local media file.
 - [x] `/great-horned-owl-nest-east-of-sailor-bar/` — **Great Horned Owl Nest East of Sailor Bar** → `/archive/great-horned-owl-nest-east-of-sailor-bar`. Full source title and body preserved with 1 local media file.
 - [x] `/grinding-rocks/` — **Grinding Rocks** → `/archive/grinding-rocks`. Full source title and body preserved with 1 local media file.
 - [x] `/heron-rookeries/` — **Heron Rookeries** → `/archive/heron-rookeries`. Full source title and body preserved.
 - [x] `/key-points-of-interest/` — **Key Points of Interest** → `/archive/key-points-of-interest`. Full source title and body preserved. The source body is empty; the directory placeholder is still preserved.
 - [x] `/flag-pole/` — **Lt. Stephen D. Moore Flag Pole** → `/archive/flag-pole`. Full source title and body preserved.
-- [x] `/olive-avenue-river-overlook/` — **Olive Avenue River Overlook** → `/archive/olive-avenue-river-overlook`. Full source title and body preserved.
+- [x] `/olive-avenue-river-overlook/` — **Olive Avenue River Overlook** → `/archive/olive-avenue-river-overlook`, `/about/olive-avenue-overlook`. Full source title and body preserved.
 - [x] `/side-channel/` — **Side Channel East of the Boat Launch** → `/archive/side-channel`, `/stories/restoring-room-young-salmon`. Full source title and body preserved.
-- [x] `/turtle-pond/` — **Turtle Pond** → `/archive/turtle-pond`, `/stories/welcoming-path-turtle-pond`. Full source title and body preserved.
+- [x] `/turtle-pond/` — **Turtle Pond** → `/archive/turtle-pond`, `/about/turtle-pond`, `/stories/welcoming-path-turtle-pond`. Full source title and body preserved.
 
 ## Partners
 

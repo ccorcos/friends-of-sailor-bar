@@ -46,6 +46,7 @@ const collections = [
 const itemDocuments = new Map(collections.map(({ name }) => [name, new Map()]));
 const pageDocuments = new Map();
 const pageRoutes = new Set();
+let validatedTemplateCount = 0;
 
 function addError(message) {
   if (!errorSet.has(message)) {
@@ -82,6 +83,57 @@ function parseFile(filePath, schema) {
   } catch (error) {
     addError(`${labelFor(filePath)}: ${error instanceof Error ? error.message : String(error)}`);
     return undefined;
+  }
+}
+
+function directoriesWithMarkdown(root) {
+  if (!fs.existsSync(root)) return [];
+  const directories = [];
+
+  const visit = (directory) => {
+    const entries = fs.readdirSync(directory, { withFileTypes: true });
+    if (entries.some((entry) => entry.isFile() && entry.name.endsWith(".md") && !entry.name.startsWith("_"))) {
+      directories.push(directory);
+    }
+    for (const entry of entries) {
+      if (entry.isDirectory() && !entry.name.startsWith("_")) visit(path.join(directory, entry.name));
+    }
+  };
+
+  visit(root);
+  return directories.sort();
+}
+
+function validateTemplate(filePath, schema, draftRequirement) {
+  if (!fs.existsSync(filePath)) {
+    addError(`${labelFor(filePath)} is missing`);
+    return;
+  }
+
+  try {
+    const source = readMarkdownSource(filePath);
+    const frontmatter = source.frontmatter;
+    if (!frontmatter || typeof frontmatter !== "object" || Array.isArray(frontmatter)) {
+      addError(`${labelFor(filePath)}: template must have frontmatter`);
+      return;
+    }
+
+    for (const field of Object.keys(schema.shape)) {
+      if (!Object.hasOwn(frontmatter, field)) {
+        addError(`${labelFor(filePath)}: template must show the ${field} frontmatter field`);
+      }
+    }
+
+    parseFile(filePath, schema);
+    if (draftRequirement === true && frontmatter.draft !== true) {
+      addError(`${labelFor(filePath)}: template must set draft: true`);
+    }
+    if (draftRequirement === false && "draft" in frontmatter) {
+      addError(`${labelFor(filePath)}: template must not define draft`);
+    }
+    validatedTemplateCount += 1;
+  } catch (error) {
+    addError(`${labelFor(filePath)}: ${error instanceof Error ? error.message : String(error)}`);
   }
 }
 
@@ -146,28 +198,16 @@ function checkAssets() {
 
 function validateTemplates() {
   for (const collection of collections) {
-    const filePath = resolveContentPath(collection.name, "__template.md");
-    if (!fs.existsSync(filePath)) {
-      addError(`content/${collection.name}/__template.md is missing`);
-      continue;
-    }
-    try {
-      const source = readMarkdownSource(filePath);
-      const frontmatter = source.frontmatter;
-      if (!frontmatter || typeof frontmatter !== "object") {
-        addError(`${labelFor(filePath)}: template must have frontmatter`);
-        continue;
-      }
-      parseFile(filePath, collection.schema);
-      if (collection.templateUsesDraft && frontmatter.draft !== true) {
-        addError(`${labelFor(filePath)}: template must set draft: true`);
-      }
-      if (!collection.templateUsesDraft && "draft" in frontmatter) {
-        addError(`${labelFor(filePath)}: event templates must not define draft`);
-      }
-    } catch (error) {
-      addError(`${labelFor(filePath)}: ${error instanceof Error ? error.message : String(error)}`);
-    }
+    validateTemplate(
+      resolveContentPath(collection.name, "__template.md"),
+      collection.schema,
+      collection.templateUsesDraft,
+    );
+  }
+
+  const pagesRoot = resolveContentPath("pages");
+  for (const directory of directoriesWithMarkdown(pagesRoot)) {
+    validateTemplate(path.join(directory, "__template.md"), pageFrontmatterSchema, true);
   }
 }
 
@@ -326,5 +366,5 @@ if (errors.length > 0) {
   process.exitCode = 1;
 } else {
   const counts = collections.map(({ name }) => `${itemDocuments.get(name).size} ${name}`).join(", ");
-  console.log(`Validated ${counts}, ${pageDocuments.size} pages, ${assetReferences.size} local assets, and 3 templates.`);
+  console.log(`Validated ${counts}, ${pageDocuments.size} pages, ${assetReferences.size} local assets, and ${validatedTemplateCount} templates.`);
 }

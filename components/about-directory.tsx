@@ -1,10 +1,9 @@
-import Link from "next/link";
+import { AboutDirectorySections, type DirectorySection } from "@/components/about-directory-sections";
 import { getPageByPath, getPageNavigation, type PageNavigationItem } from "@/lib/content";
 
 const SECTIONS = ["about", "wildlife", "history", "partners"] as const;
 
 type DirectoryLink = { href: string; label: string };
-type DirectorySection = DirectoryLink & { children: DirectoryLink[] };
 
 function toLink(item: Pick<PageNavigationItem, "href" | "title">): DirectoryLink {
   return { href: item.href, label: item.title };
@@ -26,27 +25,16 @@ function buildSections(): DirectorySection[] {
   });
 }
 
-export function AboutDirectory() {
+export function AboutDirectory({ currentSection }: { currentSection: string }) {
   const sections = buildSections();
 
   return (
     <aside className="about-directory">
-      <nav aria-label="About Sailor Bar sections">
-        <ul className="about-directory-list">
-          {sections.map((section) => (
-            <li key={section.href}>
-              <Link href={section.href}>{section.label}</Link>
-              {section.children.length > 0 && (
-                <ul>
-                  {section.children.map((child) => (
-                    <li key={child.href}><Link href={child.href}>{child.label}</Link></li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <AboutDirectorySections
+        key={currentSection}
+        sections={sections}
+        activeSectionHref={`/${currentSection}`}
+      />
     </aside>
   );
 }

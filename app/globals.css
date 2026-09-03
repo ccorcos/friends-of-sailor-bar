@@ -525,6 +525,23 @@ dd { margin: 0.3rem 0 0; color: var(--muted); font-size: var(--font-size-primary
   list-style: none;
 }
 .about-directory-list > li + li { margin-block-start: 0.5rem; }
+.about-directory-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2rem;
+  align-items: center;
+}
+.about-directory-toggle {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.about-directory-toggle svg { inline-size: 1rem; block-size: 1rem; }
+.about-directory-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
 .about-directory a {
   display: block;
   padding-block: 0.6rem;
@@ -544,6 +561,7 @@ dd { margin: 0.3rem 0 0; color: var(--muted); font-size: var(--font-size-primary
   font-weight: 400;
 }
 .about-directory a:hover,
+.about-directory-toggle:hover,
 .about-essay a:hover { text-decoration: underline; text-underline-offset: 0.25em; }
 .about-essay { padding: clamp(1.5rem, 5vw, 4rem); }
 .about-essay h1 {

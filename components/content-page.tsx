@@ -37,7 +37,7 @@ export function ContentPage({ section, segments = [] }: ContentPageProps) {
   if (!page) notFound();
 
   return (
-    <AboutArticle>
+    <AboutArticle currentSection={section}>
       <h1>{page.title}</h1>
       <MarkdownContent className="archive-content" html={page.html} />
     </AboutArticle>

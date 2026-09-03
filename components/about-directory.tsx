@@ -5,10 +5,12 @@ const sections = [
     href: "/about",
     label: "About Sailor Bar",
     children: [
-      { href: "/about#visiting", label: "Visiting" },
-      { href: "/about#map", label: "Map and directions" },
-      { href: "/about#activities", label: "Things to do" },
-      { href: "/about#places", label: "Places to notice" },
+      { href: "/archive/recreation", label: "Recreation" },
+      { href: "/archive/amenities", label: "Amenities" },
+      { href: "/archive/friends-of-sailor-bar-brochure-and-map", label: "Brochure and map" },
+      { href: "/archive/turtle-pond", label: "Turtle Pond" },
+      { href: "/archive/boat-launch", label: "Boat launch" },
+      { href: "/archive/olive-avenue-river-overlook", label: "Olive Avenue overlook" },
     ],
   },
   {
@@ -28,7 +30,7 @@ const sections = [
       { href: "/history/mining-and-dredging", label: "Mining and dredging" },
     ],
   },
-  { href: "/about#friends", label: "Friends of Sailor Bar" },
+  { href: "/archive/friends-of-sailor-bar", label: "Friends of Sailor Bar" },
 ];
 
 export function AboutDirectory() {

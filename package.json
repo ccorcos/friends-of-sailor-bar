@@ -6,7 +6,9 @@
     "dev": "next dev -H 0.0.0.0 -p 8000",
     "build": "next build",
     "start": "next start -H 0.0.0.0 -p 8000",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "migration:import": "node scripts/import-legacy-content.mjs",
+    "migration:verify": "node scripts/verify-legacy-content.mjs"
   },
   "dependencies": {
     "better-sqlite3": "^13.0.3",

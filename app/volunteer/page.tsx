@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import { VolunteerForm } from "@/components/forms";
-import { PageIntro } from "@/components/page-structure";
+import { LegacyContent, LegacyTitle } from "@/components/legacy-content";
 
-export const metadata: Metadata = { title: "Volunteer" };
+export const metadata: Metadata = { title: "Get Involved" };
 
 export default function VolunteerPage() {
   return (
-    <>
-      <PageIntro title="Volunteer" />
-      <section className="form-page container">
-        <VolunteerForm />
-      </section>
-    </>
+    <section className="detail-page standalone-detail container">
+      <article className="essay-card">
+        <LegacyTitle slug="get-involved" />
+        <LegacyContent slug="get-involved" />
+        <div className="embedded-form"><VolunteerForm /></div>
+      </article>
+    </section>
   );
 }

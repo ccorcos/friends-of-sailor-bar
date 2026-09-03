@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getPosts, getUpcomingEvents } from "@/lib/db";
 import { formatDate } from "@/lib/format";
+import { getEventLegacyItems, getStoryLegacyItems } from "@/lib/legacy-mappings";
 import { projects } from "@/lib/projects";
 
 const featuredProjectSlugs = [
@@ -43,19 +44,30 @@ export default function Home() {
         <section className="panel">
           <h2>Events</h2>
           <div className="panel-list">
-            {events.map((event) => (
-              <Link className="home-event-summary" href={`/events/${event.slug}`} key={event.id}>
-                <time className="home-event-date" dateTime={event.date}>
-                  <span>{formatDate(event.date, { month: "short" })}</span>
-                  <strong>{formatDate(event.date, { day: "numeric" })}</strong>
-                </time>
-                <span className="home-event-copy">
-                  <small>{formatDate(event.date, { month: "long", day: "numeric", year: "numeric" })} · {event.time}</small>
-                  <strong>{event.title}</strong>
-                  <span>{event.location}</span>
-                </span>
-              </Link>
-            ))}
+            {events.map((event) => {
+              const legacyItem = getEventLegacyItems(event.slug)[0];
+              const title = legacyItem?.title ?? event.title;
+
+              return (
+                <Link
+                  className="home-event-summary"
+                  href={`/events/${event.slug}`}
+                  key={event.id}
+                  aria-label={`View ${title}`}
+                >
+                  <time className="home-event-date" dateTime={event.date}>
+                    <span>{formatDate(event.date, { month: "short" })}</span>
+                    <strong>{formatDate(event.date, { day: "numeric" })}</strong>
+                  </time>
+                  <span className="home-event-copy">
+                    <small>{formatDate(event.date, { month: "long", day: "numeric", year: "numeric" })} · {event.time}</small>
+                    <strong>{title}</strong>
+                    <span>{event.location}</span>
+                    {legacyItem && <span>{legacyItem.excerpt}</span>}
+                  </span>
+                </Link>
+              );
+            })}
             {!events.length && <p className="empty-state">No upcoming events are listed.</p>}
           </div>
           <div className="panel-links">
@@ -67,13 +79,24 @@ export default function Home() {
         <section className="panel">
           <h2>Updates</h2>
           <div className="panel-list">
-            {posts.map((post) => (
-              <Link className="text-summary" href={`/stories/${post.slug}`} key={post.id}>
-                <small>{formatDate(post.published_at, { month: "short", day: "numeric", year: "numeric" })}</small>
-                <strong>{post.title}</strong>
-                <span>{post.excerpt}</span>
-              </Link>
-            ))}
+            {posts.map((post) => {
+              const legacyItem = getStoryLegacyItems(post.slug)[0];
+              const title = legacyItem?.title ?? post.title;
+              const excerpt = legacyItem?.excerpt ?? post.excerpt;
+
+              return (
+                <Link
+                  className="text-summary"
+                  href={`/stories/${post.slug}`}
+                  key={post.id}
+                  aria-label={`Read ${title}`}
+                >
+                  <small>{formatDate(legacyItem?.modified ?? post.published_at, { month: "short", day: "numeric", year: "numeric" })}</small>
+                  <strong>{title}</strong>
+                  <span>{excerpt}</span>
+                </Link>
+              );
+            })}
           </div>
           <Link className="more-link" href="/stories">All updates <ArrowRight aria-hidden="true" /></Link>
         </section>

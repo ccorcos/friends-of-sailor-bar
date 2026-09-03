@@ -10,58 +10,11 @@ export type ArchiveItem = {
   contentHtml: string;
 };
 
-// The archive is a migration queue, not a permanent duplicate of the new site.
-// Remove entries here once their useful content has been migrated or deliberately retired.
-const resolvedArchiveSlugs = new Set([
-  "accomplishments",
-  "about-sailor-bar",
-  "activities-amenities",
-  "amenities",
-  "bald-eagles-and-birdhouses",
-  "birding-at-sailor-bar",
-  "blog-posts",
-  "boat-launch",
-  "celebrating-american-river-parkway-heroes",
-  "donate",
-  "earth-day-april-2026",
-  "event-calendar",
-  "friends-of-sailor-bar",
-  "friends-of-sailor-bar-leaders",
-  "friends-of-sailor-bar-rock-off-on-october-3rd-2025",
-  "friends-of-sailor-bar-stewardship",
-  "friends-of-sailor-bar-brochure-and-map",
-  "get-involved",
-  "gold-dredging-industrial-mining-on-a-massive-scale",
-  "health-wellness-day",
-  "interactive-birding-at-sailor-bar",
-  "key-points-of-interest",
-  "mission-vision-values",
-  "native-american-history",
-  "nature-study",
-  "olive-avenue-river-overlook",
-  "our-aspiration",
-  "partners",
-  "plant-life",
-  "real-wildlife-encounters",
-  "recreation",
-  "sailor-bar-bench-and-table-dedication-ceremony",
-  "sailor-bar-bench-dedication",
-  "sailor-bar-history",
-  "sailor-bar-history-2",
-  "scenic-river-views",
-  "side-channel",
-  "something-fishy-is-going-on-here-the-remarkable-spawning-journey",
-  "the-ghost-of-sailor-bar-how-sailor-bar-got-its-name-legends-and-historical-facts",
-  "the-wild-and-scenic-american-river",
-  "turtle-pond",
-  "volunteer-sign-up",
-  "wildlife",
-  "your-donations-support-sailor-bar-activities",
-  "a-detailed-history-of-sailor-bar",
-]);
-
+// The archive is the permanent, faithful record of the former WordPress site.
+// Promoting content elsewhere must never remove or replace its archive copy.
 const rawArchiveItems = archiveData as ArchiveItem[];
-export const archiveItems = rawArchiveItems.filter((item) => !resolvedArchiveSlugs.has(item.slug));
+export const archiveItems = rawArchiveItems;
+export const mediaLibraryItem = rawArchiveItems.find((item) => item.slug === "media-library");
 
 export const archiveCategories = Array.from(new Set(archiveItems.map((item) => item.category)));
 

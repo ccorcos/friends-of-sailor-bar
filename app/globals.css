@@ -235,6 +235,7 @@ h1, h2, p { margin-block-start: 0; }
   background: var(--paper);
 }
 .image-card { display: grid; grid-template-columns: 10rem minmax(0, 1fr); }
+.image-card.legacy-text-card { display: block; }
 .card-image, .feature-image { position: relative; background: #dce4d8; }
 .card-image { min-block-size: 8rem; }
 .card-copy { align-self: center; padding: 1.15rem 1.35rem; }
@@ -403,13 +404,47 @@ dd { margin: 0.3rem 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1
   block-size: auto;
   margin-block: 1.5rem;
 }
+.archive-content figure {
+  inline-size: 100% !important;
+  max-inline-size: 100%;
+  margin: 1.5rem 0;
+}
+.archive-content figure img { inline-size: 100%; margin-block: 0; }
+.archive-content .slides {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.archive-content .slides li {
+  display: block !important;
+  inline-size: 100% !important;
+}
+.archive-content .slides img { inline-size: 100%; }
+.archive-content table {
+  display: block;
+  max-inline-size: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+.archive-content th, .archive-content td { padding: 0.5rem; vertical-align: top; }
 .archive-content iframe {
   inline-size: 100%;
   aspect-ratio: 16 / 9;
   border: 0;
 }
-.archive-content figcaption { margin-block-start: -1rem; font-size: 0.8rem; }
+.archive-content figcaption { margin-block-start: 0.5rem; font-size: 0.8rem; }
 .archive-content hr { display: none; }
+.legacy-source + .legacy-source { margin-block-start: 3rem; }
+.legacy-source > h2 {
+  margin-block-end: 1rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 500;
+}
+.legacy-sources + .event-actions { margin-block-start: 2rem; }
+.embedded-form { margin-block-start: 2.5rem; }
 
 /* About */
 .about-layout {

@@ -1,0 +1,616 @@
+[
+  {
+    "originalPath": "/accomplishments/",
+    "slug": "accomplishments",
+    "title": "Accomplishments",
+    "words": 21,
+    "media": [],
+    "textSha256": "f88591580d1071d330c127eed5f555ad61f70ab21e4846a14e9bf7bc54cff346"
+  },
+  {
+    "originalPath": "/donate/",
+    "slug": "donate",
+    "title": "Donate",
+    "words": 3,
+    "media": [],
+    "textSha256": "080f74179561b27190d3a5f32668253adf52f09f98c527d92e8785d7ef05437e"
+  },
+  {
+    "originalPath": "/friends-of-sailor-bar/",
+    "slug": "friends-of-sailor-bar",
+    "title": "Friends of Sailor Bar",
+    "words": 228,
+    "media": [],
+    "textSha256": "519173f72c35510df4c5ac39548abf5c786108d6992e0ae8731308ffdad36b80"
+  },
+  {
+    "originalPath": "/friends-of-sailor-bar-leaders/",
+    "slug": "friends-of-sailor-bar-leaders",
+    "title": "Friends of Sailor Bar Leadership",
+    "words": 0,
+    "media": [],
+    "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "originalPath": "/friends-of-sailor-bar-stewardship/",
+    "slug": "friends-of-sailor-bar-stewardship",
+    "title": "Friends of Sailor Bar Stewardship",
+    "words": 0,
+    "media": [],
+    "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "originalPath": "/get-involved/",
+    "slug": "get-involved",
+    "title": "Get Involved",
+    "words": 54,
+    "media": [],
+    "textSha256": "2c38636bd8c51fbee58be33ab4d105d486c82aa8c20dfcc1473f603197d0141d"
+  },
+  {
+    "originalPath": "/",
+    "slug": "home",
+    "title": "Home",
+    "words": 110,
+    "media": [
+      "/files/firstrainat-sunrise-scaled-700x300.jpg",
+      "/files/glittering-stars-700x300.jpg",
+      "/files/view-scaled-700x300.jpg",
+      "/files/bike-trail-still-water-copy-scaled-700x300.jpg",
+      "/files/ST8-woodpecker-scaled-700x300.jpg",
+      "/files/ST9my-salmon-700x300.jpg",
+      "/files/Grinding-Rocks-at-Sailor-Bar-700x300.jpg",
+      "/files/sailor-bar-dredge-700x300.png",
+      "/files/bench-photo1-700x300.jpg"
+    ],
+    "textSha256": "308f2616f036b7e00b1ed223f0887e8cdc426f477ce5438e4c1f6928d562e5e0"
+  },
+  {
+    "originalPath": "/mission-vision-values/",
+    "slug": "mission-vision-values",
+    "title": "Mission, Vision & Values",
+    "words": 3,
+    "media": [],
+    "textSha256": "080f74179561b27190d3a5f32668253adf52f09f98c527d92e8785d7ef05437e"
+  },
+  {
+    "originalPath": "/our-aspiration/",
+    "slug": "our-aspiration",
+    "title": "Our Aspiration",
+    "words": 425,
+    "media": [],
+    "textSha256": "0045556c90e9b6981c2aa6c79ef27e19c7b035365499a6c4e742f972661a6608"
+  },
+  {
+    "originalPath": "/volunteer-sign-up/",
+    "slug": "volunteer-sign-up",
+    "title": "Volunteer Sign Up",
+    "words": 3,
+    "media": [],
+    "textSha256": "080f74179561b27190d3a5f32668253adf52f09f98c527d92e8785d7ef05437e"
+  },
+  {
+    "originalPath": "/your-donations-support-sailor-bar-activities/",
+    "slug": "your-donations-support-sailor-bar-activities",
+    "title": "Your Donations Support Sailor Bar Activities",
+    "words": 83,
+    "media": [],
+    "textSha256": "c862a16b347b839e9e42913e85ce4de61cbad7e90a7aa9fd637dd85f6e3c92ce"
+  },
+  {
+    "originalPath": "/about-sailor-bar/",
+    "slug": "about-sailor-bar",
+    "title": "About Sailor Bar",
+    "words": 195,
+    "media": [],
+    "textSha256": "315358adeffc4cd9a0108956833a7da3eb76b9032d23c391851e3561b25899b4"
+  },
+  {
+    "originalPath": "/activities-amenities/",
+    "slug": "activities-amenities",
+    "title": "Activities & Amenities",
+    "words": 11,
+    "media": [],
+    "textSha256": "40c9ad14cee2ab09ca12f7c1f0a0a368338d570c250f4f2f3cbe7c7323434130"
+  },
+  {
+    "originalPath": "/amenities/",
+    "slug": "amenities",
+    "title": "Amenities",
+    "words": 28,
+    "media": [],
+    "textSha256": "1a521faf8403c49f5ce2e25a724008f802203fe0b4b940f0846f49603ee4ea34"
+  },
+  {
+    "originalPath": "/friends-of-sailor-bar-brochure-and-map/",
+    "slug": "friends-of-sailor-bar-brochure-and-map",
+    "title": "Friends of Sailor Bar Brochure and Map",
+    "words": 4,
+    "media": [
+      "/files/Sailor-Bar-Brochure-v12a.pdf"
+    ],
+    "textSha256": "3959fbe45869113024675ef14b1205958347ef79d6ba0dacc9eabb56159f3fcb"
+  },
+  {
+    "originalPath": "/recreation/",
+    "slug": "recreation",
+    "title": "Recreation",
+    "words": 240,
+    "media": [],
+    "textSha256": "912f5303a21fba1f5bab56512d02bc5fdd96de3c235ac4c4520cdce9fa1a9d6d"
+  },
+  {
+    "originalPath": "/scenic-river-views/",
+    "slug": "scenic-river-views",
+    "title": "Scenic River Views",
+    "words": 13,
+    "media": [],
+    "textSha256": "e9e42dae1e11b472e973b57afe79dd54e07bcfc888f66c50da936d3f62dd5b1f"
+  },
+  {
+    "originalPath": "/interactive-birding-at-sailor-bar/birding-at-sailor-bar/",
+    "slug": "birding-at-sailor-bar",
+    "title": "Birding at Sailor Bar",
+    "words": 1022,
+    "media": [
+      "/files/Heron-Rookery-Tree-225x300.jpg"
+    ],
+    "textSha256": "be8fdd6762d36913a1f01ab1462db2990f91f46bd38a057e2db5d3016401a64c"
+  },
+  {
+    "originalPath": "/interactive-birding-at-sailor-bar/",
+    "slug": "interactive-birding-at-sailor-bar",
+    "title": "Interactive Birding at Sailor Bar",
+    "words": 5,
+    "media": [],
+    "textSha256": "fa45a9331d1351ddfd1a14ffb1081f902557e631f94646e108e9f8a2e46a379e"
+  },
+  {
+    "originalPath": "/plant-life/",
+    "slug": "plant-life",
+    "title": "Plant Life",
+    "words": 312,
+    "media": [],
+    "textSha256": "24847637f64f1276c2fb88e5bf3c9690008087af5342e801426c6be54344ec01"
+  },
+  {
+    "originalPath": "/nature-study/",
+    "slug": "nature-study",
+    "title": "Salmon and Steelhead Runs at Sailor Bar",
+    "words": 345,
+    "media": [],
+    "textSha256": "be90ec7234d9c2ee574f59d67e4173ed982dd42a892b847daa3f31a91a90718f"
+  },
+  {
+    "originalPath": "/the-elderberry/",
+    "slug": "the-elderberry",
+    "title": "The Elderberry: An Ancient Plant with an Important Story",
+    "words": 1178,
+    "media": [
+      "/files/elderberry-image-1.jpg",
+      "/files/elderberry-image-2.jpg",
+      "/files/elderberry-image-3.jpg"
+    ],
+    "textSha256": "291912ac0669dea5b2fed2c2de5ccc0ae1a6bc5718f12bca0f10c9fd67ce1a08"
+  },
+  {
+    "originalPath": "/wildlife/",
+    "slug": "wildlife",
+    "title": "Wildlife",
+    "words": 392,
+    "media": [],
+    "textSha256": "ef091debcf1ac0b521a992d9199c7bfa16d88396cf46f2d1d2c6e8bf19be8098"
+  },
+  {
+    "originalPath": "/a-detailed-history-of-sailor-bar/",
+    "slug": "a-detailed-history-of-sailor-bar",
+    "title": "A Detailed History of Sailor Bar",
+    "words": 1977,
+    "media": [],
+    "textSha256": "05ab0439cd2910c3e5d9db6665f6becaa926e25bc45861ef0b26add8e1e76436"
+  },
+  {
+    "originalPath": "/chinese-diggings-across-from-sailor-bar/",
+    "slug": "chinese-diggings-across-from-sailor-bar",
+    "title": "Chinese Diggings Across from Sailor Bar",
+    "words": 599,
+    "media": [
+      "/files/chinese-diggings-1024x768.jpg"
+    ],
+    "textSha256": "5e7360e1ef4987dcd0c9e1df9c9b340e89dfad24c2a8923900b2a44152f4f0e1"
+  },
+  {
+    "originalPath": "/gold-dredging-industrial-mining-on-a-massive-scale/",
+    "slug": "gold-dredging-industrial-mining-on-a-massive-scale",
+    "title": "Gold Dredging along the Lower American River",
+    "words": 1477,
+    "media": [
+      "/files/Sailor_Bar_Gold_Dredge_Article.pdf",
+      "/files/San_Juan_Record_1958_02_06_211_copy_2421x1887-1024x798.jpg",
+      "/files/sailor-bar-dredge-1024x534.png"
+    ],
+    "textSha256": "2190b6d2eae3573cd6ed3596e95304295c462f248c24598e149179f5a23343b1"
+  },
+  {
+    "originalPath": "/sailor-bar-history/",
+    "slug": "sailor-bar-history",
+    "title": "Gold Rush Legacy",
+    "words": 162,
+    "media": [],
+    "textSha256": "48695ebc340eefa33afef075c33a8000af615595b86f4111a1fdc0b6459be854"
+  },
+  {
+    "originalPath": "/859-2/",
+    "slug": "859-2",
+    "title": "How the American River has Changed over Time",
+    "words": 851,
+    "media": [],
+    "textSha256": "2624392195acd4e59480ed21376c000e8ce85fd8bfe1ae4256cc1702921ea924"
+  },
+  {
+    "originalPath": "/native-american-history/",
+    "slug": "native-american-history",
+    "title": "Native American History",
+    "words": 721,
+    "media": [
+      "/files/Grinding-Rocks-at-Sailor-Bar.jpg"
+    ],
+    "textSha256": "110b90429d0c69854f363091bf4898a4fb586f2bf39cdfd4874fb6520af8af6c"
+  },
+  {
+    "originalPath": "/remembering-camp-sabadaca/",
+    "slug": "remembering-camp-sabadaca",
+    "title": "Remembering Camp Sabadaca",
+    "words": 318,
+    "media": [
+      "/files/campsabadaca-300x196.jpg"
+    ],
+    "textSha256": "7242bec60be17cb14d8d2eb32654caf29983f654299f52e3621c5e231a4c581e"
+  },
+  {
+    "originalPath": "/sailor-bar-history-2/",
+    "slug": "sailor-bar-history-2",
+    "title": "Sailor Bar History",
+    "words": 0,
+    "media": [],
+    "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "originalPath": "/the-ghost-of-sailor-bar/",
+    "slug": "the-ghost-of-sailor-bar",
+    "title": "The Ghost of Sailor Bar",
+    "words": 129,
+    "media": [
+      "/files/Ghost-of-Sailor-Bar.pdf"
+    ],
+    "textSha256": "2cb680019b42884c9d36f7a4dd2418168e9144805b43965c7ea7fda851b03c07"
+  },
+  {
+    "originalPath": "/aerojet-groundwater-pumps/",
+    "slug": "aerojet-groundwater-pumps",
+    "title": "Aerojet Groundwater Pumps",
+    "words": 319,
+    "media": [
+      "/files/Aerojet-NPDES-Order-R5-2020-0051-002.pdf"
+    ],
+    "textSha256": "f794dbe531e7b2bcaf3df004173b0992f18c1fc642fd6b632e8e9f67483afe87"
+  },
+  {
+    "originalPath": "/boat-launch/",
+    "slug": "boat-launch",
+    "title": "Boat Launch",
+    "words": 212,
+    "media": [
+      "/files/sailor-bar-boat-launch-768x1024.webp"
+    ],
+    "textSha256": "de1925d2ca1ee883552dfc8b34fd750244af4aad9f9762f8bb7adde42e0b22a0"
+  },
+  {
+    "originalPath": "/great-horned-owl-nest-east-of-sailor-bar/",
+    "slug": "great-horned-owl-nest-east-of-sailor-bar",
+    "title": "Great Horned Owl Nest East of Sailor Bar",
+    "words": 757,
+    "media": [
+      "/files/owls-at-nimbus-fish-hatchery-v0-rhcqdulsugva1-1024x682.webp"
+    ],
+    "textSha256": "e36213440a004911003497b1c0373a80d70dbe19c0b524309f09e1a0b3190bd9"
+  },
+  {
+    "originalPath": "/grinding-rocks/",
+    "slug": "grinding-rocks",
+    "title": "Grinding Rocks",
+    "words": 133,
+    "media": [
+      "/files/Grinding-Rocks-at-Sailor-Bar-300x225.jpg"
+    ],
+    "textSha256": "0599f98d4aea81dcf18cc183e0e7764241d03b86081ddffde8c8eb19d494d0f5"
+  },
+  {
+    "originalPath": "/heron-rookeries/",
+    "slug": "heron-rookeries",
+    "title": "Heron Rookeries",
+    "words": 282,
+    "media": [],
+    "textSha256": "d7aeb21b5856fef41656c01f7333a9c365f88037b42b6a7cc8168d527dd8ba99"
+  },
+  {
+    "originalPath": "/key-points-of-interest/",
+    "slug": "key-points-of-interest",
+    "title": "Key Points of Interest",
+    "words": 0,
+    "media": [],
+    "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "originalPath": "/flag-pole/",
+    "slug": "flag-pole",
+    "title": "Lt. Stephen D. Moore Flag Pole",
+    "words": 105,
+    "media": [],
+    "textSha256": "80a21b099643f236d6744e3bc753b08fecd09d0873f50ffd86fe92b66fcb2ef5"
+  },
+  {
+    "originalPath": "/olive-avenue-river-overlook/",
+    "slug": "olive-avenue-river-overlook",
+    "title": "Olive Avenue River Overlook",
+    "words": 464,
+    "media": [],
+    "textSha256": "0b3b9cead3e56d409c0eb9bef1dadc700dc73648a3898401fdf0cbeee6dabde1"
+  },
+  {
+    "originalPath": "/side-channel/",
+    "slug": "side-channel",
+    "title": "Side Channel East of the Boat Launch",
+    "words": 181,
+    "media": [],
+    "textSha256": "d92d8218adfbc52ce0103605c9c7938633a9baef3b3aed0b9bc22ad5b4e7869b"
+  },
+  {
+    "originalPath": "/turtle-pond/",
+    "slug": "turtle-pond",
+    "title": "Turtle Pond",
+    "words": 513,
+    "media": [],
+    "textSha256": "67c8a017effde0e6054cd45d25d8c4124c24ca86f748cb9cc63949883d723832"
+  },
+  {
+    "originalPath": "/american-river-parkway-equestrian-patrol/",
+    "slug": "american-river-parkway-equestrian-patrol",
+    "title": "American River Parkway Equestrian Trail Patrol",
+    "words": 98,
+    "media": [
+      "/files/American-River-Equestrian-Trail-Patrol.png"
+    ],
+    "textSha256": "a1963cee68d6b46e9542d3e15af0540ef15fcd9a5cb0b7fe2ee3d205a56a0e0f"
+  },
+  {
+    "originalPath": "/american-river-parway-bike-patrol/",
+    "slug": "american-river-parway-bike-patrol",
+    "title": "American River Parway Bike Patrol",
+    "words": 377,
+    "media": [],
+    "textSha256": "50d23349d882a019ef42de62c3dcc963d52adb30b4e56c3d77e3486fed443a4f"
+  },
+  {
+    "originalPath": "/partners/",
+    "slug": "partners",
+    "title": "Events & Activities",
+    "words": 0,
+    "media": [],
+    "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "originalPath": "/fair-oaks-historical-society/",
+    "slug": "fair-oaks-historical-society",
+    "title": "Fair Oaks Historical Society",
+    "words": 323,
+    "media": [],
+    "textSha256": "fe5ec12b37e6433a9571b224b75aae3e797516b75a88f8d97960836a87e82e72"
+  },
+  {
+    "originalPath": "/friends-of-lakes-folsom-and-natoma-folfan/",
+    "slug": "friends-of-lakes-folsom-and-natoma-folfan",
+    "title": "Friends of Lakes Folsom and Natoma (FOLFAN)",
+    "words": 148,
+    "media": [],
+    "textSha256": "bfe89c9dd42192c42d1772fbe618f49b4376551725bff5fd60019a657592e992"
+  },
+  {
+    "originalPath": "/partners-affiliates/",
+    "slug": "partners-affiliates",
+    "title": "Our Partners",
+    "words": 685,
+    "media": [
+      "/files/American-River-Parkway-Plan-2008.pdf"
+    ],
+    "textSha256": "28f39395833ff85148d8bb1f7eeac6d747fa6f60eb3f28ae79c9c0421c27c540"
+  },
+  {
+    "originalPath": "/project-pick-up-fishing-line/",
+    "slug": "project-pick-up-fishing-line",
+    "title": "Project Pick-up Fishing Line",
+    "words": 121,
+    "media": [],
+    "textSha256": "82b28f7225e47c7bb8d5605e88e455219165ccdce2035c6f5fc6bebedf0a996b"
+  },
+  {
+    "originalPath": "/river-city-waterway-alliance/",
+    "slug": "river-city-waterway-alliance",
+    "title": "River City Waterway Alliance",
+    "words": 208,
+    "media": [],
+    "textSha256": "5da60fbeb7c81c3386b2b88e6d0a55b7bea08fa941cd95736c43974d51ec32fd"
+  },
+  {
+    "originalPath": "/sacramento-bird-alliance/",
+    "slug": "sacramento-bird-alliance",
+    "title": "Sacramento Bird Alliance",
+    "words": 161,
+    "media": [
+      "/files/American_River_1_Larry_Hickey.JPG"
+    ],
+    "textSha256": "619c1fab657ee8057600ac31ce9c98c5136720f06f69adcc0bc4af9c99bf22ea"
+  },
+  {
+    "originalPath": "/sacramento-county-regional-parks/",
+    "slug": "sacramento-county-regional-parks",
+    "title": "Sacramento County Regional Parks",
+    "words": 268,
+    "media": [],
+    "textSha256": "cdb99d6d8845c5820d081224ac37a315f836712966ced1f71ac111810e0a3de5"
+  },
+  {
+    "originalPath": "/sacramento-water-forum/",
+    "slug": "sacramento-water-forum",
+    "title": "Sacramento Water Forum",
+    "words": 538,
+    "media": [],
+    "textSha256": "1bd2507740f5b25c528ac778793b2230275b1d4496bbf83b02a31e5ecba99626"
+  },
+  {
+    "originalPath": "/save-the-american-river-association-sara/",
+    "slug": "save-the-american-river-association-sara",
+    "title": "Save the American River Association (SARA)",
+    "words": 359,
+    "media": [],
+    "textSha256": "f12973861dea80f25b761ff2b565af4fa6bf14df1561714584edab0d3f426495"
+  },
+  {
+    "originalPath": "/waterbird-habitat/",
+    "slug": "waterbird-habitat",
+    "title": "The Waterbird Habitat Project",
+    "words": 299,
+    "media": [],
+    "textSha256": "2bbdc8980c77e201f4480a946dd167fb6d17ba8bcf5da1ac3a20389f98a407b1"
+  },
+  {
+    "originalPath": "/celebrating-american-river-parkway-heroes/",
+    "slug": "celebrating-american-river-parkway-heroes",
+    "title": "Celebrate American River Parkway Heroes",
+    "words": 147,
+    "media": [],
+    "textSha256": "54e0fcaa16e1c83dbd8df9fd7acdd1791713c075ca67654d1b3d3a8cfdb1791b"
+  },
+  {
+    "originalPath": "/earth-day-april-2026/",
+    "slug": "earth-day-april-2026",
+    "title": "Earth Day April 2026",
+    "words": 23,
+    "media": [],
+    "textSha256": "87209815ac0be31efee8bd407334b7298086e8d3c79454300876909ebd98fb93"
+  },
+  {
+    "originalPath": "/event-calendar/",
+    "slug": "event-calendar",
+    "title": "Events & Activities",
+    "words": 179,
+    "media": [],
+    "textSha256": "18439b811dd5f0e7a54f69b963596e4661b48f2c28f0db2b9f490fdbea8d404d"
+  },
+  {
+    "originalPath": "/health-wellness-day/",
+    "slug": "health-wellness-day",
+    "title": "Family Health & Wellness Day",
+    "words": 9,
+    "media": [],
+    "textSha256": "09559d853fb8438cf56b94d02823fbe3cb0bc69b8550f43f23db41ad23fca6da"
+  },
+  {
+    "originalPath": "/friends-of-sailor-bar-rock-off-on-october-3rd-2025/",
+    "slug": "friends-of-sailor-bar-rock-off-on-october-3rd-2025",
+    "title": "Friends of Sailor Bar Rock Off on October 3rd, 2025",
+    "words": 190,
+    "media": [],
+    "textSha256": "add5ab789e39a4a80335459462c35abb42b0e7bcef484a0ceb89df2a64ddf557"
+  },
+  {
+    "originalPath": "/real-wildlife-encounters/",
+    "slug": "real-wildlife-encounters",
+    "title": "Real Wildlife Encounters",
+    "words": 5,
+    "media": [],
+    "textSha256": "27109c2e2c0dfebb15c26a261ff3782f3adb857991781008a81aa53f4d24ebdf"
+  },
+  {
+    "originalPath": "/sailor-bar-bench-and-table-dedication-ceremony/",
+    "slug": "sailor-bar-bench-and-table-dedication-ceremony",
+    "title": "Sailor Bar Bench and Table Dedication Ceremony",
+    "words": 139,
+    "media": [],
+    "textSha256": "c924dbb763a4f453e75d1655a17a2f27472c353e005ca66cbe36a2c48969ad1b"
+  },
+  {
+    "originalPath": "/sailor-bar-bench-dedication/",
+    "slug": "sailor-bar-bench-dedication",
+    "title": "Sailor Bar Bench Dedication",
+    "words": 11,
+    "media": [],
+    "textSha256": "fd803cea8e083a01529381e3be3bf5d48a9c5ee304f5506426343555fbfaa001"
+  },
+  {
+    "originalPath": "/event/bald-eagles-and-birdhouses/",
+    "slug": "bald-eagles-and-birdhouses",
+    "title": "SAILOR BAR HAS GONE TO THE BIRDS! (Click for flyer)",
+    "words": 54,
+    "media": [
+      "/files/sb-sep-19-event-flyer.pdf"
+    ],
+    "textSha256": "751757cb31efaa668b66620ab96186295445e120d21cd87c5a3f9dfbb4e2aeed"
+  },
+  {
+    "originalPath": "/something-fishy-is-going-on-here-the-remarkable-spawning-journey/",
+    "slug": "something-fishy-is-going-on-here-the-remarkable-spawning-journey",
+    "title": "Something Fishy is Going on Here! The Remarkable Spawning Journey",
+    "words": 12,
+    "media": [],
+    "textSha256": "1300a16dec58f5b19c4f32179760f9dd8567efb6499e44b3d3a89a1a1c2ba731"
+  },
+  {
+    "originalPath": "/the-ghost-of-sailor-bar-how-sailor-bar-got-its-name-legends-and-historical-facts/",
+    "slug": "the-ghost-of-sailor-bar-how-sailor-bar-got-its-name-legends-and-historical-facts",
+    "title": "The Ghost of Sailor Bar: How Sailor Bar Got its Name, Legends and Historical Facts",
+    "words": 17,
+    "media": [],
+    "textSha256": "03e62e8ca05d7f489f3fd707953066d8f309313b25605c63032c4b8dff58a77f"
+  },
+  {
+    "originalPath": "/the-wild-and-scenic-american-river/",
+    "slug": "the-wild-and-scenic-american-river",
+    "title": "The Wild and Scenic American River",
+    "words": 8,
+    "media": [],
+    "textSha256": "df5fff2d6965d33e9929caef7296195fcb82df525b039115e513e75ef893d795"
+  },
+  {
+    "originalPath": "/blog-posts/",
+    "slug": "blog-posts",
+    "title": "Blog Posts",
+    "words": 3,
+    "media": [],
+    "textSha256": "dce8c7d8407b0ac862d6a1eca7e6d9f4a3cdf7aa452b8956ac85d9d5bd319077"
+  },
+  {
+    "originalPath": "/photo-gallery/",
+    "slug": "photo-gallery",
+    "title": "Photo Gallery",
+    "words": 21,
+    "media": [],
+    "textSha256": "b851a3f077f54f54e6774f287feefea5548816e9c1e40c1c22365fee718fa0be"
+  },
+  {
+    "originalPath": "/contact/",
+    "slug": "contact",
+    "title": "Contact Us",
+    "words": 28,
+    "media": [],
+    "textSha256": "4db941d258e5032bcf18b9c6c3a1b19939d8bc07cb06c4fa9849ea747e62b1b5"
+  },
+  {
+    "originalPath": "/events/",
+    "slug": "events",
+    "title": "Events",
+    "words": 32,
+    "media": [],
+    "textSha256": "5ee1a155d9c9d2275699eee609b017cf4e37702aa0b9f9083f90b4df804d56ec"
+  }
+]

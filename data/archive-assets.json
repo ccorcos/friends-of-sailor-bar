@@ -234,5 +234,13 @@
   {
     "source": "https://friendsofsailorbar.org/wp-content/uploads/2026/08/bench-photo1-700x300.jpg",
     "local": "/files/bench-photo1-700x300.jpg"
+  },
+  {
+    "source": "https://waterboards.ca.gov/centralvalley/board_decisions/adopted_orders/sacramento/r5-2020-0051-002.pdf",
+    "local": "/files/Aerojet-NPDES-Order-R5-2020-0051-002.pdf"
+  },
+  {
+    "source": "https://regionalparks.saccounty.gov/Parks/Documents/Parks/ARPP06-092617_sm.pdf",
+    "local": "/files/American-River-Parkway-Plan-2008.pdf"
   }
 ]

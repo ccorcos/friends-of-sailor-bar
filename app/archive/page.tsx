@@ -11,7 +11,7 @@ export default function ArchivePage() {
       <PageIntro title="Archive" />
       <section className="archive-page container">
         <div className="archive-directory">
-          <p className="archive-note">Content preserved from the previous Friends of Sailor Bar website.</p>
+          <p className="archive-note">Faithful page-by-page copies from the previous Friends of Sailor Bar website, including original wording and local media.</p>
           {archiveCategories.map((category) => (
             <section className="archive-group" key={category}>
               <h2>{category}</h2>

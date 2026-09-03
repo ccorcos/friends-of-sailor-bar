@@ -621,20 +621,46 @@ fieldset { margin: 0; padding: 0; border: 0; }
 }
 
 @media (max-width: 650px) {
-  .site-header { display: grid; justify-items: center; gap: 0.8rem; text-align: center; }
+  .site-header {
+    inline-size: 100%;
+    display: grid;
+    justify-items: center;
+    gap: 0.8rem;
+    text-align: center;
+  }
+  .site-header .brand { font-size: 1.75rem; }
   .site-header nav {
     inline-size: 100%;
     justify-content: center;
-    gap: 0.35rem;
-    font-size: 0.6rem;
-    flex-wrap: nowrap;
+    gap: 0.35rem 0.5rem;
+    font-size: 0.875rem;
+    flex-wrap: wrap;
   }
-  .site-header .button { padding: 0.5rem 0.45rem; font-size: 0.6rem; }
+  .site-header nav a:not(.button) { order: 1; }
+  .site-header nav::before {
+    content: "";
+    flex-basis: 100%;
+    block-size: 0;
+    order: 2;
+  }
+  .site-header nav .button { order: 3; }
+  .site-header .button { padding: 0.6rem 0.25rem; font-size: 0.875rem; }
   .home-grid, .page-intro, .updates-intro, .image-card,
   .subscribe-form, .field-row, .check-grid, .about-layout { grid-template-columns: 1fr; }
   .home-grid .panel:last-child, .subscribe-form .form-error { grid-column: auto; }
   .panel-list { overflow: visible; }
   .project-summary { grid-template-columns: 1fr 3fr; }
+  .home .project-summary strong,
+  .home .text-summary strong,
+  .home .home-event-copy strong { font-size: 1rem; }
+  .home .project-summary small,
+  .home .text-summary span,
+  .home .home-event-copy span,
+  .home .home-event-copy small,
+  .home .text-summary small,
+  .home .home-event-date span,
+  .home .more-link,
+  .home .empty-state { font-size: 0.875rem; }
   .page-intro, .updates-intro { align-items: start; }
   .card-image { min-block-size: 0; aspect-ratio: 16 / 7; }
   .event-card { grid-template-columns: 6rem minmax(0, 1fr); }
@@ -642,9 +668,20 @@ fieldset { margin: 0; padding: 0; border: 0; }
   .event-copy { padding: 1rem; }
   .card-copy { padding: 1rem; }
   .essay-card, .archive-directory, .about-essay { padding: 1.25rem; }
-  .about-directory { position: static; max-block-size: none; overflow: visible; }
-  .about-directory a { font-size: 0.75rem; }
-  .about-directory li li a { font-size: 0.7rem; }
+  .about-layout-standalone { padding-block-start: 1rem; }
+  .about-directory {
+    position: static;
+    max-block-size: none;
+    overflow: visible;
+    padding: 0.75rem 1rem;
+  }
+  .about-directory-list > li + li { margin-block-start: 0.2rem; }
+  .about-directory a { padding-block: 0.35rem; font-size: 0.875rem; }
+  .about-directory li ul {
+    margin: 0 0 0.2rem 0.4rem;
+    padding-inline-start: 0.6rem;
+  }
+  .about-directory li li a { padding-block: 0.2rem; font-size: 0.875rem; }
   .essay-card .feature-image { aspect-ratio: 4 / 3; }
-  .site-footer nav { gap: 0.75rem 1rem; }
+  .site-footer nav { gap: 0.75rem 1rem; font-size: 0.875rem; }
 }

@@ -180,6 +180,12 @@ function normalizeText(value) {
     .trim();
 }
 
+// Normalize legacy lines that used dash glyphs as visual bullets so they can
+// be promoted to semantic Markdown lists without failing text coverage checks.
+function normalizeSourceBlock(value) {
+  return normalizeText(value).replace(/^(?:[-+*]|\u2013|\u2014)\s*/, "");
+}
+
 // Split legacy HTML into block-level text segments.
 function sourceBlocks(contentHtml) {
   const withoutNoise = contentHtml
@@ -191,7 +197,7 @@ function sourceBlocks(contentHtml) {
     /<\/?(?:p|div|h[1-6]|li|ul|ol|figure|figcaption|blockquote|tr|td|th|table|hr|iframe|section|article|header|footer)\b[^>]*>|<br\b[^>]*>/gi;
   return withoutNoise
     .split(blockBoundary)
-    .map((chunk) => normalizeText(decodeEntities(chunk.replace(/<[^>]+>/g, ""))))
+    .map((chunk) => normalizeSourceBlock(decodeEntities(chunk.replace(/<[^>]+>/g, ""))))
     .filter((chunk) => chunk.length > 0);
 }
 

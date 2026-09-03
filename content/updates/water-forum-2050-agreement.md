@@ -23,16 +23,16 @@ Clyde received special recognition at the signing ceremony held on May 11, 2026.
 
 Some essential elements of Water Forum 2050 are:
 
-– American River Climate Adaptation Program which seeks more flexibility to adapt water use and storage such as groundwater recharge (banking), source shifting depending on conditions, conservation and flexible reservoir operations.
+- American River Climate Adaptation Program which seeks more flexibility to adapt water use and storage such as groundwater recharge (banking), source shifting depending on conditions, conservation and flexible reservoir operations.
 
-– Flow management by implementation of a Flow Management Standard providing guidelines for the operations of Folsom Dam to protect river health such as minimum flows and temperature controls and to promote reliable water supplies through flexible storage strategies.
+- Flow management by implementation of a Flow Management Standard providing guidelines for the operations of Folsom Dam to protect river health such as minimum flows and temperature controls and to promote reliable water supplies through flexible storage strategies.
 
--Conjunctive use which shifts water use to the river in wet years and promotes groundwater banking and then shifts to groundwater use in dry years to preserve flows and habitat health.
+- Conjunctive use which shifts water use to the river in wet years and promotes groundwater banking and then shifts to groundwater use in dry years to preserve flows and habitat health.
 
-– Promotion of infrastructure construction and modification to help address the challenges of climate change by providing more flexibility to the overall system.
+- Promotion of infrastructure construction and modification to help address the challenges of climate change by providing more flexibility to the overall system.
 
-– Habitat restoration projects implemented by the Water Forum such as enhanced and restored spawning locations and channels.
+- Habitat restoration projects implemented by the Water Forum such as enhanced and restored spawning locations and channels.
 
-– Development of refined metrics, science and monitoring to better understand the overall system to be able to adapt to new conditions.
+- Development of refined metrics, science and monitoring to better understand the overall system to be able to adapt to new conditions.
 
 The challenges facing the Sacramento basin seem overwhelming at times, but the Water Forum provides the opportunity to jointly understand and coordinate water management for a healthy community and environment. The contributions of people like Clyde MacDonald on behalf of SARA are invaluable.

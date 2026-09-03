@@ -277,20 +277,20 @@ h1, h2, p { margin-block-start: 0; }
   letter-spacing: 0.08em;
 }
 .past-event-date-tile time { display: flex; flex-direction: column; align-items: center; }
-.event-copy { align-self: center; padding: 1.15rem 1.35rem; }
-.event-time {
-  margin-block-end: 0.15rem;
+.event-copy { align-self: center; padding: 1rem 1.25rem; }
+.event-card h2 { margin-block: 0 0 0.4rem; }
+.event-card .event-time {
+  margin: 0 0 0.15rem;
   color: var(--rust);
   font-size: 0.78rem;
   font-weight: 700;
   line-height: 1.5;
 }
-.event-location {
-  margin-block: 0 0.9rem;
+.event-card .event-location {
+  margin: 0 0 0.55rem;
   color: var(--muted);
   font-size: 0.78rem;
 }
-.event-card h2 { margin-block: 0 0.5rem; }
 dt { display: flex; align-items: center; gap: 0.35rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
 dd { margin: 0.3rem 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1.45; }
 
@@ -336,6 +336,17 @@ dd { margin: 0.3rem 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1
   font-size: 1.02rem;
   line-height: 1.8;
 }
+.essay-body ul, .essay-body ol {
+  margin-block: 0 1.25rem;
+  padding-inline-start: 1.4rem;
+  color: var(--muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+.essay-body li + li { margin-block-start: 0.45rem; }
+.essay-body li > ul, .essay-body li > ol { margin-block: 0.45rem 0.15rem; }
+.essay-body li::marker { color: var(--rust); }
 .essay-body .lead {
   color: var(--ink);
   font-size: clamp(1.15rem, 2.5vw, 1.4rem);
@@ -354,6 +365,19 @@ dd { margin: 0.3rem 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1
   line-height: 1.65;
 }
 .essay-body a:not(.button) { text-decoration: underline; text-underline-offset: 0.2em; }
+.video-embed {
+  inline-size: 100%;
+  aspect-ratio: 16 / 9;
+  margin-block: 1.5rem;
+  overflow: hidden;
+  background: #000;
+}
+.video-embed iframe {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  border: 0;
+}
 
 .standalone-detail { padding-block-start: clamp(2rem, 6vw, 4.5rem); }
 .donate-content h2 {

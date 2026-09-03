@@ -2,7 +2,7 @@
 title: "Celebrate American River Parkway Heroes"
 date: "2026-07-18"
 time: "9:30 AM–12:00 PM"
-location: "Sailor Bar · Oak gathering area"
+location: "Oak gathering area"
 ---
 
 On Saturday morning, July 18th, the Friends of Sailor Bar got together to show our appreciation for the American River Parkway Heroes who keep the ONLY State and Federally designated Wild and Scenic River running through an urban environment safe, clean and wild and scenic!

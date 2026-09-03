@@ -2,7 +2,7 @@
 title: "Event title"
 date: "2027-01-16"
 time: "9:30 AM–12:00 PM"
-location: "Sailor Bar · Oak gathering area"
+location: "Oak gathering area"
 ---
 
 The complete event description goes here as plain paragraphs. Do not use Markdown

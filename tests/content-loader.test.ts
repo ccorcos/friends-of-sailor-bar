@@ -75,6 +75,20 @@ test("runtime content loading, caching, validation, and media serving", async ()
     assert.doesNotMatch(unsafeLink.html, /javascript:/i);
     fs.unlinkSync(path.join(temporaryRoot, "content", "events", "unsafe-link.md"));
 
+    fs.writeFileSync(
+      path.join(temporaryRoot, "content", "events", "video.md"),
+      eventMarkdown("Video", {
+        body: "[Watch the river video](https://youtu.be/JtPuMxViJvc)\n\nRead the [video notes](https://www.youtube.com/watch?v=JtPuMxViJvc).",
+      }),
+    );
+    const video = content.getEventBySlug("video");
+    assert.ok(video);
+    assert.match(video.html, /class="video-embed"/);
+    assert.match(video.html, /<iframe[^>]+youtube-nocookie\.com\/embed\/JtPuMxViJvc/);
+    assert.match(video.html, /title="Watch the river video"/);
+    assert.match(video.html, /<a href="https:\/\/www\.youtube\.com\/watch\?v=JtPuMxViJvc">video notes<\/a>/);
+    fs.unlinkSync(path.join(temporaryRoot, "content", "events", "video.md"));
+
     const removedDraftFieldPath = path.join(temporaryRoot, "content", "events", "draft.md");
     fs.writeFileSync(removedDraftFieldPath, eventMarkdown("Draft", { extra: "draft: true\n" }));
     assert.throws(() => content.getEventBySlug("draft"), /Invalid frontmatter/);

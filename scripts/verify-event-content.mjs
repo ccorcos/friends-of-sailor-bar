@@ -256,13 +256,10 @@ if (fileNames.includes("index.md")) {
   const seriesRequirements = [
     "Third Saturday",
     "9:30–noon",
-    "Friends of Sailor Bar",
-    "Sacramento County Regional Parks",
-    "wildlife, characteristics and history",
     "Illinois Avenue entrance",
     "last parking area",
     "boat launch area",
-    "large oak tree",
+    "**Events begin underneath the shade of a large oak tree.**",
   ];
   for (const phrase of seriesRequirements) {
     if (!body.includes(phrase)) errors.push(`Event series introduction is missing: ${phrase}`);

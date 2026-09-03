@@ -26,7 +26,7 @@ The mission of the American River Parkway Coalition is to provide continuing com
 
 Providing Safety, Service and and Stewardship on 354 miles of trails throughout Sacramento, El Dorado and Placer Counties
 
-[**Folfan**](https://folfan.org/about-us/)
+[**Folfan**](/partners/friends-of-lakes-folsom-and-natoma-folfan) ([website](https://folfan.org/about-us/))
 
 Friends of Lakes Folsom and Natoma (FOLFAN) is a 501(c)(3) nonprofit and the state park cooperating association for the Folsom Lake State Recreation Area (FLSRA). Our state park includes Lake Natoma, Folsom Lake, and portions of the American River.
 
@@ -58,17 +58,21 @@ A group of community members who love the American River and wish to preserve th
 
 The Sierra Club Sacramento Group educates, advocates for, explores and enjoys the outdoor world and its resources. Visit the website to learn how to become involved.
 
-[**American River Parkway Volunteer Equestrian Patrol**](https://www.arphorsepatrol.org/home/members)
+[**American River Parkway Volunteer Equestrian Patrol**](/partners/american-river-parkway-equestrian-patrol) ([website](https://www.arphorsepatrol.org/home/members))
 
 Primary purpose is to protect park property and resources, promote safety at park facilities. They provide this assistance to the public and Sacramento County Regional Parks by conducting mounted patrols along the 23 miles of the American River Parkway trails.
 
-[**Sacramento Bird Alliance**](https://www.sacramentoaudubon.org/)
+[**Sacramento Bird Alliance**](/partners/sacramento-bird-alliance) ([website](https://www.sacramentoaudubon.org/))
 
 ***Sacramento Bird Alliance*** *is the new name for* ***Sacramento Audubon Society,*** *approved by member votes at the end of May 2026.* Website name and materials have not changed yet. Organization members provide advocacy and education for birds, in addition to presenting local bird watching field trips.
 
 [**Waterbird Habitat Project**](/partners/waterbird-habitat-project) ([website](https://waterbirdhabitat.org/))
 
 Collaborates with anglers and local communities to retrieve abandoned fishing gear from the American River, raise awareness about its impact on wildlife, and promote stewardship of the river ecosystem.
+
+[**Project Pick-up Fishing Line**](/partners/project-pick-up-fishing-line)
+
+Pick Up Fishing Line (PPUFL) is a community-driven conservation effort focused on removing discarded monofilament line and tackle from local waterways, trees, and shorelines to protect wildlife from entanglement and fatal injuries.
 
 [**Sacramento County Disability Advisory Commission**](https://dac.saccounty.gov/#gsc.tab=0)
 

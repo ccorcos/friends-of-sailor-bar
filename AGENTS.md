@@ -67,6 +67,9 @@ The site is in an active, page-by-page migration from the former WordPress websi
 - `/friends-of-sailor-bar/contact` — Faithful legacy contact page
 - `/about` — Faithful About Sailor Bar article with links to imported visitor guides and points of interest
 - `/about/aerojet-groundwater-pumps` — Legacy explanation of the groundwater extraction and treatment infrastructure
+- `/about/grinding-rocks` — Faithful legacy Grinding Rocks place article
+- `/about/heron-rookeries` — Faithful legacy Great Blue Heron rookery guide
+- `/about/flag-pole` — Faithful legacy Lt. Stephen D. Moore flagpole memorial article
 - `/wildlife` — Faithful legacy wildlife article
 - `/wildlife/birding` — Faithful legacy birding guide
 - `/wildlife/plant-life` — Faithful legacy plant guide
@@ -79,6 +82,8 @@ The site is in an active, page-by-page migration from the former WordPress websi
 - `/history/chinese-diggings` — Faithful legacy Chinese Diggings article
 - `/history/river-changes` — Faithful legacy river-channel-change article
 - `/history/camp-sabadaca` — Faithful legacy Camp Sabadaca article
+- `/history/gold-rush-legacy` — Faithful legacy Gold Rush Legacy article
+- `/history/the-ghost-of-sailor-bar` — Faithful legacy Ghost of Sailor Bar article and source PDF
 - `/stories` — Field notes and newsletter index with email subscription form
 - `/stories/[slug]` — Individual story detail
 - `/partners` — Partner directory

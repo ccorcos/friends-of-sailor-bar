@@ -15,7 +15,7 @@ The public `/archive` is now a temporary migration queue rather than a permanent
 - **71 of 71 public legacy URLs faithfully imported and checked off in the internal source snapshot.**
 - All **69 WordPress page bodies** match the imported source word-for-word after HTML is reduced to normalized visible text.
 - Both Tribe Events sitemap URLs are preserved internally, including the single-event record and the generated event listing visible on September 2, 2026.
-- The public archive now exposes only the **13 unresolved records** listed in `archive-audit.md`; resolved records no longer index or resolve under `/archive`.
+- The public archive now exposes only the **4 unresolved records** listed in `archive-audit.md`; resolved records no longer index or resolve under `/archive`.
 - All **59 discovered WordPress media URL variants** and **2 externally linked source PDFs** are mapped to local files; every imported `/files/...` reference exists.
 - `data/archive-manifest.json` records the title, word count, local media, and SHA-256 text hash for each public legacy page.
 
@@ -69,37 +69,37 @@ As of September 3, 2026, all eleven current event detail pages use the complete 
 - [x] `/a-detailed-history-of-sailor-bar/` — **A Detailed History of Sailor Bar** → `data/archive.json`, `/history`. Full source title and body preserved.
 - [x] `/chinese-diggings-across-from-sailor-bar/` — **Chinese Diggings Across from Sailor Bar** → `data/archive.json`, `/history/chinese-diggings`. Full source title and body preserved with 1 local media file.
 - [x] `/gold-dredging-industrial-mining-on-a-massive-scale/` — **Gold Dredging along the Lower American River** → `data/archive.json`, `/history/mining-and-dredging`. Full source title and body preserved with 3 local media files.
-- [x] `/sailor-bar-history/` — **Gold Rush Legacy** → `/archive/sailor-bar-history`. Full source title and body preserved.
+- [x] `/sailor-bar-history/` — **Gold Rush Legacy** → `data/archive.json`, `/history/gold-rush-legacy`. Full source title and body preserved.
 - [x] `/859-2/` — **How the American River has Changed over Time** → `data/archive.json`, `/history/river-changes`. Full source title and body preserved.
 - [x] `/native-american-history/` — **Native American History** → `data/archive.json`, `/history/nisenan-history`. Full source title and body preserved with 1 local media file.
 - [x] `/remembering-camp-sabadaca/` — **Remembering Camp Sabadaca** → `data/archive.json`, `/history/camp-sabadaca`. Full source title and body preserved with 1 local media file.
 - [x] `/sailor-bar-history-2/` — **Sailor Bar History** → `data/archive.json`. Full source title and body preserved. The source body is empty; the duplicate page is still preserved.
-- [x] `/the-ghost-of-sailor-bar/` — **The Ghost of Sailor Bar** → `/archive/the-ghost-of-sailor-bar`. Full source title and body preserved with 1 local media file.
+- [x] `/the-ghost-of-sailor-bar/` — **The Ghost of Sailor Bar** → `data/archive.json`, `/history/the-ghost-of-sailor-bar`. Full source title and body preserved with 1 local media file.
 
 ## Places
 
 - [x] `/aerojet-groundwater-pumps/` — **Aerojet Groundwater Pumps** → `data/archive.json`, `/about/aerojet-groundwater-pumps`. Full source title and body preserved with 1 local source document.
 - [x] `/boat-launch/` — **Boat Launch** → `data/archive.json`, `/about/boat-launch`. Full source title and body preserved with 1 local media file.
 - [x] `/great-horned-owl-nest-east-of-sailor-bar/` — **Great Horned Owl Nest East of Sailor Bar** → `data/archive.json`, `/wildlife/great-horned-owls`. Full source title and body preserved with 1 local media file and a separate disturbance warning.
-- [x] `/grinding-rocks/` — **Grinding Rocks** → `/archive/grinding-rocks`. Full source title and body preserved with 1 local media file.
-- [x] `/heron-rookeries/` — **Heron Rookeries** → `/archive/heron-rookeries`. Full source title and body preserved.
+- [x] `/grinding-rocks/` — **Grinding Rocks** → `data/archive.json`, `/about/grinding-rocks`. Full source title and body preserved with 1 local media file.
+- [x] `/heron-rookeries/` — **Heron Rookeries** → `data/archive.json`, `/about/heron-rookeries`. Full source title and body preserved.
 - [x] `/key-points-of-interest/` — **Key Points of Interest** → `data/archive.json`. Full source title and body preserved. The source body is empty; the directory placeholder is still preserved.
-- [x] `/flag-pole/` — **Lt. Stephen D. Moore Flag Pole** → `/archive/flag-pole`. Full source title and body preserved.
+- [x] `/flag-pole/` — **Lt. Stephen D. Moore Flag Pole** → `data/archive.json`, `/about/flag-pole`. Full source title and body preserved.
 - [x] `/olive-avenue-river-overlook/` — **Olive Avenue River Overlook** → `data/archive.json`, `/about/olive-avenue-overlook`. Full source title and body preserved.
 - [x] `/side-channel/` — **Side Channel East of the Boat Launch** → `data/archive.json`, `/stories/restoring-room-young-salmon`. Full source title and body preserved.
 - [x] `/turtle-pond/` — **Turtle Pond** → `data/archive.json`, `/about/turtle-pond`, `/stories/welcoming-path-turtle-pond`. Full source title and body preserved.
 
 ## Partners
 
-- [x] `/american-river-parkway-equestrian-patrol/` — **American River Parkway Equestrian Trail Patrol** → `/archive/american-river-parkway-equestrian-patrol`. Full source title and body preserved with 1 local media file.
+- [x] `/american-river-parkway-equestrian-patrol/` — **American River Parkway Equestrian Trail Patrol** → `data/archive.json`, `/partners/american-river-parkway-equestrian-patrol`. Full source title and body preserved with 1 local media file.
 - [x] `/american-river-parway-bike-patrol/` — **American River Parway Bike Patrol** → `data/archive.json`, `/partners/american-river-bike-patrol`. Full source title and body preserved.
 - [x] `/partners/` — **Events & Activities** → `data/archive.json`. Full source title and body preserved. The source body is empty and the legacy title is “Events & Activities”; both are preserved.
 - [x] `/fair-oaks-historical-society/` — **Fair Oaks Historical Society** → `data/archive.json`, `/partners/fair-oaks-historical-society`. Full source title and body preserved.
-- [x] `/friends-of-lakes-folsom-and-natoma-folfan/` — **Friends of Lakes Folsom and Natoma (FOLFAN)** → `/archive/friends-of-lakes-folsom-and-natoma-folfan`. Full source title and body preserved.
+- [x] `/friends-of-lakes-folsom-and-natoma-folfan/` — **Friends of Lakes Folsom and Natoma (FOLFAN)** → `data/archive.json`, `/partners/friends-of-lakes-folsom-and-natoma-folfan`. Full source title and body preserved.
 - [x] `/partners-affiliates/` — **Our Partners** → `data/archive.json`, `/partners`. Full source title and body preserved with 1 local source document.
-- [x] `/project-pick-up-fishing-line/` — **Project Pick-up Fishing Line** → `/archive/project-pick-up-fishing-line`. Full source title and body preserved.
+- [x] `/project-pick-up-fishing-line/` — **Project Pick-up Fishing Line** → `data/archive.json`, `/partners/project-pick-up-fishing-line`. Full source title and body preserved.
 - [x] `/river-city-waterway-alliance/` — **River City Waterway Alliance** → `data/archive.json`, `/partners/river-city-waterway-alliance`. Full source title and body preserved.
-- [x] `/sacramento-bird-alliance/` — **Sacramento Bird Alliance** → `/archive/sacramento-bird-alliance`. Full source title and body preserved with 1 local media file.
+- [x] `/sacramento-bird-alliance/` — **Sacramento Bird Alliance** → `data/archive.json`, `/partners/sacramento-bird-alliance`. Full source title and body preserved with 1 local media file.
 - [x] `/sacramento-county-regional-parks/` — **Sacramento County Regional Parks** → `data/archive.json`, `/partners/sacramento-county-regional-parks`. Full source title and body preserved.
 - [x] `/sacramento-water-forum/` — **Sacramento Water Forum** → `data/archive.json`, `/stories/water-forum-2050-agreement`. Full source title and body preserved.
 - [x] `/save-the-american-river-association-sara/` — **Save the American River Association (SARA)** → `data/archive.json`, `/partners/save-the-american-river-association`. Full source title and body preserved.

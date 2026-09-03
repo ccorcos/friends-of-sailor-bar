@@ -22,6 +22,9 @@ const knownPages = {
   "about/boat-launch.md": ["boat-launch"],
   "about/olive-avenue-overlook.md": ["olive-avenue-river-overlook"],
   "about/aerojet-groundwater-pumps.md": ["aerojet-groundwater-pumps"],
+  "about/grinding-rocks.md": ["grinding-rocks"],
+  "about/heron-rookeries.md": ["heron-rookeries"],
+  "about/flag-pole.md": ["flag-pole"],
   "wildlife/index.md": ["wildlife"],
   "wildlife/birding.md": ["birding-at-sailor-bar"],
   "wildlife/plant-life.md": ["plant-life"],
@@ -34,6 +37,8 @@ const knownPages = {
   "history/chinese-diggings.md": ["chinese-diggings-across-from-sailor-bar"],
   "history/river-changes.md": ["859-2"],
   "history/camp-sabadaca.md": ["remembering-camp-sabadaca"],
+  "history/gold-rush-legacy.md": ["sailor-bar-history"],
+  "history/the-ghost-of-sailor-bar.md": ["the-ghost-of-sailor-bar"],
   "partners/index.md": ["partners-affiliates"],
   "partners/american-river-bike-patrol.md": ["american-river-parway-bike-patrol"],
   "partners/fair-oaks-historical-society.md": ["fair-oaks-historical-society"],
@@ -41,6 +46,10 @@ const knownPages = {
   "partners/sacramento-county-regional-parks.md": ["sacramento-county-regional-parks"],
   "partners/save-the-american-river-association.md": ["save-the-american-river-association-sara"],
   "partners/waterbird-habitat-project.md": ["waterbird-habitat"],
+  "partners/american-river-parkway-equestrian-patrol.md": ["american-river-parkway-equestrian-patrol"],
+  "partners/friends-of-lakes-folsom-and-natoma-folfan.md": ["friends-of-lakes-folsom-and-natoma-folfan"],
+  "partners/project-pick-up-fishing-line.md": ["project-pick-up-fishing-line"],
+  "partners/sacramento-bird-alliance.md": ["sacramento-bird-alliance"],
 };
 
 const promotedTitleOverrides = {

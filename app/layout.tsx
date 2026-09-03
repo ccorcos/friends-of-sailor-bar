@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { resourceLinks, siteLinks } from "@/lib/site";
+import { resourceLinks, siteLinks, socialLinks } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -29,6 +29,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <footer className="site-footer container">
           <nav aria-label="More information">
             {resourceLinks.map((link) => <Link href={link.href} key={link.href}>{link.label}</Link>)}
+          </nav>
+          <nav className="footer-social-links" aria-label="Social media">
+            {socialLinks.map((link) => (
+              <a href={link.href} key={link.href} rel="noreferrer" target="_blank">
+                {link.label}
+              </a>
+            ))}
           </nav>
         </footer>
       </body>

@@ -4,10 +4,7 @@ Generated September 3, 2026 from `data/archive.json`. Verify with `node scripts/
 
 | Markdown file | Legacy slug | Source blocks | Media |
 | --- | --- | --- | --- |
-| about/index.md | about-sailor-bar | 16/16 | — |
-| about/recreation.md | recreation | 18/18 | — |
-| about/amenities.md | amenities | 4/4 | — |
-| about/brochure-and-map.md | friends-of-sailor-bar-brochure-and-map | 1/1 | /files/Sailor-Bar-Brochure-v12a.pdf |
+| about/index.md | about-sailor-bar, recreation, amenities, friends-of-sailor-bar-brochure-and-map | 31/31 required (8 presentation/navigation blocks intentionally changed or omitted) | /files/Sailor-Bar-Brochure-v12a.pdf |
 | about/turtle-pond.md | turtle-pond | 13/13 | — |
 | about/boat-launch.md | boat-launch | 8/8 | /files/sailor-bar-boat-launch-768x1024.webp |
 | about/olive-avenue-overlook.md | olive-avenue-river-overlook | 8/8 | — |
@@ -22,7 +19,7 @@ Generated September 3, 2026 from `data/archive.json`. Verify with `node scripts/
 ## Conversion caveats
 
 - **Heading levels.** Source pages mix `<h1>`–`<h4>`, `<div role="heading" aria-level="3">`, and bold `<strong>` lines used as headings. Existing `<h2>`–`<h4>` levels were kept. `<div role="heading">` became `###`. Bold-only section labels in Turtle Pond and Boat Launch became `##`. The source `<h1>Impacts of the Gold Rush on the Nisenan People</h1>` in Native American History was demoted to `##` (and its `<h2>` children to `###`) because the frontmatter title is the only H1. Empty `<h1>`/`<h2>` placeholder headings were dropped.
-- **About Sailor Bar link headings.** The source has seven centered `<h3>` elements that are only links. They were kept as `###` link headings. Links that had pointed at `/archive/...` were retargeted to the promoted routes where one exists (`/about/recreation`, `/about/amenities`, `/wildlife`, `/wildlife/salmon-and-steelhead`, `/history/nisenan-history`); `Scenic River Views` and `Sailor Bar Gold Rush Legacy` still point to `/archive/...` because they have no promoted page. `target="_blank"` was not preserved.
+- **About Sailor Bar consolidation.** The seven source link-only headings were removed because the same destinations are already available in the section directory. The complete Recreation and Amenities text and the brochure PDF link were consolidated into `about/index.md`; the former promoted detail routes redirect to `/about`. The all-caps “HOW TO ENTER SAILOR BAR” heading was changed to title case.
 - **Turtle Pond.** Source HTML is pasted Google-search markup (`<div>` blocks, HTML comments, computed-style attributes, a nested `<ul><li><ul>`). Only text, the one external link, and the flattened three-item list were kept. A trailing `<hr>` was dropped. Original typos are preserved ("companies’ night watchman", "turtle pond").
 - **Boat Launch.** `<mark>`, `<u>`, and `role="button"` spans have no Markdown equivalent; the heading is a plain `##`. The image has no alt text in the source, so `![](…)` is used.
 - **Wildlife.** Emoji in headings and the `⚠️` safety paragraph are preserved verbatim. Two `<hr>` separators and malformed `<p></ul>` closers were dropped.
@@ -35,4 +32,4 @@ Generated September 3, 2026 from `data/archive.json`. Verify with `node scripts/
 - **Olive Avenue overlook.** The source misspelling "placred" is preserved.
 - **Contradictions not editorialized.** No editorial notes were added. Known cross-page tensions remain as in the sources (e.g. "13 Benches and Tables" on Amenities vs. "12 new benches and 7 tables" in the bench dedication pages; "1900 to 1962" vs. "1899–1913" dredging periods, which the Gold Dredging article itself already explains). If the promoted pages should surface these, add a visibly separate editorial note per AGENTS.md.
 - **Descriptions.** `description` frontmatter is taken from the excerpt (untruncated sentences), not invented.
-- **Not covered here.** Nothing under `/archive` or `data/` was changed. No routes, loaders, or package files were touched.
+- **Not covered here.** The faithful legacy source records under `data/` were not changed. The `friends-of-sailor-bar` source record is intentionally excluded from the public archive by owner request.

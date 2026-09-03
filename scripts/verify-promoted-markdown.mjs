@@ -16,9 +16,6 @@ const bySlug = new Map(archive.map((item) => [item.slug, item]));
 
 const expectedNav = {
   "about/index.md": "About Sailor Bar",
-  "about/recreation.md": "Recreation",
-  "about/amenities.md": "Amenities",
-  "about/brochure-and-map.md": "Brochure and map",
   "about/turtle-pond.md": "Turtle Pond",
   "about/boat-launch.md": "Boat launch",
   "about/olive-avenue-overlook.md": "Olive Avenue overlook",
@@ -29,6 +26,21 @@ const expectedNav = {
   "history/index.md": "History",
   "history/nisenan-history.md": "Nisenan history",
   "history/mining-and-dredging.md": "Mining and dredging",
+};
+
+const intentionallyOmittedSourceBlocks = {
+  "about/index.md": {
+    "about-sailor-bar": new Set([
+      "HOW TO ENTER SAILOR BAR",
+      "Recreation",
+      "Nature Study",
+      "Wildlife",
+      "Scenic River Views",
+      "Amenities",
+      "Sailor Bar Gold Rush Legacy",
+      "Sailor Bar Native American History",
+    ]),
+  },
 };
 
 function decodeEntities(value) {
@@ -194,6 +206,9 @@ for (const file of files) {
   }
 
   const bodyText = markdownToText(body);
+  if (rel === "about/index.md" && !bodyText.includes("How to Enter Sailor Bar")) {
+    errors.push(`${label}: missing title-case replacement for the legacy all-caps entrance heading`);
+  }
   const bodyMedia = markdownMedia(body);
   const bodyLinks = markdownLinks(body);
 
@@ -207,7 +222,8 @@ for (const file of files) {
       errors.push(`${label}: title "${data.title}" does not exactly match legacy title "${item.title}"`);
     }
 
-    const blocks = sourceBlocks(item.contentHtml);
+    const omittedBlocks = intentionallyOmittedSourceBlocks[rel]?.[slug] ?? new Set();
+    const blocks = sourceBlocks(item.contentHtml).filter((block) => !omittedBlocks.has(block));
     let missing = 0;
     for (const block of blocks) {
       if (!bodyText.includes(block)) {

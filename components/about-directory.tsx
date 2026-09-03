@@ -3,8 +3,6 @@ import { getPageByPath, getPageNavigation, type PageNavigationItem } from "@/lib
 
 const SECTIONS = ["about", "wildlife", "history"] as const;
 
-const ARCHIVE_LINK = { href: "/archive/friends-of-sailor-bar", label: "Friends of Sailor Bar" };
-
 type DirectoryLink = { href: string; label: string };
 type DirectorySection = DirectoryLink & { children: DirectoryLink[] };
 
@@ -47,9 +45,6 @@ export function AboutDirectory() {
               )}
             </li>
           ))}
-          <li>
-            <Link href={ARCHIVE_LINK.href}>{ARCHIVE_LINK.label}</Link>
-          </li>
         </ul>
       </nav>
     </aside>

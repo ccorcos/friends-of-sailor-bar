@@ -35,7 +35,7 @@ As of September 3, 2026, all eleven current event detail pages use the complete 
 - [x] `/accomplishments/` — **Accomplishments** → `/archive/accomplishments`. Full source title and body preserved.
 - [x] `/contact/` — **Contact Us** → `/archive/contact`, `/contact`. Full source title and body preserved.
 - [x] `/donate/` — **Donate** → `/archive/donate`. Full source title and body preserved. The original “page in progress” copy is preserved; the substantive donation page is separately promoted at `/donate`.
-- [x] `/friends-of-sailor-bar/` — **Friends of Sailor Bar** → `/archive/friends-of-sailor-bar`. Full source title and body preserved.
+- [x] `/friends-of-sailor-bar/` — **Friends of Sailor Bar** → Source retained in `data/archive.json`; removed from the public archive and sidebar at the site owner’s request on September 3, 2026.
 - [x] `/friends-of-sailor-bar-leaders/` — **Friends of Sailor Bar Leadership** → `/archive/friends-of-sailor-bar-leaders`. Full source title and body preserved. The source body is empty; that empty state is preserved rather than filled with invented copy.
 - [x] `/friends-of-sailor-bar-stewardship/` — **Friends of Sailor Bar Stewardship** → `/archive/friends-of-sailor-bar-stewardship`. Full source title and body preserved. The source body is empty; that empty state is preserved.
 - [x] `/get-involved/` — **Get Involved** → `/archive/get-involved`, `/volunteer`. Full source title and body preserved.
@@ -49,9 +49,9 @@ As of September 3, 2026, all eleven current event detail pages use the complete 
 
 - [x] `/about-sailor-bar/` — **About Sailor Bar** → `/archive/about-sailor-bar`, `/about`. Full source title and body preserved.
 - [x] `/activities-amenities/` — **Activities & Amenities** → `/archive/activities-amenities`. Full source title and body preserved.
-- [x] `/amenities/` — **Amenities** → `/archive/amenities`, `/about/amenities`. Full source title and body preserved.
-- [x] `/friends-of-sailor-bar-brochure-and-map/` — **Friends of Sailor Bar Brochure and Map** → `/archive/friends-of-sailor-bar-brochure-and-map`, `/about/brochure-and-map`. Full source title and body preserved with 1 local media file.
-- [x] `/recreation/` — **Recreation** → `/archive/recreation`, `/about/recreation`. Full source title and body preserved.
+- [x] `/amenities/` — **Amenities** → `/archive/amenities`, consolidated into `/about`. Full source title and body preserved; `/about/amenities` redirects to `/about`.
+- [x] `/friends-of-sailor-bar-brochure-and-map/` — **Friends of Sailor Bar Brochure and Map** → `/archive/friends-of-sailor-bar-brochure-and-map`, consolidated into `/about`. Full source title and body preserved with 1 local media file; `/about/brochure-and-map` redirects to `/about`.
+- [x] `/recreation/` — **Recreation** → `/archive/recreation`, consolidated into `/about`. Full source title and body preserved; `/about/recreation` redirects to `/about`.
 - [x] `/scenic-river-views/` — **Scenic River Views** → `/archive/scenic-river-views`. Full source title and body preserved.
 
 ## Nature

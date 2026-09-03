@@ -21,7 +21,7 @@ The site is in an active, page-by-page migration from the former WordPress websi
 - Treat `migration.md` as the authoritative checklist and route map for every legacy public page.
 - Faithful migration means preserving the complete published title, body text, headings, lists, captions, links, images, and downloadable files. Do not paraphrase, condense, modernize, silently correct, or replace source copy with a summary.
 - Index cards may use short excerpts for navigation, but every migrated detail page must expose the complete legacy source content.
-- Keep a permanent faithful copy under `/archive` even when the content is also promoted into `/about`, `/history`, `/wildlife`, `/events`, `/stories`, or another primary section.
+- Keep a permanent faithful copy under `/archive` even when the content is also promoted into `/about`, `/history`, `/wildlife`, `/events`, `/stories`, or another primary section. The sole owner-requested exception is the legacy `friends-of-sailor-bar` page: its source remains in `data/archive.json`, but it must not appear in the public archive index or resolve at `/archive/friends-of-sailor-bar`.
 - Promoted pages may clean up legacy formatting, remove duplicated facts, and omit obsolete interface instructions such as “click for flyer,” but they must retain every unique factual detail and remain complete rather than becoming summaries. Keep links to source flyers, videos, PDFs, and related records when they carry information.
 - Preserve empty pages, placeholders, duplicates, contradictions, misspellings, and outdated claims in the faithful archive. On promoted pages, identify contradictions in a visibly separate editorial note rather than silently choosing one version.
 - Copy legacy images and files into `public/files` rather than hotlinking them. Preserve every media item referenced by imported content.
@@ -73,7 +73,7 @@ The site is in an active, page-by-page migration from the former WordPress websi
 - `/stories` — Field notes and newsletter index with email subscription form
 - `/stories/[slug]` — Individual story detail
 - `/archive` — Permanent index of faithfully imported legacy pages
-- `/archive/[slug]` — Complete legacy page title, body, and media
+- `/archive/[slug]` — Complete legacy page title, body, and media, except the intentionally unpublished `friends-of-sailor-bar` record
 - `/volunteer` — Volunteer interest form
 
 ### Compatibility route

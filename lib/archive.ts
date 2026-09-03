@@ -10,10 +10,11 @@ export type ArchiveItem = {
   contentHtml: string;
 };
 
-// The archive is the permanent, faithful record of the former WordPress site.
-// Promoting content elsewhere must never remove or replace its archive copy.
+// The source snapshot keeps every imported page. The site owner explicitly
+// removed this one page from the public archive on September 3, 2026.
+const HIDDEN_ARCHIVE_SLUGS = new Set(["friends-of-sailor-bar"]);
 const rawArchiveItems = archiveData as ArchiveItem[];
-export const archiveItems = rawArchiveItems;
+export const archiveItems = rawArchiveItems.filter((item) => !HIDDEN_ARCHIVE_SLUGS.has(item.slug));
 export const mediaLibraryItem = rawArchiveItems.find((item) => item.slug === "media-library");
 
 export const archiveCategories = Array.from(new Set(archiveItems.map((item) => item.category)));

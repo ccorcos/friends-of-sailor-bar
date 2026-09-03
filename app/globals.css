@@ -6,6 +6,7 @@
   --canvas: #f3f1eb;
   --line: rgba(23, 53, 45, 0.16);
   --space: clamp(1rem, 3vw, 2.5rem);
+  --page-title-size: clamp(1.9rem, 4vw, 3.5rem);
 }
 
 * { box-sizing: border-box; }
@@ -84,7 +85,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 h1, h2, p { margin-block-start: 0; }
 .page-intro h1, .updates-intro h1 {
   margin-block-end: 0.35rem;
-  font-size: clamp(1.9rem, 4vw, 3.5rem);
+  font-size: var(--page-title-size);
   line-height: 0.95;
   letter-spacing: -0.055em;
 }
@@ -303,11 +304,11 @@ dd { margin: 0.3rem 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1
 .essay-card h1 {
   max-inline-size: 40rem;
   margin-block: 0 clamp(1rem, 3vw, 1.75rem);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.9rem, 4vw, 3.5rem);
-  font-weight: 500;
-  line-height: 1.02;
-  letter-spacing: -0.045em;
+  font-family: inherit;
+  font-size: var(--page-title-size);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.055em;
 }
 .essay-date {
   margin-block: -0.5rem clamp(1.25rem, 3vw, 2rem);
@@ -532,11 +533,11 @@ dd { margin: 0.3rem 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1
 .about-essay h1 {
   max-inline-size: 40rem;
   margin-block: 0 clamp(2rem, 5vw, 3rem);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2.15rem, 6vw, 4.5rem);
-  font-weight: 500;
-  line-height: 1.02;
-  letter-spacing: -0.045em;
+  font-family: inherit;
+  font-size: var(--page-title-size);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.055em;
 }
 .about-essay section {
   max-inline-size: 40rem;

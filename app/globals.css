@@ -622,7 +622,7 @@ fieldset { margin: 0; padding: 0; border: 0; }
 
 @media (max-width: 650px) {
   :root {
-    --font-size-brand: 16px;
+    --font-size-brand: 18px;
     --font-size-page-title: 32px;
     --font-size-date-large: 44px;
   }
